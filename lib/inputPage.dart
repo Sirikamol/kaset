@@ -89,7 +89,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             decoration: InputDecoration(labelText: 'กรอกชื่อร้าน'),
           ),
 
-
         ],),
         Column(children: <Widget>[
           Row(children: <Widget>[
@@ -138,8 +137,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         FlatButton(
             color: Colors.red[300],
             child: Text("NEXT", style: TextStyle(color: Colors.black))),
-
-
 
       ],
       ),
