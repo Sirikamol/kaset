@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "609116452265",
+    "firebase_url": "https://kasetsart-4e860.firebaseio.com",
+    "project_id": "kasetsart-4e860",
+    "storage_bucket": "kasetsart-4e860.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609116452265:android:4e71a8a1f1425eca",
+        "android_client_info": {
+          "package_name": "com.example.kasetsart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609116452265-ojbg7j0gq5rb1sjmuk87tmak1e4sfscf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kasetsart",
+            "certificate_hash": "cf4eb75f39cf3ca2cac3e21fbc7d8e097c654154"
+          }
+        },
+        {
+          "client_id": "609116452265-mva729s9ilr9c412m1096qoh7nf0e5gu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb9C55OaI4S-SXc1nWxMta7CiAiUpm5S0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609116452265-mva729s9ilr9c412m1096qoh7nf0e5gu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
