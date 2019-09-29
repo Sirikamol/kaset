@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kasetsart/secondPage.dart';
+import 'package:kasetsart/foodPage.dart';
 
 import 'inputPage.dart';
 void main() => runApp(MyApp());
@@ -7,16 +8,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'Kasetfair App',
       theme: ThemeData(///
       ),
       home: Home(title: 'Homepage'),
+      debugShowCheckedModeBanner: false,
       //actions: <Widget>[
       //IconButton(
       //icon: Icon(Icons.search),
       // tooltip: 'Search',
       //onPressed: null,),],backgroundColor: Colors.lightGreen,
+
 
       //      body: ListView(children: <Widget>[headerSection,titleSetion,final2Section,
       //FlatButton(color: Colors.red[300],child: Text("Go to Second page",style: TextStyle(color: Colors.white)),onPressed: () => navigateToSecondPage(context)),]),
@@ -45,20 +49,29 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               Row(children: <Widget>[
                 FlatButton.icon(
-                    onPressed: () => navigateToInputPage(context),
-                    icon: Icon(Icons.search,color: Colors.blue,size: 40,),
+                    onPressed: () => navigateToFoodPage(context),
+                    icon: Icon(Icons.search,color: Colors.blue,size: 15,),
                     label: Text("search",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10))),
                 FlatButton.icon(
-                    onPressed: () => navigateToSecondPage(context),
-                    icon: Icon(Icons.grid_on,color: Colors.blue,size: 35,),
+                    onPressed: () => navigateToInputPage(context),
+                    icon: Icon(Icons.grid_on,color: Colors.blue,size: 15,),
                     label: Text("schedule",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10))),
                 FlatButton.icon(
                     onPressed: () => navigateToSecondPage(context),
-                    icon: Icon(Icons.comment,color: Colors.blue,size: 35,),
+                    icon: Icon(Icons.comment,color: Colors.blue,size: 15,),
                     label: Text("comment",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),],),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10))),
+                
+                FlatButton.icon(
+                    onPressed: () => navigateToSecondPage(context),
+                    icon: Icon(Icons.comment,color: Colors.blue,size: 15,),
+                    label: Text("comment",
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10))),        
+                        
+                        ],),
+                      
               Container(margin: EdgeInsets.only(left: 0))],),
           button2Section,
           finalSection,
@@ -206,8 +219,12 @@ navigateToInputPage(BuildContext context) {
     return InputPage();
   }));
 }
-
-
+navigateToFoodPage(BuildContext context) {
+  Navigator.push(
+      context, MaterialPageRoute(builder: (context) {
+    return FoodPage();
+  }));
+}
 
 
 
