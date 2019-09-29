@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:kasetsart/main.dart';
 import 'package:kasetsart/secondPage.dart';
+import 'package:kasetsart/foodSearch.dart';
 
 import 'inputPage.dart';
 void main() => runApp(MyApp());
@@ -15,6 +17,8 @@ class MyApp extends StatelessWidget {
       ),
       home: FoodPage(title: 'Foodpage'),
       debugShowCheckedModeBanner: false,
+
+      
       //actions: <Widget>[
       //IconButton(
       //icon: Icon(Icons.search),
@@ -25,6 +29,7 @@ class MyApp extends StatelessWidget {
       //      body: ListView(children: <Widget>[headerSection,titleSetion,final2Section,
       //FlatButton(color: Colors.red[300],child: Text("Go to Second page",style: TextStyle(color: Colors.white)),onPressed: () => navigateToSecondPage(context)),]),
     );
+
   }
 }
 class FoodPage extends StatefulWidget {
@@ -132,42 +137,50 @@ class _FoodPageState extends State<FoodPage>
             _clearSearchQuery();
           },
         ),
-      ];
-    }
+        new IconButton(
+          icon: const Icon(Icons.arrow_left),
+          onPressed: () {
 
+            if (_searchQuery == null || _searchQuery.text.isEmpty) {
+              Navigator.pop(context);
+              return;      
+            }
+            navigateToFoodSearch(context, _searchQuery.text);
+          },
+          ),  
+      ]; 
+    }
+      
     return <Widget>[
       new IconButton(
         icon: const Icon(Icons.search),
         onPressed: _startSearch,
       ),
     ];
+    
+    
+    
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       key: scaffoldKey,
-      appBar: new AppBar(
+      appBar: new AppBar( 
         leading: _isSearching ? const BackButton() : null,
         title: _isSearching ? _buildSearchField() : _buildTitle(context),
-        actions: _buildActions(),
+        actions: _buildActions(),   
+        
       ),
-      body: new Center(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new Text(
-              '$searchQuery',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
+      
+      body: ListView(children: <Widget>[
+        headerSec,
+
+        ],
+        )  
     );
-  }
-} 
-
-
+    }
+    } 
 
 Widget headerSec = Column(
   children: <Widget>[
@@ -181,6 +194,18 @@ Card _buildCardListView1() {
   return Card(child: Image.network(
       "http://kps.ku.ac.th/kasetfair/images/home_slide/BN-500x333.jpg"),);
 }
+
+
+
+navigateToFoodSearch(BuildContext context, String category) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return FoodSearch(category: category);
+  }));
+}
+
+
+
+
 
 
 
