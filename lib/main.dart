@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kasetsart/secondPage.dart';
 import 'package:kasetsart/foodPage.dart';
-
+import 'package:kasetsart/mapPage.dart';
 import 'inputPage.dart';
 void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Kasetfair App',
-      theme: ThemeData(///
+      theme: ThemeData(primarySwatch: Colors.lightGreen
       ),
       home: Home(title: 'Homepage'),
       debugShowCheckedModeBanner: false,
@@ -50,25 +50,25 @@ class _HomeState extends State<Home> {
               Row(children: <Widget>[
                 FlatButton.icon(
                     onPressed: () => navigateToFoodPage(context),
-                    icon: Icon(Icons.search,color: Colors.blue,size: 15,),
-                    label: Text("search",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10))),
+                    icon: Icon(Icons.restaurant,color: Colors.black,size: 50,),
+                    label: Text("",
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 2))),
                 FlatButton.icon(
                     onPressed: () => navigateToInputPage(context),
-                    icon: Icon(Icons.grid_on,color: Colors.blue,size: 15,),
-                    label: Text("schedule",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10))),
+                    icon: Icon(Icons.local_florist,color: Colors.black,size: 50,),
+                    label: Text("",
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 2))),
                 FlatButton.icon(
                     onPressed: () => navigateToSecondPage(context),
-                    icon: Icon(Icons.comment,color: Colors.blue,size: 15,),
-                    label: Text("comment",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10))),
+                    icon: Icon(Icons.pets,color: Colors.black,size: 50,),
+                    label: Text("",
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 2))),
                 
                 FlatButton.icon(
                     onPressed: () => navigateToSecondPage(context),
-                    icon: Icon(Icons.comment,color: Colors.blue,size: 15,),
-                    label: Text("comment",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10))),        
+                    icon: Icon(Icons.shopping_basket,color: Colors.black,size: 50,),
+                    label: Text("",
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))),        
                         
                         ],),
                       
@@ -81,29 +81,34 @@ class _HomeState extends State<Home> {
       drawer: Drawer(
         child: ListView(
           children: <Widget>[ Icon(Icons.spa, color: Colors.black, size: 35),
-            DrawerHeader(child: Text('เกี่ยวกับ..',style: TextStyle(fontSize: 22,color: Colors.black) )),
+            DrawerHeader(child: Text('KASETSART',style: TextStyle(fontSize: 22,color: Colors.black) )),
             Icon(Icons.arrow_drop_down_circle, color: Colors.black, size: 30,),
             Column(crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Column(children: <Widget>[ FlatButton.icon(
-                    onPressed: () => navigateToSecondPage(context),
+                    onPressed: () => navigateToMapPage(context),
                     icon: Icon(Icons.location_on,color: Colors.blue,size: 35,),
-                    label: Text("location",
+                    label: Text("map",
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
                   FlatButton.icon(
                       onPressed: () => navigateToSecondPage(context),
-                      icon: Icon(Icons.add_photo_alternate,color: Colors.blue,size: 35,),
-                      label: Text("Image",
+                      icon: Icon(Icons.drive_eta,color: Colors.blue,size: 35,),
+                      label: Text("arking place",
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
                   FlatButton.icon(
                       onPressed: () => navigateToSecondPage(context),
-                      icon: Icon(Icons.settings_phone,color: Colors.blue,size: 35,),
-                      label: Text("Contact",
+                      icon: Icon(Icons.change_history,color: Colors.blue,size: 35,),
+                      label: Text("history",
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
                   FlatButton.icon(
                       onPressed: () => navigateToSecondPage(context),
-                      icon: Icon(Icons.brightness_7,color: Colors.blue,size: 35,),
-                      label: Text("Setting",
+                      icon: Icon(Icons.departure_board,color: Colors.blue,size: 35,),
+                      label: Text("tram",
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
+                  FlatButton.icon(
+                      onPressed: () => navigateToSecondPage(context),
+                      icon: Icon(Icons.grid_on,color: Colors.blue,size: 35,),
+                      label: Text("work table",
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
                   FlatButton.icon(
                       onPressed: () => navigateToSecondPage(context),
@@ -120,25 +125,32 @@ class _HomeState extends State<Home> {
 
 Widget headerSection = Column(
   children: <Widget>[
-    Container(height: 300, width: 550, child: ListView(
+    Container(height: 270, width: 370, child: ListView(
       scrollDirection: Axis.horizontal,
       children: <Widget>[
         _buildCardListView1(),
         _buildCardListView2(),
-        _buildCardListView3(),],)   ,)],);
+        _buildCardListView3(),
+        _buildCardListView4(),],)   ,)],);
 
 Card _buildCardListView1() {
   return Card(child: Image.network(
-      "http://kps.ku.ac.th/kasetfair/images/home_slide/BN-500x333.jpg"),);
+      "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),);
 }
 Card _buildCardListView2() {
   return Card(child: Image.network(
+      "http://kps.ku.ac.th/kasetfair/images/home_slide/BN-500x333.jpg"),);
+}
+
+Card _buildCardListView3() {
+  return Card(child: Image.network(
       "https://f.ptcdn.info/252/061/000/pj9cj9fnl3S4dxTFtrU-o.jpg"),);
 }
-Card _buildCardListView3() {
+Card _buildCardListView4() {
   return Card(child: Image.network(
       "https://www.nanagarden.com/picture/Forum/For9059_1.jpg"),);
 }
+
 
 Widget titleSetion = Padding(padding: EdgeInsets.all(20), child: Row(
   children: <Widget>[
@@ -149,8 +161,7 @@ Widget titleSetion = Padding(padding: EdgeInsets.all(20), child: Row(
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
         Text("Kamphaeng Saen",
           style: TextStyle(color: Colors.grey[500], fontSize: 22),)],)),
-
-    Icon(Icons.more_horiz, color: Colors.black,),
+          //Icon(Icons.drive_eta, color: Colors.grey),
     Container(margin: EdgeInsets.only(left: 7))
   ],),);
 
@@ -179,11 +190,11 @@ Widget button2Section = Padding(padding: EdgeInsets.all(10));
 //    child: new Text('RaisedButton', style: TextStyle(fontSize: 22 , height: 2),),)
 // ],) ,);
 
-Widget finalSection = Container (child: Text('** ข่าวสาร !!', style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold, color: Colors.red[800])
-  ,),color: Colors.yellow,height: 40,);
+Widget finalSection = Container (child: Text('   ข่าวสาร ', style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold, color: Colors.white)
+  ,),color: Colors.lightGreen[600],height: 40,);
 
 Widget final2Section = Padding(padding: EdgeInsets.all(20), child: Row(
-  children: <Widget>[Icon(Icons.arrow_right, color: Colors.black, size: 35),
+  children: <Widget>[Icon(Icons.arrow_right, color: Colors.lightGreenAccent[700], size: 35),
     Expanded (child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -196,7 +207,7 @@ Widget final2Section = Padding(padding: EdgeInsets.all(20), child: Row(
   ],),);
 
 Widget final3Section = Padding(padding: EdgeInsets.all(20), child: Row(
-  children: <Widget>[ Icon(Icons.arrow_right, color: Colors.black, size: 35),
+  children: <Widget>[ Icon(Icons.arrow_right, color: Colors.lightGreenAccent[700], size: 35),
     Expanded (child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -223,6 +234,12 @@ navigateToFoodPage(BuildContext context) {
   Navigator.push(
       context, MaterialPageRoute(builder: (context) {
     return FoodPage();
+  }));
+}
+navigateToMapPage(BuildContext context) {
+  Navigator.push(
+      context, MaterialPageRoute(builder: (context) {
+    return MapPage();
   }));
 }
 

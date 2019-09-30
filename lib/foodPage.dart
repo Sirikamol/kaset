@@ -138,7 +138,7 @@ class _FoodPageState extends State<FoodPage>
           },
         ),
         new IconButton(
-          icon: const Icon(Icons.arrow_left),
+          icon: const Icon(Icons.search),
           onPressed: () {
 
             if (_searchQuery == null || _searchQuery.text.isEmpty) {
@@ -175,6 +175,8 @@ class _FoodPageState extends State<FoodPage>
       
       body: ListView(children: <Widget>[
         headerSec,
+        titleSection,
+        title2Section
 
         ],
         )  
@@ -184,7 +186,7 @@ class _FoodPageState extends State<FoodPage>
 
 Widget headerSec = Column(
   children: <Widget>[
-    Container(height: 250, width: 550, child: ListView(
+    Container(height: 210, width: 1500, child: ListView(
       scrollDirection: Axis.horizontal,
       children: <Widget>[
         _buildCardListView1(),
@@ -192,8 +194,89 @@ Widget headerSec = Column(
 
 Card _buildCardListView1() {
   return Card(child: Image.network(
-      "http://kps.ku.ac.th/kasetfair/images/home_slide/BN-500x333.jpg"),);
+      "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),);
 }
+
+Widget titleSection = Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: <Widget>[
+    //Text("??????? ?????????50%", style: TextStyle(fontSize: 18)),
+    Container(
+      height: 150,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          _buildCardListView(),
+          _buildCardListView2(),
+          _buildCardListView3(),
+          _buildCardListView4()
+        ],
+      ),
+    )
+  ],
+);
+Card _buildCardListView() {
+  return Card(
+    child: Image.network(
+        "http://chailaibackpacker.com/wp-content/uploads/2019/01/Kaset-Fair-New-2019-25.jpg"),
+  );
+}
+
+Card _buildCardListView2() {
+  return Card(
+    child: Image.network(
+        "https://pbs.twimg.com/media/C3QbEqbVMAA0l2I.jpg"),
+        
+  );
+}
+
+Card _buildCardListView3() {
+  return Card(
+    child: Image.network(
+        "https://pbs.twimg.com/media/CmBxHzDWgAAvuGo.jpg"),
+  );
+}
+
+Card _buildCardListView4() {
+  return Card(
+    child: Image.network(
+        "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
+  );
+}
+
+Widget title2Section = Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: <Widget>[
+    //Text("??????? ????1???1", style: TextStyle(fontSize: 18)),
+    Container(
+      height: 200,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          _build1CardListView(),
+          _build1CardListView1(),
+          
+        ],
+      ),
+    )
+  ],
+);
+
+Card _build1CardListView() {
+  return Card(
+    child: Image.network(
+        "https://www.chillpainai.com/src/wewakeup/scoop/img_scoop/scoop/kang/fabuary2017/kasetfair/IMG_2468.jpg"),
+  );
+}
+
+Card _build1CardListView1() {
+  return Card(
+    child:
+    Image.network("https://arch.punpromotion.com/wp-content/uploads/2017/06/S__2523145-1.jpg"),
+  );
+}
+
+
 
 
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:kasetsart/foodPage.dart';
 
 
 
@@ -38,7 +39,7 @@ class _FoodSearchState extends State<FoodSearch> {
                       children: <Widget>[
                          ListTile(
                           title: Text(document['nameStore']),
-                          //subtitle: Image.network(document["image"][0]),
+                          subtitle: Image.network(document["image"][0]),
                         ),
                       ],
                     ),
