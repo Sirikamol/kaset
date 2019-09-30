@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
 
-class MapPage extends StatefulWidget {
-  MapPage ({Key key, this.title}) : super(key: key);
+class ArkingPlace extends StatefulWidget {
+  ArkingPlace ({Key key, this.title}) : super(key: key);
   final String title;
-  _MapPageState createState() => _MapPageState();
+  _ArkingPlaceState createState() => _ArkingPlaceState();
 }
 
-class _MapPageState extends State<MapPage> {
+class _ArkingPlaceState extends State<ArkingPlace> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue[300],
-          title: Text("MAP"),
+          title: Text("ARKING PLACE"),
         ),
         body: oneSec,
         );
@@ -30,5 +30,5 @@ Widget oneSec = Column(
 
 Card _buildCardListView1() {
   return Card(child: Image.network(
-      "http://cdn.gotoknow.org/assets/media/files/000/649/246/large_9KU9.jpg?1290609025"),);
+      "http://kps.ku.ac.th/v8/images/bg/kps-bus-routes.jpg"),);
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kasetsart/arkingPlace.dart';
+import 'package:kasetsart/historyPage.dart';
 import 'package:kasetsart/secondPage.dart';
 import 'package:kasetsart/foodPage.dart';
 import 'package:kasetsart/mapPage.dart';
@@ -91,12 +93,12 @@ class _HomeState extends State<Home> {
                     label: Text("map",
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
                   FlatButton.icon(
-                      onPressed: () => navigateToSecondPage(context),
+                      onPressed: () => navigateToArkingPlace(context),
                       icon: Icon(Icons.drive_eta,color: Colors.blue,size: 35,),
                       label: Text("arking place",
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
                   FlatButton.icon(
-                      onPressed: () => navigateToSecondPage(context),
+                      onPressed: () => navigateToHistoryPage(context),
                       icon: Icon(Icons.change_history,color: Colors.blue,size: 35,),
                       label: Text("history",
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
@@ -240,6 +242,18 @@ navigateToMapPage(BuildContext context) {
   Navigator.push(
       context, MaterialPageRoute(builder: (context) {
     return MapPage();
+  }));
+}
+navigateToArkingPlace(BuildContext context) {
+  Navigator.push(
+      context, MaterialPageRoute(builder: (context) {
+    return ArkingPlace();
+  }));
+}
+navigateToHistoryPage(BuildContext context) {
+  Navigator.push(
+      context, MaterialPageRoute(builder: (context) {
+    return HistoryPage();
   }));
 }
 
