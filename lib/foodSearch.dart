@@ -22,35 +22,62 @@ class _FoodSearchState extends State<FoodSearch> {
           backgroundColor: Colors.blue[300],
           title: Text(widget.category),
         ),
-        body: StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection('store').where("category", isEqualTo: widget.category).snapshots(),
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (snapshot.hasError)
-          return new Text('Error: ${snapshot.error}');
-        switch (snapshot.connectionState) {
-          case ConnectionState.waiting: return new Text('Loading...');
-          default:
-            return new ListView(
-              children: snapshot.data.documents.map((DocumentSnapshot document) {
-                return Center(
-                  child: Card(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                         ListTile(
-                          title: Text(document['nameStore']),
-                          subtitle: Image.network(document["image"][0]),
+        body:    StreamBuilder<QuerySnapshot>(
+          stream: Firestore.instance.collection('food').where('products', arrayContains: widget.category).snapshots(),
+          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.hasError)
+              return Text('Error: ${snapshot.error}');
+            switch (snapshot.connectionState) {
+              case ConnectionState.waiting: return Text('Loading...');
+              default:
+                return ListView(
+                  children: snapshot.data.documents.map((DocumentSnapshot document) {
+                    return Center(
+                      child: Card(
+                        child: Column(
+                          children: <Widget>[
+                            Row(children: <Widget>[
+                              Padding(
+                                padding: EdgeInsets.all(7.0),
+                                child: Text(document['nameStore'], style: TextStyle(fontSize: 18.0),)
+                              ),
+                            ]),
+                            Image.network(document['image'][0]['src'],),
+                            Padding(
+                              padding:  EdgeInsets.all(7.0),
+                              child:  Row(
+                                children: <Widget>[
+                                 Padding(
+                                  padding:  EdgeInsets.all(7.0),
+                                  child:  Icon(Icons.thumb_up),
+                                ),
+                                 Padding(
+                                  padding:  EdgeInsets.all(7.0),
+                                  child:  Text('Like',style:  TextStyle(fontSize: 18.0),),
+                                ),
+                                 Padding(
+                                  padding:  EdgeInsets.all(7.0),
+                                  child:  Icon(Icons.comment),
+                                ),
+                                 Padding(
+                                  padding:  EdgeInsets.all(7.0),
+                                  child:  Text('Comments',style:  TextStyle(fontSize: 18.0)),
+                                )
+
+                                ],
+                              )
+                            )
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
+                      )
+                    );
+                  }).toList(),
                 );
-              }).toList(),
-            );
-        }
-      },
-    ));
-}
+            }
+          },
+        )
+      );
+  }
 }
 
 

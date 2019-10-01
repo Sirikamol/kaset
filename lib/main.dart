@@ -131,7 +131,7 @@ Widget headerSection = Column(
       scrollDirection: Axis.horizontal,
       children: <Widget>[
         _buildCardListView1(),
-        _buildCardListView2(),
+        // _buildCardListView2(),
         _buildCardListView3(),
         _buildCardListView4(),],)   ,)],);
 
@@ -141,7 +141,7 @@ Card _buildCardListView1() {
 }
 Card _buildCardListView2() {
   return Card(child: Image.network(
-      "http://kps.ku.ac.th/kasetfair/images/home_slide/BN-500x333.jpg"),);
+      "https://kps.ku.ac.th/kasetfair/images/home_slide/BN-500x333.jpg"),);
 }
 
 Card _buildCardListView3() {

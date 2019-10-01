@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
       home: FoodPage(title: 'Foodpage'),
       debugShowCheckedModeBanner: false,
 
-      
       //actions: <Widget>[
       //IconButton(
       //icon: Icon(Icons.search),
@@ -39,7 +38,7 @@ class FoodPage extends StatefulWidget {
   @override
   _FoodPageState createState() => _FoodPageState();
 }
-class _FoodPageState extends State<FoodPage> 
+class _FoodPageState extends State<FoodPage>
   with SingleTickerProviderStateMixin {
   static final GlobalKey<ScaffoldState> scaffoldKey =
   new GlobalKey<ScaffoldState>();
@@ -124,7 +123,6 @@ class _FoodPageState extends State<FoodPage>
   }
 
   List<Widget> _buildActions() {
-
     if (_isSearching) {
       return <Widget>[
         new IconButton(
@@ -143,154 +141,108 @@ class _FoodPageState extends State<FoodPage>
 
             if (_searchQuery == null || _searchQuery.text.isEmpty) {
               Navigator.pop(context);
-              return;      
+              return;
             }
             navigateToFoodSearch(context, _searchQuery.text);
           },
-          ),  
-      ]; 
+          ),
+      ];
     }
-      
+
     return <Widget>[
       new IconButton(
         icon: const Icon(Icons.search),
         onPressed: _startSearch,
       ),
     ];
-    
-    
-    
+  }
+
+  Widget headerSec = Column(
+    children: <Widget>[
+      Container(height: 210, width: 1500, child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          Card(
+            child: Image.network(
+            "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),),
+        ],)
+      ,)
+    ],
+  );
+
+  Widget titleSection = Column (
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+      Container(
+        height: 150,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            GestureDetector(
+              onTap: () {
+                print('hello1');
+              },
+              child: Card(
+                child:  Image.network(
+                  "https://pbs.twimg.com/media/C3QbEqbVMAA0l2I.jpg"),
+              )
+            ),
+            Card(
+              child: Image.network(
+                  "https://pbs.twimg.com/media/CmBxHzDWgAAvuGo.jpg"),
+            ),
+            Card(
+              child: Image.network(
+                  "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
+            )
+          ],
+        ),
+      )
+    ],
+  );
+
+  Widget title2Section = Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+      Container(
+        height: 200,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            Card(
+              child: Image.network(
+                  "https://www.chillpainai.com/src/wewakeup/scoop/img_scoop/scoop/kang/fabuary2017/kasetfair/IMG_2468.jpg"),
+            ),
+            Card(
+              child:
+              Image.network("https://arch.punpromotion.com/wp-content/uploads/2017/06/S__2523145-1.jpg"),
+            ),
+          ],
+        ),
+      )
+    ],
+  );
+
+  navigateToFoodSearch(BuildContext context, String category) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return FoodSearch(category: category);
+    }));
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       key: scaffoldKey,
-      appBar: new AppBar( 
+      appBar: new AppBar(
         leading: _isSearching ? const BackButton() : null,
         title: _isSearching ? _buildSearchField() : _buildTitle(context),
-        actions: _buildActions(),   
-        
+        actions: _buildActions(),
       ),
-      
       body: ListView(children: <Widget>[
         headerSec,
         titleSection,
         title2Section
-
-        ],
-        )  
+      ])
     );
-    }
-    } 
-
-Widget headerSec = Column(
-  children: <Widget>[
-    Container(height: 210, width: 1500, child: ListView(
-      scrollDirection: Axis.horizontal,
-      children: <Widget>[
-        _buildCardListView1(),
-        ],)   ,)],);
-
-Card _buildCardListView1() {
-  return Card(child: Image.network(
-      "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),);
+  }
 }
-
-Widget titleSection = Column(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: <Widget>[
-    //Text("??????? ?????????50%", style: TextStyle(fontSize: 18)),
-    Container(
-      height: 150,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          _buildCardListView(),
-          _buildCardListView2(),
-          _buildCardListView3(),
-          _buildCardListView4()
-        ],
-      ),
-    )
-  ],
-);
-Card _buildCardListView() {
-  return Card(
-    child: Image.network(
-        "http://chailaibackpacker.com/wp-content/uploads/2019/01/Kaset-Fair-New-2019-25.jpg"),
-  );
-}
-
-Card _buildCardListView2() {
-  return Card(
-    child: Image.network(
-        "https://pbs.twimg.com/media/C3QbEqbVMAA0l2I.jpg"),
-        
-  );
-}
-
-Card _buildCardListView3() {
-  return Card(
-    child: Image.network(
-        "https://pbs.twimg.com/media/CmBxHzDWgAAvuGo.jpg"),
-  );
-}
-
-Card _buildCardListView4() {
-  return Card(
-    child: Image.network(
-        "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
-  );
-}
-
-Widget title2Section = Column(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: <Widget>[
-    //Text("??????? ????1???1", style: TextStyle(fontSize: 18)),
-    Container(
-      height: 200,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          _build1CardListView(),
-          _build1CardListView1(),
-          
-        ],
-      ),
-    )
-  ],
-);
-
-Card _build1CardListView() {
-  return Card(
-    child: Image.network(
-        "https://www.chillpainai.com/src/wewakeup/scoop/img_scoop/scoop/kang/fabuary2017/kasetfair/IMG_2468.jpg"),
-  );
-}
-
-Card _build1CardListView1() {
-  return Card(
-    child:
-    Image.network("https://arch.punpromotion.com/wp-content/uploads/2017/06/S__2523145-1.jpg"),
-  );
-}
-
-
-
-
-
-navigateToFoodSearch(BuildContext context, String category) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return FoodSearch(category: category);
-  }));
-}
-
-
-
-
-
-
-
-
-
