@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kasetsart/arkingPlace.dart';
 import 'package:kasetsart/historyPage.dart';
+import 'package:kasetsart/loginPage.dart';
 import 'package:kasetsart/secondPage.dart';
 import 'package:kasetsart/foodPage.dart';
 import 'package:kasetsart/mapPage.dart';
+import 'package:kasetsart/tramPage.dart';
+import 'package:kasetsart/workTable.dart';
 import 'inputPage.dart';
 void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
@@ -65,15 +68,12 @@ class _HomeState extends State<Home> {
                     icon: Icon(Icons.pets,color: Colors.black,size: 50,),
                     label: Text("",
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 2))),
-                
                 FlatButton.icon(
                     onPressed: () => navigateToSecondPage(context),
                     icon: Icon(Icons.shopping_basket,color: Colors.black,size: 50,),
                     label: Text("",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))),        
-                        
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))),
                         ],),
-                      
               Container(margin: EdgeInsets.only(left: 0))],),
           button2Section,
           finalSection,
@@ -103,12 +103,12 @@ class _HomeState extends State<Home> {
                       label: Text("history",
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
                   FlatButton.icon(
-                      onPressed: () => navigateToSecondPage(context),
+                      onPressed: () => navigateToTramPage(context),
                       icon: Icon(Icons.departure_board,color: Colors.blue,size: 35,),
                       label: Text("tram",
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
                   FlatButton.icon(
-                      onPressed: () => navigateToSecondPage(context),
+                      onPressed: () => navigateToWorkTable(context),
                       icon: Icon(Icons.grid_on,color: Colors.blue,size: 35,),
                       label: Text("work table",
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
@@ -118,9 +118,16 @@ class _HomeState extends State<Home> {
                       label: Text("Help",
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))), ], ),
                 //Container(margin: EdgeInsets.only(left: 0)),
-              ],)
+              ],),
             // ListTile(title: Text('ช่วยเหลือ',style: TextStyle(fontSize: 20,color: Colors.black)),),
-          ],),),
+          Column(
+          children: <Widget>[FlatButton.icon(
+                      onPressed: () => navigateToLoginPage(context),
+                      icon: Icon(Icons.supervisor_account,color: Colors.blue,size: 35,),
+                      label: Text("Login",
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),],)
+          ],
+          ),),
     );
   }
 }
@@ -192,7 +199,7 @@ Widget button2Section = Padding(padding: EdgeInsets.all(10));
 //    child: new Text('RaisedButton', style: TextStyle(fontSize: 22 , height: 2),),)
 // ],) ,);
 
-Widget finalSection = Container (child: Text('   ข่าวสาร ', style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold, color: Colors.white)
+Widget finalSection = Container (child: Text('   ข่าวสาร ', style: TextStyle(fontSize: 20, color: Colors.white)
   ,),color: Colors.lightGreen[600],height: 40,);
 
 Widget final2Section = Padding(padding: EdgeInsets.all(20), child: Row(
@@ -201,9 +208,9 @@ Widget final2Section = Padding(padding: EdgeInsets.all(20), child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text("พระเจ้าวรวงศ์เธอ พระองค์เจ้าโสมสวลีฯ",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
         Text("วันที่ 2 ธ.ค.ทรงเสด็จเปิดงานเกษตรครั้งที่ 23",
-          style: TextStyle(color: Colors.grey[500], fontSize: 20),),
+          style: TextStyle(color: Colors.grey[500], fontSize: 14),),
 
       ],)),
   ],),);
@@ -214,9 +221,9 @@ Widget final3Section = Padding(padding: EdgeInsets.all(20), child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text("การเกษตร 4.0",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
         Text("ภายในงานมีการโชว์นวัตกรรมทางการเกษตร",
-          style: TextStyle(color: Colors.grey[500], fontSize: 20),),
+          style: TextStyle(color: Colors.grey[500], fontSize: 14),),
       ],)),
   ],),);
 
@@ -254,6 +261,24 @@ navigateToHistoryPage(BuildContext context) {
   Navigator.push(
       context, MaterialPageRoute(builder: (context) {
     return HistoryPage();
+  }));
+}
+navigateToTramPage(BuildContext context) {
+  Navigator.push(
+      context, MaterialPageRoute(builder: (context) {
+    return TramPage();
+  }));
+}
+navigateToWorkTable(BuildContext context) {
+  Navigator.push(
+      context, MaterialPageRoute(builder: (context) {
+    return WorkTable();
+  }));
+}
+navigateToLoginPage(BuildContext context) {
+  Navigator.push(
+      context, MaterialPageRoute(builder: (context) {
+    return LoginPage();
   }));
 }
 

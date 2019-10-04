@@ -22,7 +22,7 @@ class _ArkingPlaceState extends State<ArkingPlace> {
 
 Widget oneSec = Column(
   children: <Widget>[
-    Container(height: 250, width: 1500, child: ListView(
+    Container(height: 250, width: 2000, child: ListView(
       scrollDirection: Axis.horizontal,
       children: <Widget>[
         _buildCardListView1(),
