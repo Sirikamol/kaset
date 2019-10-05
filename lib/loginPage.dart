@@ -1,69 +1,94 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kasetsart/loginTwo.dart';
+//import 'package:kasetsart/mainLogin.dart';
+
 class LoginPage extends StatefulWidget {
-    LoginPage({Key key}) : super(key: key);
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController ctrlUsername = TextEditingController();
+  TextEditingController ctrlPassword = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("My Firebase App", style: TextStyle(color: Colors.white)),
-        ),
-        body: Container(
-            color: Colors.green[50],
-            child: Center(
-              child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      gradient: LinearGradient(
-                          colors: [Colors.yellow[100], Colors.green[100]])),
-                  margin: EdgeInsets.all(32),
-                  padding: EdgeInsets.all(24),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      buildTextFieldEmail(),
-                      buildTextFieldPassword(),
-                      buildButtonSignIn(),
-                    ],
-                  )),
-            )));
-  }
- 
-  Container buildButtonSignIn() {
-    return Container(
-        constraints: BoxConstraints.expand(height: 50),
-        child: Text("Sign in",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 18, color: Colors.white)),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16), color: Colors.green[200]),
-        margin: EdgeInsets.only(top: 16),
-        padding: EdgeInsets.all(12));
-  }
- 
-  Container buildTextFieldEmail() {
-    return Container(
-        padding: EdgeInsets.all(12),
-        decoration: BoxDecoration(
-            color: Colors.yellow[50], borderRadius: BorderRadius.circular(16)),
-        child: TextField(
-            decoration: InputDecoration.collapsed(hintText: "Email"),
-            style: TextStyle(fontSize: 18)));
-  }
- 
-  Container buildTextFieldPassword() {
-    return Container(
-        padding: EdgeInsets.all(12),
-        margin: EdgeInsets.only(top: 12),
-        decoration: BoxDecoration(
-            color: Colors.yellow[50], borderRadius: BorderRadius.circular(16)),
-        child: TextField(
-            obscureText: true,
-            decoration: InputDecoration.collapsed(hintText: "Password"),
-            style: TextStyle(fontSize: 18)));
-  }
+      return Scaffold(
+         body: Stack(
+           fit: StackFit.expand,
+           children: <Widget>[
+            Container(
+               color: Colors.blueGrey ,),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text('MY LOGIN APP', style: TextStyle(fontSize: 40.0,fontWeight: FontWeight.bold,color: Colors.white),
+                    ),
+                    TextFormField(
+                      validator: (String value) {
+                        if (value.isEmpty) return 'กรุณาระบุชื่อผู้ใช้งาน';
+                      },
+                      controller: ctrlUsername,
+                      decoration: 
+                        InputDecoration(
+                          prefixIcon: Icon(Icons.email),
+                          labelText: 'Username',
+                          labelStyle: TextStyle(color: Colors.white,fontSize: 20.0),
+                          filled: true, fillColor: Colors.white70,border: InputBorder.none),
+                    ),
+                    SizedBox(height: 10.0,),
+                    TextFormField(
+                      validator: (String value) {
+                        if (value.isEmpty) return 'กรุณาระบุรหัสผ่าน';
+                      },
+                      controller: ctrlPassword,
+                      obscureText:true,
+                      decoration: 
+                        InputDecoration(
+                          prefixIcon: Icon(Icons.vpn_key),
+                          labelText: 'Password',
+                          labelStyle: TextStyle(color: Colors.white,fontSize: 20.0),
+                          filled: true, fillColor: Colors.white70,border: InputBorder.none),
+                    ),
+                    SizedBox(height: 20.0,),
+                    RaisedButton(
+                      onPressed: () => doLogin(),
+                                          color: Colors.pink,
+                                          child: Text(
+                                            'Login to app',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20.0, fontWeight: FontWeight.bold),
+                                            ),
+                                        )
+                                        //FlatButton(onPressed: () {},child: Text('Help me',style: TextStyle(fontSize: 20.0, color: Colors.white),),),
+                                      ],
+                                    ),
+              ),
+                                )
+                               ],
+                            ) ,
+                          );
+                      }
+                      doLogin() {
+                        if(_formKey.currentState.validate()){
+                        String username = ctrlUsername.text;
+                        String password = ctrlPassword.text;
+
+                        print(username);
+                        print(password);
+
+                        if (username == 'admin' && password == 'admin'){
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginTwo()));
+                        } else {
+                          print('Invalid username/password');
+                        }
+                        }
+                      }
 }
+
