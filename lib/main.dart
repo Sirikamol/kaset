@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kasetsart/arkingPlace.dart';
 import 'package:kasetsart/historyPage.dart';
+import 'package:kasetsart/insertPage.dart';
 import 'package:kasetsart/loginPage.dart';
 import 'package:kasetsart/secondPage.dart';
 import 'package:kasetsart/foodPage.dart';
@@ -174,7 +175,7 @@ class _HomeState extends State<Home> {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16))),
                     FlatButton.icon(
-                        onPressed: () => navigateToSecondPage(context),
+                        onPressed: () => navigateToInsertPage(context),
                         icon: Icon(
                           Icons.verified_user,
                           color: Colors.blue,
@@ -410,5 +411,11 @@ navigateToWorkTable(BuildContext context) {
 navigateToLoginPage(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return LoginPage();
+  }));
+}
+
+navigateToInsertPage(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return InsertPage  ();
   }));
 }
