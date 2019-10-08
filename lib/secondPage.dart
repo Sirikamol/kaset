@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class MySecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -22,5 +23,3 @@ class MySecondPage extends StatelessWidget {
             )));
   }
 }
-
-
