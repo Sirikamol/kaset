@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+
 class LoginPage extends StatefulWidget {
-    LoginPage({Key key}) : super(key: key);
+  LoginPage({Key key}) : super(key: key);
   @override
   _LoginPageState createState() => _LoginPageState();
 }
+
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
         margin: EdgeInsets.only(top: 16),
         padding: EdgeInsets.all(12));
   }
- 
+
   Container buildTextFieldEmail() {
     return Container(
         padding: EdgeInsets.all(12),
@@ -54,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
             decoration: InputDecoration.collapsed(hintText: "Email"),
             style: TextStyle(fontSize: 18)));
   }
- 
+
   Container buildTextFieldPassword() {
     return Container(
         padding: EdgeInsets.all(12),

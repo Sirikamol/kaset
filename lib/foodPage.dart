@@ -6,15 +6,18 @@ import 'package:kasetsart/secondPage.dart';
 import 'package:kasetsart/foodSearch.dart';
 
 import 'inputPage.dart';
-void main() => runApp(MyApp());
-class MyApp extends StatelessWidget {
 
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Kasetfair App',
-      theme: ThemeData(///
-      ),
+      theme: ThemeData(
+
+          ///
+          ),
       home: FoodPage(title: 'Foodpage'),
       debugShowCheckedModeBanner: false,
 
@@ -24,13 +27,12 @@ class MyApp extends StatelessWidget {
       // tooltip: 'Search',
       //onPressed: null,),],backgroundColor: Colors.lightGreen,
 
-
       //      body: ListView(children: <Widget>[headerSection,titleSetion,final2Section,
       //FlatButton(color: Colors.red[300],child: Text("Go to Second page",style: TextStyle(color: Colors.white)),onPressed: () => navigateToSecondPage(context)),]),
     );
-
   }
 }
+
 class FoodPage extends StatefulWidget {
   FoodPage({Key key, this.title}) : super(key: key);
   final String title;
@@ -38,10 +40,11 @@ class FoodPage extends StatefulWidget {
   @override
   _FoodPageState createState() => _FoodPageState();
 }
+
 class _FoodPageState extends State<FoodPage>
-  with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   static final GlobalKey<ScaffoldState> scaffoldKey =
-  new GlobalKey<ScaffoldState>();
+      new GlobalKey<ScaffoldState>();
 
   TextEditingController _searchQuery;
   bool _isSearching = false;
@@ -55,8 +58,7 @@ class _FoodPageState extends State<FoodPage>
 
   void _startSearch() {
     print("open search box");
-    ModalRoute
-        .of(context)
+    ModalRoute.of(context)
         .addLocalHistoryEntry(new LocalHistoryEntry(onRemove: _stopSearching));
 
     setState(() {
@@ -82,7 +84,7 @@ class _FoodPageState extends State<FoodPage>
 
   Widget _buildTitle(BuildContext context) {
     var horizontalTitleAlignment =
-    Platform.isIOS ? CrossAxisAlignment.center : CrossAxisAlignment.start;
+        Platform.isIOS ? CrossAxisAlignment.center : CrossAxisAlignment.start;
 
     return new InkWell(
       onTap: () => scaffoldKey.currentState.openDrawer(),
@@ -114,12 +116,10 @@ class _FoodPageState extends State<FoodPage>
   }
 
   void updateSearchQuery(String newQuery) {
-
     setState(() {
       searchQuery = newQuery;
     });
     print("search query " + newQuery);
-
   }
 
   List<Widget> _buildActions() {
@@ -138,14 +138,13 @@ class _FoodPageState extends State<FoodPage>
         new IconButton(
           icon: const Icon(Icons.search),
           onPressed: () {
-
             if (_searchQuery == null || _searchQuery.text.isEmpty) {
               Navigator.pop(context);
               return;
             }
             navigateToFoodSearch(context, _searchQuery.text);
           },
-          ),
+        ),
       ];
     }
 
@@ -159,18 +158,23 @@ class _FoodPageState extends State<FoodPage>
 
   Widget headerSec = Column(
     children: <Widget>[
-      Container(height: 210, width: 1500, child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          Card(
-            child: Image.network(
-            "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),),
-        ],)
-      ,)
+      Container(
+        height: 210,
+        width: 1500,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            Card(
+              child: Image.network(
+                  "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),
+            ),
+          ],
+        ),
+      )
     ],
   );
 
-  Widget titleSection = Column (
+  Widget titleSection = Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
       Container(
@@ -179,14 +183,13 @@ class _FoodPageState extends State<FoodPage>
           scrollDirection: Axis.horizontal,
           children: <Widget>[
             GestureDetector(
-              onTap: () {
-                print('hello1');
-              },
-              child: Card(
-                child:  Image.network(
-                  "https://pbs.twimg.com/media/C3QbEqbVMAA0l2I.jpg"),
-              )
-            ),
+                onTap: () {
+                  print('hello1');
+                },
+                child: Card(
+                  child: Image.network(
+                      "https://pbs.twimg.com/media/C3QbEqbVMAA0l2I.jpg"),
+                )),
             Card(
               child: Image.network(
                   "https://pbs.twimg.com/media/CmBxHzDWgAAvuGo.jpg"),
@@ -214,8 +217,8 @@ class _FoodPageState extends State<FoodPage>
                   "https://www.chillpainai.com/src/wewakeup/scoop/img_scoop/scoop/kang/fabuary2017/kasetfair/IMG_2468.jpg"),
             ),
             Card(
-              child:
-              Image.network("https://arch.punpromotion.com/wp-content/uploads/2017/06/S__2523145-1.jpg"),
+              child: Image.network(
+                  "https://arch.punpromotion.com/wp-content/uploads/2017/06/S__2523145-1.jpg"),
             ),
           ],
         ),
@@ -232,17 +235,13 @@ class _FoodPageState extends State<FoodPage>
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      key: scaffoldKey,
-      appBar: new AppBar(
-        leading: _isSearching ? const BackButton() : null,
-        title: _isSearching ? _buildSearchField() : _buildTitle(context),
-        actions: _buildActions(),
-      ),
-      body: ListView(children: <Widget>[
-        headerSec,
-        titleSection,
-        title2Section
-      ])
-    );
+        key: scaffoldKey,
+        appBar: new AppBar(
+          leading: _isSearching ? const BackButton() : null,
+          title: _isSearching ? _buildSearchField() : _buildTitle(context),
+          actions: _buildActions(),
+        ),
+        body: ListView(
+            children: <Widget>[headerSec, titleSection, title2Section]));
   }
 }
