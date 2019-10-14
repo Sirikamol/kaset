@@ -1,17 +1,45 @@
+import 'dart:io';
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-class InsertPage extends StatefulWidget {
-  InsertPage({Key key, this.title}) : super(key: key);
-  final String title;
-  _InsertPageState createState() => _InsertPageState();
+class InsertPage extends StatelessWidget {
+  static const String _title = 'Flutter Code Sample';
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: _title,
+      home: Scaffold(
+        appBar: AppBar(title: Text("Kasetfair App")),
+        body: MyStatefulWidget(),
+      ),
+    );
+  }
 }
 
-class _InsertPageState extends State<InsertPage> {
+class MyStatefulWidget extends StatefulWidget {
+  MyStatefulWidget({Key key}) : super(key: key);
+
+  @override
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   String dropdownValue = 'A';
   String dropdownValue1 = '1';
   String dropdownValue2 = 'การเกษตร';
 
   var label1;
+  File _image;
+
+  Future getImage() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      _image = image;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,10 +47,15 @@ class _InsertPageState extends State<InsertPage> {
         children: <Widget>[
           Column(
             children: <Widget>[
-              Text(
-                'INSERT INFORMATION',
-                style: TextStyle(fontSize: 20,color: Colors.lightGreen,fontWeight: FontWeight.bold),
-              ),
+              Center(
+                  child: _image == null
+                  ? Text('No image selected.')
+                  : Image.file(_image),
+                        ),
+                  RaisedButton(
+                    onPressed: getImage,
+                    child: Icon(Icons.add_a_photo),
+                  ),
               Row(
                 children: <Widget>[
                   label1 = Text("โซน", style: TextStyle(fontSize: 18)),
