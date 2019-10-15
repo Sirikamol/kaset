@@ -1,12 +1,12 @@
 
-class StoreInput {
+class Food_Class {
   String nameStore;
   String zone;
   String category;
   String products;
   String image;
 
-StoreInput({
+Food_Class({
   this.nameStore,
   this.zone,
   this.category,
