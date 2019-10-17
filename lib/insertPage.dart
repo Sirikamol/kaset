@@ -48,14 +48,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           Column(
             children: <Widget>[
               Center(
-                  child: _image == null
-                  ? Text('No image selected.')
-                  : Image.file(_image),
-                        ),
-                  RaisedButton(
-                    onPressed: getImage,
-                    child: Icon(Icons.add_a_photo),
-                  ),
+                child: _image == null
+                    ? Text('No image selected.')
+                    : Image.file(_image),
+              ),
+              RaisedButton(
+                onPressed: getImage,
+                child: Icon(Icons.add_a_photo),
+              ),
               Row(
                 children: <Widget>[
                   label1 = Text("โซน", style: TextStyle(fontSize: 18)),

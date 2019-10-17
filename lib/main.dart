@@ -416,6 +416,6 @@ navigateToLoginPage(BuildContext context) {
 
 navigateToInsertPage(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return InsertPage  ();
+    return InsertPage();
   }));
 }

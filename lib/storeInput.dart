@@ -1,4 +1,3 @@
-
 class StoreInput {
   String nameStore;
   String zone;
@@ -6,11 +5,6 @@ class StoreInput {
   String products;
   String image;
 
-StoreInput({
-  this.nameStore,
-  this.zone,
-  this.category,
-  this.products,
-  this.image
-});
+  StoreInput(
+      {this.nameStore, this.zone, this.category, this.products, this.image});
 }
