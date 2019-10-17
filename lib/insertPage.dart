@@ -1,33 +1,24 @@
 import 'dart:io';
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:kasetsart/food_class.dart';
+import 'package:kasetsart/image_service.dart';
 
-class InsertPage extends StatelessWidget {
-  static const String _title = 'Flutter Code Sample';
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: _title,
-      home: Scaffold(
-        appBar: AppBar(title: Text("Kasetfair App")),
-        body: MyStatefulWidget(),
-      ),
-    );
-  }
-}
-
-class MyStatefulWidget extends StatefulWidget {
-  MyStatefulWidget({Key key}) : super(key: key);
+class InsertPage extends StatefulWidget {
+  InsertPage({Key key}) : super(key: key);
 
   @override
-  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+  _InsertPageState createState() => _InsertPageState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class _InsertPageState extends State<InsertPage> {
   String dropdownValue = 'A';
   String dropdownValue1 = '1';
   String dropdownValue2 = 'การเกษตร';
+
+  final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
   var label1;
   File _image;
@@ -40,10 +31,36 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     });
   }
 
+  FoodClass newFood = new FoodClass();
+
+  void _onSubmit() async {
+    final FormState form = _formKey.currentState;
+    form.save(); //This invokes each onSaved event
+
+    print('Form save called, newContact is now up to date...');
+    print('Name: ${newFood.nameStore}');
+    print('Name: ${newFood.category}');
+    print('Name: ${newFood.zone}');
+    print('Name: ${newFood.products}');
+    print(_image);
+    String imgUrl = await onImageUploading(_image);
+    print(imgUrl);
+
+    Firestore.instance.collection('food').document().setData({
+      'nameStore': newFood.nameStore,
+      'category': newFood.category,
+      'products': [newFood.products],
+      'zone': newFood.zone,
+      'image': [imgUrl],
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+        body: Form(
+      key: _formKey,
+      child: ListView(
         children: <Widget>[
           Column(
             children: <Widget>[
@@ -56,6 +73,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 onPressed: getImage,
                 child: Icon(Icons.add_a_photo),
               ),
+              Center(
+                child: _image == null
+                    ? Text('No image selected.')
+                    : Image.file(
+                        _image,
+                        width: 250,
+                        height: 150,
+                      ),
+              ),
               Row(
                 children: <Widget>[
                   label1 = Text("โซน", style: TextStyle(fontSize: 18)),
@@ -65,6 +91,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       setState(() {
                         dropdownValue = newValue;
                       });
+                      newFood.zone = newValue;
                     },
                     items: <String>['A', 'B', 'C', 'D']
                         .map<DropdownMenuItem<String>>((String value) {
@@ -80,36 +107,23 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
           Column(
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  label1 = Text("เลขที่เต้น", style: TextStyle(fontSize: 18)),
-                  DropdownButton<String>(
-                    value: dropdownValue1,
-                    onChanged: (String newValue) {
-                      setState(() {
-                        dropdownValue1 = newValue;
-                      });
-                    },
-                    items: <String>['1', '2', '3', '4']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
-                ],
-              )
+              TextFormField(
+                decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'ชื่อร้าน',
+                    labelText: 'กรอกชื่อร้าน'),
+                onSaved: (val) => newFood.nameStore = val,
+              ),
             ],
           ),
           Column(
             children: <Widget>[
-              TextField(
-                decoration: InputDecoration(
-                    border: InputBorder.none, hintText: 'ชื่อร้าน'),
-              ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'กรอกชื่อร้าน'),
+                decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'ชื่อสินค้า',
+                    labelText: 'กรอกชื่อสินค้า'),
+                onSaved: (val) => newFood.products = val,
               ),
             ],
           ),
@@ -126,6 +140,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       setState(() {
                         dropdownValue2 = newValue;
                       });
+                      newFood.category = newValue;
                     },
                     items: <String>['การเกษตร', 'ของกิน', 'ของใช้', 'สัตว์']
                         .map<DropdownMenuItem<String>>((String value) {
@@ -139,38 +154,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               )
             ],
           ),
-          Column(
-            children: <Widget>[
-              TextField(
-                  decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: 'รายการสินค้า',
+          Container(
+              padding: EdgeInsets.only(),
+              child: RaisedButton(
+                child: Text('Submit'),
+                onPressed: _onSubmit,
               )),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'กรอกรายการสินค้า'),
-              ),
-            ],
-          ),
-          Column(
-            children: <Widget>[
-              TextField(
-                  decoration: InputDecoration(
-                      border: InputBorder.none, hintText: 'รูป')),
-              TextFormField(
-                decoration:
-                    InputDecoration(labelText: 'ลิงค์/ที่อยู่รูปร้านค้า'),
-              ),
-              FlatButton(
-                  color: Colors.red[300],
-                  child: Text("อัพโหลดรูป",
-                      style: TextStyle(color: Colors.black))),
-            ],
-          ),
-          FlatButton(
-              color: Colors.red[300],
-              child: Text("NEXT", style: TextStyle(color: Colors.black))),
         ],
       ),
-    );
+    ));
   }
 }

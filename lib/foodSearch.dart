@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:kasetsart/foodPage.dart';
+
 
 class FoodSearch extends StatefulWidget {
   FoodSearch({Key key, this.category}) : super(key: key);
@@ -44,7 +44,7 @@ class _FoodSearchState extends State<FoodSearch> {
                                 )),
                           ]),
                           Image.network(
-                            document['image'][0]['src'],
+                            document['image'][0],
                           ),
                           Padding(
                               padding: EdgeInsets.all(7.0),
