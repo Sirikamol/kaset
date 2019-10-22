@@ -5,6 +5,6 @@ class FoodClass {
   String products;
   String image;
 
-  Food_Class(
+  FoodClass(
       {this.nameStore, this.zone, this.category, this.products, this.image});
 }

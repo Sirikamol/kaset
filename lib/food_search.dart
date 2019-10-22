@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 class FoodSearch extends StatefulWidget {
   FoodSearch({Key key, this.category}) : super(key: key);
   final String category;
