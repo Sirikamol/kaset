@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:kasetsart/parking_place.dart';
-import 'package:kasetsart/historyPage.dart';
-import 'package:kasetsart/insertPage.dart';
-import 'package:kasetsart/loginPage.dart';
-import 'package:kasetsart/secondPage.dart';
-import 'package:kasetsart/foodPage.dart';
-import 'package:kasetsart/mapPage.dart';
-import 'package:kasetsart/tramPage.dart';
-import 'package:kasetsart/workTable.dart';
-import 'inputPage.dart';
+import './parking_place.dart';
+import './history_page.dart';
+import './insert_page.dart';
+import './login_page.dart';
+import './second_page.dart';
+import './food_page.dart';
+import './map_page.dart';
+import './tram_page.dart';
+import './work_table.dart';
+import './input_page.dart';
 
 void main() => runApp(Launcher());
 

@@ -1,41 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:kasetsart/main.dart';
-import 'package:kasetsart/second_page.dart';
 import 'package:kasetsart/food_search.dart';
 
-import 'input_page.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Kasetfair App',
-      theme: ThemeData(
-
-          ///
-          ),
-      home: FoodPage(title: 'Foodpage'),
-      debugShowCheckedModeBanner: false,
-
-      //actions: <Widget>[
-      //IconButton(
-      //icon: Icon(Icons.search),
-      // tooltip: 'Search',
-      //onPressed: null,),],backgroundColor: Colors.lightGreen,
-
-      //      body: ListView(children: <Widget>[headerSection,titleSetion,final2Section,
-      //FlatButton(color: Colors.red[300],child: Text("Go to Second page",style: TextStyle(color: Colors.white)),onPressed: () => navigateToSecondPage(context)),]),
-    );
-  }
-}
-
 class FoodPage extends StatefulWidget {
-  FoodPage({Key key, this.title}) : super(key: key);
-  final String title;
+  FoodPage({Key key}) : super(key: key);
 
   @override
   _FoodPageState createState() => _FoodPageState();

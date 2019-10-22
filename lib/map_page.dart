@@ -7,6 +7,52 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
+  Widget _oneSec() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          height: 350,
+          width: 1500,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              _buildCardListView(
+                  "http://cdn.gotoknow.org/assets/media/files/000/649/246/large_9KU9.jpg?1290609025"),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+
+  Card _buildCardListView(String imagePath) {
+    return Card(
+      child: Image.network(imagePath),
+    );
+  }
+
+  Widget _twoSec() {
+    return Column(
+      children: <Widget>[
+        Text(">> Zone A = ของกิน + ของใช้ทั่วไป",
+            style: TextStyle(color: Colors.black, fontSize: 18)),
+        Text(
+          ">> Zone B = สัตว์ + ของใช้ทั่วไป",
+          style: TextStyle(color: Colors.black, fontSize: 18),
+        ),
+        Text(
+          ">> Zone C = เกษตร + ของใช้ทั่วไป",
+          style: TextStyle(color: Colors.black, fontSize: 18),
+        ),
+        Text(
+          ">> Zone D = ของกิน + ของใช้ทั่วไป",
+          style: TextStyle(color: Colors.black, fontSize: 18),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,52 +62,10 @@ class _MapPageState extends State<MapPage> {
       ),
       body: ListView(
         children: <Widget>[
-          oneSec,
-          twoSec,
+          _oneSec(),
+          _twoSec(),
         ],
       ),
     );
   }
 }
-
-Widget oneSec = Column(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: <Widget>[
-    Container(
-      height: 350,
-      width: 1500,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          _buildCardListView1(),
-        ],
-      ),
-    )
-  ],
-);
-
-Card _buildCardListView1() {
-  return Card(
-    child: Image.network(
-        "http://cdn.gotoknow.org/assets/media/files/000/649/246/large_9KU9.jpg?1290609025"),
-  );
-}
-
-Widget twoSec = Column(
-  children: <Widget>[
-    Text(">> Zone A = ของกิน + ของใช้ทั่วไป",
-        style: TextStyle(color: Colors.black, fontSize: 18)),
-    Text(
-      ">> Zone B = สัตว์ + ของใช้ทั่วไป",
-      style: TextStyle(color: Colors.black, fontSize: 18),
-    ),
-    Text(
-      ">> Zone C = เกษตร + ของใช้ทั่วไป",
-      style: TextStyle(color: Colors.black, fontSize: 18),
-    ),
-    Text(
-      ">> Zone D = ของกิน + ของใช้ทั่วไป",
-      style: TextStyle(color: Colors.black, fontSize: 18),
-    ),
-  ],
-);

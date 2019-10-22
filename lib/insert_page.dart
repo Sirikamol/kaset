@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:kasetsart/food_class.dart';
+import 'package:kasetsart/food.dart';
 import 'package:kasetsart/image_service.dart';
 
 class InsertPage extends StatefulWidget {
@@ -31,7 +31,7 @@ class _InsertPageState extends State<InsertPage> {
     });
   }
 
-  FoodClass newFood = new FoodClass();
+  Food newFood = new Food();
 
   void _onSubmit() async {
     final FormState form = _formKey.currentState;
