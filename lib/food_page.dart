@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:kasetsart/main.dart';
-import 'package:kasetsart/secondPage.dart';
-import 'package:kasetsart/foodSearch.dart';
+import 'package:kasetsart/second_page.dart';
+import 'package:kasetsart/food_search.dart';
 
-import 'inputPage.dart';
+import 'input_page.dart';
 
 void main() => runApp(MyApp());
 
