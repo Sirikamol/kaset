@@ -105,24 +105,25 @@ class _InsertPageState extends State<InsertPage> {
                 decoration: InputDecoration(
                     border: InputBorder.none, hintText: 'ชื่อร้าน',labelText: 'กรอกชื่อร้าน'),
                     onSaved: (val) => newFood.nameStore = val,
-                    
               ),
-              
-      
-              
             ],
           ),
           Column(
             children: <Widget>[
               TextFormField(
                 decoration: InputDecoration(
-                    border: InputBorder.none, hintText: 'ชื่อสินค้า',labelText: 'กรอกชื่อสินค้า'),
+                    border: InputBorder.none, hintText: 'ชื่อสินค้า',labelText: 'กรอกชื่อสินค้า',
+                    ),
                     onSaved: (val) => newFood.products= val,
-                    
               ),
-              
-      
-              
+            FlatButton.icon(
+              onPressed: () => navigateToLoginPage(context),
+                    icon: Icon(
+                      Icons.supervisor_account,
+                      color: Colors.blue,
+                      size: 35,
+            )
+
             ],
           ),
           Column(
