@@ -7,7 +7,6 @@ import 'package:kasetsart/food_class.dart';
 import 'package:kasetsart/image_service.dart';
 
 
-
 class InsertPage extends StatefulWidget {
   InsertPage({Key key}) : super(key: key);
 
@@ -19,7 +18,6 @@ class _InsertPageState extends State<InsertPage> {
   String dropdownValue = 'A';
   String dropdownValue1 = '1';
   String dropdownValue2 = 'การเกษตร';
-
 
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
@@ -33,49 +31,58 @@ class _InsertPageState extends State<InsertPage> {
       _image = image;
     });
   }
-  Food_Class newFood = new Food_Class();
 
+  FoodClass newFood = new FoodClass();
 
   void _onSubmit() async {
-        final FormState form = _formKey.currentState;
-      form.save(); //This invokes each onSaved event
+    final FormState form = _formKey.currentState;
+    form.save(); //This invokes each onSaved event
 
-      print('Form save called, newContact is now up to date...');
-      print('Name: ${newFood.nameStore}');
-      print('Name: ${newFood.category}');
-      print('Name: ${newFood.zone}');
-      print('Name: ${newFood.products}');
-      print(_image);
-      String imgUrl = await onImageUploading(_image);
-      print(imgUrl);
+    print('Form save called, newContact is now up to date...');
+    print('Name: ${newFood.nameStore}');
+    print('Name: ${newFood.category}');
+    print('Name: ${newFood.zone}');
+    print('Name: ${newFood.products}');
+    print(_image);
+    String imgUrl = await onImageUploading(_image);
+    print(imgUrl);
 
-      Firestore.instance.collection('food').document()
-  .setData({ 'nameStore': newFood.nameStore, 'category': newFood.category, 'products': [newFood.products],'zone': newFood.zone, 'image' : [imgUrl],});
+    Firestore.instance.collection('food').document().setData({
+      'nameStore': newFood.nameStore,
+      'category': newFood.category,
+      'products': [newFood.products],
+      'zone': newFood.zone,
+      'image': [imgUrl],
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Form(
-        key: _formKey,
+        body: Form(
+      key: _formKey,
       child: ListView(
         children: <Widget>[
           Column(
             children: <Widget>[
               Center(
-                  child: _image == null
-                  ? Text('No image selected.')
-                  : Image.file(_image),
-                        ),
-                  RaisedButton(
-                    onPressed: getImage,
-                    child: Icon(Icons.add_a_photo),
-                  ),
-                  Center(
-                          child: _image == null
-                              ? Text('No image selected.')
-                              : Image.file(_image,width: 250,height: 150,),
-                  ),
+                child: _image == null
+                    ? Text('No image selected.')
+                    : Image.file(_image),
+              ),
+              RaisedButton(
+                onPressed: getImage,
+                child: Icon(Icons.add_a_photo),
+              ),
+              Center(
+                child: _image == null
+                    ? Text('No image selected.')
+                    : Image.file(
+                        _image,
+                        width: 250,
+                        height: 150,
+                      ),
+              ),
               Row(
                 children: <Widget>[
                   label1 = Text("โซน", style: TextStyle(fontSize: 18)),
@@ -103,27 +110,11 @@ class _InsertPageState extends State<InsertPage> {
             children: <Widget>[
               TextFormField(
                 decoration: InputDecoration(
-                    border: InputBorder.none, hintText: 'ชื่อร้าน',labelText: 'กรอกชื่อร้าน'),
-                    onSaved: (val) => newFood.nameStore = val,
+                    border: InputBorder.none,
+                    hintText: 'ชื่อร้าน',
+                    labelText: 'กรอกชื่อร้าน'),
+                onSaved: (val) => newFood.nameStore = val,
               ),
-            ],
-          ),
-          Column(
-            children: <Widget>[
-              TextFormField(
-                decoration: InputDecoration(
-                    border: InputBorder.none, hintText: 'ชื่อสินค้า',labelText: 'กรอกชื่อสินค้า',
-                    ),
-                    onSaved: (val) => newFood.products= val,
-              ),
-            FlatButton.icon(
-              onPressed: () => navigateToLoginPage(context),
-                    icon: Icon(
-                      Icons.supervisor_account,
-                      color: Colors.blue,
-                      size: 35,
-            )
-
             ],
           ),
           Column(
@@ -154,15 +145,13 @@ class _InsertPageState extends State<InsertPage> {
             ],
           ),
           Container(
-                      padding: EdgeInsets.only(),
-                      child: RaisedButton(
-                        child: Text('Submit'),
-                        onPressed: _onSubmit,
-                      )),
-
+              padding: EdgeInsets.only(),
+              child: RaisedButton(
+                child: Text('Submit'),
+                onPressed: _onSubmit,
+              )),
         ],
       ),
-    )
-    );
+    ));
   }
 }

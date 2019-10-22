@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kasetsart/insertPage.dart';
+import 'package:kasetsart/food_edit.dart';
+
 
 class LoginTwo extends StatefulWidget {
   @override
@@ -14,19 +15,17 @@ class _LoginTwoState extends State<LoginTwo> {
         title: Text('Welcome to my app'),
       ),
       body: Center(
-        child: 
+        child:
           FlatButton(
-            onPressed: () => navigateToInsertPage(context),
+            onPressed: () => navigateToFoodEdit(context),
               color: Colors.red[300],
-              child: Text("NEXT", style: TextStyle(color: Colors.black))),
-          
+              child: Text("Food", style: TextStyle(color: Colors.black))),
         ),
       );
-    
   }
 }
-navigateToInsertPage(BuildContext context) {
+navigateToFoodEdit(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return InsertPage();
+    return FoodEdit();
   }));
 }

@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:kasetsart/arkingPlace.dart';
-import 'package:kasetsart/historyPage.dart';
-import 'package:kasetsart/insertPage.dart';
-import 'package:kasetsart/loginPage.dart';
-import 'package:kasetsart/secondPage.dart';
-import 'package:kasetsart/foodPage.dart';
-import 'package:kasetsart/mapPage.dart';
-import 'package:kasetsart/tramPage.dart';
-import 'package:kasetsart/workTable.dart';
-import 'inputPage.dart';
+import 'package:kasetsart/parking_place.dart';
+import 'package:kasetsart/history_Page.dart';
+import 'package:kasetsart/insert_Page.dart';
+import 'package:kasetsart/login_Page.dart';
+import 'package:kasetsart/second_Page.dart';
+import 'package:kasetsart/food_Page.dart';
+import 'package:kasetsart/map_Page.dart';
+import 'package:kasetsart/tram_Page.dart';
+import 'package:kasetsart/work_Table.dart';
 
-void main() => runApp(MyApp());
+import 'input_page.dart';
 
-class MyApp extends StatelessWidget {
+
+void main() => runApp(Launcher());
+
+class Launcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,14 +22,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.lightGreen),
       home: Home(title: 'Homepage'),
       debugShowCheckedModeBanner: false,
-      //actions: <Widget>[
-      //IconButton(
-      //icon: Icon(Icons.search),
-      // tooltip: 'Search',
-      //onPressed: null,),],backgroundColor: Colors.lightGreen,
-
-      //      body: ListView(children: <Widget>[headerSection,titleSetion,final2Section,
-      //FlatButton(color: Colors.red[300],child: Text("Go to Second page",style: TextStyle(color: Colors.white)),onPressed: () => navigateToSecondPage(context)),]),
     );
   }
 }
@@ -298,16 +292,6 @@ Column _buildButtonColumn({IconData icon, String label}) {
 }
 
 Widget button2Section = Padding(padding: EdgeInsets.all(10));
-//,child: Row(
-//  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//  children: <Widget>[new RaisedButton (
-//    onPressed: () => print("RaisedButton"),
-//    child: new Text('ค้นหาร้านค้า', style: TextStyle(fontSize: 22 , height: 2),),),
-
-//    new RaisedButton(
-//      onPressed: () => print("RaisedButton"),
-//    child: new Text('RaisedButton', style: TextStyle(fontSize: 22 , height: 2),),)
-// ],) ,);
 
 Widget finalSection = Container(
   child: Text(
@@ -386,7 +370,7 @@ navigateToMapPage(BuildContext context) {
 
 navigateToArkingPlace(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return ArkingPlace();
+    return ParkingPlace();
   }));
 }
 
@@ -416,6 +400,6 @@ navigateToLoginPage(BuildContext context) {
 
 navigateToInsertPage(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return InsertPage  ();
+    return InsertPage();
   }));
 }
