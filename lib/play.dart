@@ -1,20 +1,22 @@
-import 'dart:io';
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:location/location.dart';
+import '../../models/store.dart';
+import '../../services/image_service.dart';
+import 'package:flutter/services.dart';
 
-class InsertPage extends StatefulWidget {
-  InsertPage({Key key, this.title}) : super(key: key);
-  final String title;
-  _InsertPageState createState() => _InsertPageState();
+class UpdateStore extends StatefulWidget {
+  UpdateStore({Key key, this.docID}) : super(key: key);
+  final String docID;
+  UpdateStoreState createState() => UpdateStoreState();
 }
 
-class _InsertPageState extends State<InsertPage> {
-  TextEditingController ctrlUsername = TextEditingController();
-  TextEditingController ctrlPassword = TextEditingController();
-  TextEditingController ctrlImage = TextEditingController();
-  List<String> _colors = <String>['A', 'B', 'C', 'D'];
-  String _color = '';
+class UpdateStoreState extends State<UpdateStore> {
+  String dropdownValue = '';
+   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   File _image;
 
   Future getImage() async {
@@ -24,125 +26,222 @@ class _InsertPageState extends State<InsertPage> {
       _image = image;
     });
   }
+  LocationData _startLocation;
+  LocationData _currentLocation;
 
-  final _formKey = GlobalKey<FormState>();
+  StreamSubscription<LocationData> _locationSubscription;
+
+  Location _locationService = new Location();
+  bool _permission = false;
+  String error;
+
+  bool currentWidget = true;
+  Store newStore = new Store();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _initPlatformState();
+  }
+
+  _initPlatformState() async {
+    await _locationService.changeSettings(
+        accuracy: LocationAccuracy.HIGH, interval: 1000);
+
+    LocationData location;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      bool serviceStatus = await _locationService.serviceEnabled();
+      print("Service status: $serviceStatus");
+      if (serviceStatus) {
+        _permission = await _locationService.requestPermission();
+        print("Permission: $_permission");
+        if (_permission) {
+          location = await _locationService.getLocation();
+
+          _locationSubscription = _locationService
+              .onLocationChanged()
+              .listen((LocationData result) async {
+            setState(() {
+              _currentLocation = result;
+            });
+          });
+          print(_currentLocation.latitude);
+        }
+      } else {
+        bool serviceStatusResult = await _locationService.requestService();
+        print("Service status activated after request: $serviceStatusResult");
+        if (serviceStatusResult) {
+          _initPlatformState();
+        }
+      }
+    } on PlatformException catch (e) {
+      print(e);
+      if (e.code == 'PERMISSION_DENIED') {
+        error = e.message;
+      } else if (e.code == 'SERVICE_STATUS_ERROR') {
+        error = e.message;
+      }
+      location = null;
+    }
+
+    setState(() {
+      _startLocation = location;
+    });
+  }
+  
+  void _onUpdate() async {
+    final FormState form = _formKey.currentState;
+    form.save(); //This invokes each onSaved event
+
+    print('Form save called, newContact is now up to date...');
+    print('Name: ${newStore.store_name}');
+    print('Name: ${newStore.store_category}');
+    print(_image);
+    String imgUrl = await onImageUploading(_image);
+    print(imgUrl);
+    print(_startLocation.latitude);
+    print(_startLocation.longitude);
+
+    if (imgUrl.isNotEmpty) {
+      Firestore.instance.collection('store').document(widget.docID).updateData({
+        'store_name': newStore.store_name,
+        'store_category': newStore.store_category,
+        'image': [imgUrl],
+        'location': [_startLocation.latitude, _startLocation.longitude]
+      });
+    }
+  }
+  void _onDelete() async {
+    final FormState form = _formKey.currentState;
+    form.save();
+    print('Form save called, newContact is now up to date...');
+    print('Name: ${newStore.store_name}');
+    print('Name: ${newStore.store_category}');
+    print(_image);
+    String imgUrl = await onImageUploading(_image);
+    print(imgUrl);
+    print(_startLocation.latitude);
+    print(_startLocation.longitude);
+
+    if (imgUrl.isNotEmpty) {
+      Firestore.instance.collection('store').document(widget.docID).updateData({
+        'store_name': newStore.store_name,
+        'store_category': newStore.store_category,
+        'image': [imgUrl],
+        'location': [_startLocation.latitude, _startLocation.longitude]
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Container(
-            color: Colors.blueGrey,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Center(
-                      child: _image == null
-                          ? Text('No image selected.')
-                          : Image.file(_image),
+        appBar: AppBar(
+          backgroundColor: Colors.green[300],
+          title: Text('UpdateStore'),
+        ),
+        body: SafeArea(
+          top: false,
+          bottom: false,
+          child: Form(
+            key: _formKey,
+          // color: Colors.green[50],
+          child: StreamBuilder(
+            stream: Firestore.instance
+                .collection('store')
+                .document(widget.docID)
+                .snapshots(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              print(snapshot.data);
+              var document = snapshot.data;
+              return ListView(
+                children: <Widget>[
+                  TextFormField(
+                    initialValue: document['store_name'],
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.account_balance),
+                      hintText: '?????????????????',
+                      labelText: '????????',
                     ),
-                    RaisedButton(
-                      onPressed: getImage,
-                      child: Icon(Icons.add_a_photo),
-                    ),
-                    Row(
-                      children: <Widget>[
-                        new FormField(builder: (FormFieldState state) {
-                          return InputDecorator(
-                            decoration: InputDecoration(
-                              icon: const Icon(Icons.color_lens),
-                              labelText: 'Zone',
-                            ),
-                            isEmpty: _color == '',
-                            child: new DropdownButtonHideUnderline(
-                              child: new DropdownButton(
-                                value: _color,
-                                isDense: true,
-                                onChanged: (String newValue) {
-                                  setState(() {
-                                    var newContact;
-                                    newContact.favoriteColor = newValue;
-                                    _color = newValue;
-                                    state.didChange(newValue);
-                                  });
-                                },
-                                items: _colors.map((String value) {
-                                  return new DropdownMenuItem(
-                                    value: value,
-                                    child: new Text(value),
-                                  );
-                                }).toList(),
-                              ),
-                            ),
-                          );
-                        }),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        TextFormField(
-                          validator: (String value) {
-                            if (value.isEmpty) return 'กรุณาระบุชื่อผู้ใช้งาน';
-                          },
-                          controller: ctrlUsername,
-                          decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.store),
-                              labelText: 'NameStore',
-                              labelStyle: TextStyle(
-                                  color: Colors.white, fontSize: 20.0),
-                              filled: true,
-                              fillColor: Colors.white70,
-                              border: InputBorder.none),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        TextFormField(
-                          validator: (String value) {
-                            if (value.isEmpty) return 'กรุณาระบุรหัสผ่าน';
-                          },
-                          controller: ctrlPassword,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.pie_chart_outlined),
-                              labelText: 'Product',
-                              labelStyle: TextStyle(
-                                  color: Colors.white, fontSize: 20.0),
-                              filled: true,
-                              fillColor: Colors.white70,
-                              border: InputBorder.none),
-                        ),
-                      ],
-                    ),
-                    TextFormField(
-                      validator: (String value) {
-                        if (value.isEmpty) return 'กรุณาระบุชื่อผู้ใช้งาน';
+                    onSaved: (val) => newStore.store_name = val,
+                  ),
+                  Row(children: <Widget>[
+                    Icon(Icons.beenhere),
+                    Text('    ???????????????                  '),
+                    DropdownButton<String>(
+                      value: document['store_category'],
+                      onChanged: (String newValue) {
+                        setState(() {
+                          dropdownValue = newValue;
+                        });
+                        newStore.store_category = newValue;
                       },
-                      controller: ctrlImage,
-                      decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.store),
-                          labelText: 'Image',
-                          labelStyle:
-                              TextStyle(color: Colors.white, fontSize: 20.0),
-                          filled: true,
-                          fillColor: Colors.white70,
-                          border: InputBorder.none),
+                      items: <String>[
+                        '????????',
+                        '?????????',
+                        '?????????',
+                        '????????',
+                        '?????????'
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
                     ),
                   ]),
-            ),
-          )
-        ],
-      ),
-    );
+                  Row(children: <Widget>[
+                    RaisedButton(
+                      onPressed: getImage,
+                      child: Icon(Icons.add_a_photo)
+                    ),
+                     _image == null
+                        ? Image.network(document["image"][0],width: 250,
+                            height: 150,)
+                        : Image.file(
+                            _image,
+                            width: 250,
+                            height: 150,
+                          )
+                  ]),
+                  Row(
+                    children: <Widget>[
+                      RaisedButton(
+                          child: Text('?????????????????????'),
+                          onPressed: () {
+                        _initPlatformState();
+                      }),
+                    ],
+                  ),
+                Text('latitude:'),
+                Text(_startLocation == null
+                    ? document["location"][0].toString()
+                    : _startLocation.latitude.toString()),
+                Text('longitude:'),
+                Text(
+                  _startLocation == null
+                      ? document["location"][1].toString()
+                      : _startLocation.longitude.toString(),
+                ),
+                  Container(
+                      padding: EdgeInsets.only(),
+                      child: RaisedButton(
+                        child: Text('Update'),
+                        onPressed: _onUpdate,
+                      )),
+                  Container(
+                      padding: EdgeInsets.only(),
+                      child: RaisedButton(
+                        child: Text('Delete'),
+                        onPressed: _onDelete,
+                      )),
+                ],
+              );
+            },
+          ),
+        )
+        ));
   }
 }
