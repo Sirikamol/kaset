@@ -14,13 +14,26 @@ class _LoginTwoState extends State<LoginTwo> {
       appBar: AppBar(
         title: Text('Welcome to my app'),
       ),
-      body: Center(
-        child:
-          FlatButton(
-            onPressed: () => navigateToFoodEdit(context),
-              color: Colors.red[300],
-              child: Text("Food", style: TextStyle(color: Colors.black))),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+          child:ButtonBar(children: <Widget>[
+            FlatButton(
+              onPressed: () => navigateToFoodEdit(context),
+                color: Colors.red[300],
+                child: Text("Food", style: TextStyle(color: Colors.black))),
+            FlatButton(
+              onPressed: () => navigateToFoodEdit(context),
+                color: Colors.red[300],
+                child: Text("animals", style: TextStyle(color: Colors.black))),
+          ],)
+
+
+
+
         ),
+      ),
+      
       );
   }
 }

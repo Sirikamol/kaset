@@ -65,11 +65,7 @@ class _InsertPageState extends State<InsertPage> {
         children: <Widget>[
           Column(
             children: <Widget>[
-              Center(
-                child: _image == null
-                    ? Text('No image selected.')
-                    : Image.file(_image),
-              ),
+              
               RaisedButton(
                 onPressed: getImage,
                 child: Icon(Icons.add_a_photo),
