@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
-import './parking_place.dart';
-import './history_page.dart';
-import './insert_page.dart';
-import './login_page.dart';
-import './second_page.dart';
-import './food_page.dart';
-import './map_page.dart';
-import './tram_page.dart';
-import './work_table.dart';
-import './input_page.dart';
+
+import 'widgets.dart';
+import 'app_navigate.dart';
 
 void main() => runApp(Launcher());
 
@@ -41,8 +34,8 @@ class _HomeState extends State<Home> {
       ),
       body: ListView(
         children: <Widget>[
-          headerSection,
-          titleSetion,
+          headerSection(),
+          titleSetion(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -93,10 +86,11 @@ class _HomeState extends State<Home> {
               Container(margin: EdgeInsets.only(left: 0))
             ],
           ),
-          button2Section,
-          finalSection,
-          final2Section,
-          final3Section,
+          button2Section(),
+          finalHeadSection(),
+          finalSection("พระเจ้าวรวงศ์เธอ พระองค์เจ้าโสมสวลีฯ",
+              "วันที่ 2 ธ.ค.ทรงเสด็จเปิดงานเกษตรครั้งที่ 23"),
+          finalSection("การเกษตร 4.0", "ภายในงานมีการโชว์นวัตกรรมทางการเกษตร"),
         ],
       ),
       drawer: Drawer(
@@ -181,7 +175,6 @@ class _HomeState extends State<Home> {
                 //Container(margin: EdgeInsets.only(left: 0)),
               ],
             ),
-            // ListTile(title: Text('ช่วยเหลือ',style: TextStyle(fontSize: 20,color: Colors.black)),),
             Column(
               children: <Widget>[
                 FlatButton.icon(
@@ -201,203 +194,4 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-}
-
-Widget headerSection = Column(
-  children: <Widget>[
-    Container(
-      height: 270,
-      width: 370,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          _buildCardListView1(),
-          // _buildCardListView2(),
-          _buildCardListView3(),
-          _buildCardListView4(),
-        ],
-      ),
-    )
-  ],
-);
-
-Card _buildCardListView1() {
-  return Card(
-    child: Image.network("https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),
-  );
-}
-
-Card _buildCardListView2() {
-  return Card(
-    child: Image.network(
-        "https://kps.ku.ac.th/kasetfair/images/home_slide/BN-500x333.jpg"),
-  );
-}
-
-Card _buildCardListView3() {
-  return Card(
-    child: Image.network(
-        "https://f.ptcdn.info/252/061/000/pj9cj9fnl3S4dxTFtrU-o.jpg"),
-  );
-}
-
-Card _buildCardListView4() {
-  return Card(
-    child:
-        Image.network("https://www.nanagarden.com/picture/Forum/For9059_1.jpg"),
-  );
-}
-
-Widget titleSetion = Padding(
-  padding: EdgeInsets.all(20),
-  child: Row(
-    children: <Widget>[
-      Expanded(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text("KASETFAIR",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
-          Text(
-            "Kamphaeng Saen",
-            style: TextStyle(color: Colors.grey[500], fontSize: 22),
-          )
-        ],
-      )),
-      //Icon(Icons.drive_eta, color: Colors.grey),
-      Container(margin: EdgeInsets.only(left: 7))
-    ],
-  ),
-);
-
-Column _buildButtonColumn({IconData icon, String label}) {
-  var icColor = Colors.blue.shade500;
-  return Column(
-    children: <Widget>[
-      Icon(
-        icon,
-        color: icColor,
-        size: 40,
-      ),
-      Container(
-        margin: EdgeInsets.only(top: 8),
-        child: Text(label,
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 13, color: icColor)),
-      ),
-    ],
-  );
-}
-
-Widget button2Section = Padding(padding: EdgeInsets.all(10));
-
-Widget finalSection = Container(
-  child: Text(
-    '   ข่าวสาร ',
-    style: TextStyle(fontSize: 20, color: Colors.white),
-  ),
-  color: Colors.lightGreen[600],
-  height: 40,
-);
-
-Widget final2Section = Padding(
-  padding: EdgeInsets.all(20),
-  child: Row(
-    children: <Widget>[
-      Icon(Icons.arrow_right, color: Colors.lightGreenAccent[700], size: 35),
-      Expanded(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text("พระเจ้าวรวงศ์เธอ พระองค์เจ้าโสมสวลีฯ",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-          Text(
-            "วันที่ 2 ธ.ค.ทรงเสด็จเปิดงานเกษตรครั้งที่ 23",
-            style: TextStyle(color: Colors.grey[500], fontSize: 14),
-          ),
-        ],
-      )),
-    ],
-  ),
-);
-
-Widget final3Section = Padding(
-  padding: EdgeInsets.all(20),
-  child: Row(
-    children: <Widget>[
-      Icon(Icons.arrow_right, color: Colors.lightGreenAccent[700], size: 35),
-      Expanded(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text("การเกษตร 4.0",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-          Text(
-            "ภายในงานมีการโชว์นวัตกรรมทางการเกษตร",
-            style: TextStyle(color: Colors.grey[500], fontSize: 14),
-          ),
-        ],
-      )),
-    ],
-  ),
-);
-
-navigateToSecondPage(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return MySecondPage();
-  }));
-}
-
-navigateToInputPage(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return InputPage();
-  }));
-}
-
-navigateToFoodPage(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return FoodPage();
-  }));
-}
-
-navigateToMapPage(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return MapPage();
-  }));
-}
-
-navigateToArkingPlace(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return ParkingPlace();
-  }));
-}
-
-navigateToHistoryPage(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return HistoryPage();
-  }));
-}
-
-navigateToTramPage(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return TramPage();
-  }));
-}
-
-navigateToWorkTable(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return WorkTable();
-  }));
-}
-
-navigateToLoginPage(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return LoginPage();
-  }));
-}
-
-navigateToInsertPage(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return InsertPage();
-  }));
 }

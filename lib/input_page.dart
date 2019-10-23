@@ -150,6 +150,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ],
           ),
           FlatButton(
+            
               color: Colors.red[300],
               child: Text("NEXT", style: TextStyle(color: Colors.black))),
         ],

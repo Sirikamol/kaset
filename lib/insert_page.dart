@@ -38,7 +38,7 @@ class _InsertPageState extends State<InsertPage> {
     form.save(); //This invokes each onSaved event
 
     print('Form save called, newContact is now up to date...');
-    print('Name: ${newFood.nameStore}');
+    print('Name: ${newFood.name}');
     print('Name: ${newFood.category}');
     print('Name: ${newFood.zone}');
     print('Name: ${newFood.products}');
@@ -47,7 +47,7 @@ class _InsertPageState extends State<InsertPage> {
     print(imgUrl);
 
     Firestore.instance.collection('food').document().setData({
-      'nameStore': newFood.nameStore,
+      'nameStore': newFood.name,
       'category': newFood.category,
       'products': [newFood.products],
       'zone': newFood.zone,
@@ -112,18 +112,7 @@ class _InsertPageState extends State<InsertPage> {
                     border: InputBorder.none,
                     hintText: 'ชื่อร้าน',
                     labelText: 'กรอกชื่อร้าน'),
-                onSaved: (val) => newFood.nameStore = val,
-              ),
-            ],
-          ),
-          Column(
-            children: <Widget>[
-              TextFormField(
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'ชื่อสินค้า',
-                    labelText: 'กรอกชื่อสินค้า'),
-                onSaved: (val) => newFood.products = val,
+                onSaved: (val) => newFood.name = val,
               ),
             ],
           ),

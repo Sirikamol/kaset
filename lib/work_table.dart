@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets.dart';
 
 class WorkTable extends StatefulWidget {
   WorkTable({Key key, this.title}) : super(key: key);
@@ -16,7 +17,7 @@ class _WorkTableState extends State<WorkTable> {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: <Widget>[
-              _buildCardListView(
+              buildCardListView(
                   "https://dok7xy59qfw9h.cloudfront.net/649/297/682/1940003015-1rgp2ke-65mglf4oebr8545/original/_a16.jpg")
             ],
           ),
@@ -25,11 +26,11 @@ class _WorkTableState extends State<WorkTable> {
     );
   }
 
-  Widget _buildCardListView(String imagePath) {
-    return Card(
-      child: Image.network(imagePath),
-    );
-  }
+  // Widget _buildCardListView(String imagePath) {
+  //   return Card(
+  //     child: Image.network(imagePath),
+  //   );
+  // }
 
   Widget _twoSec() {
     return Column(
