@@ -66,7 +66,9 @@ class _UpdatePageState extends State<UpdatePage> {
       appBar: AppBar(
         backgroundColor: Colors.green[300],
         title: Text('UpdateStore'),
+        
       ),
+      
       body: SafeArea(
           top: false,
           bottom: false,
@@ -90,17 +92,35 @@ class _UpdatePageState extends State<UpdatePage> {
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'ชื่อร้าน',
-                              labelText: 'กรอกชื่อร้าน'),
+                              labelText: 'กรอกชื่อร้าน'),style: TextStyle(fontSize: 18, color: Colors.black),
                           onSaved: (val) => newFood.nameStore = val,
                         ),
+                        
+                        Align(
+                          alignment: Alignment.topLeft,
+                          
+                          child: Text("กรุณากรอกสินค้า",style: TextStyle(fontSize: 22, color: Colors.black),),),
+
+                        
                         TextFormField(
                           initialValue: document['products'][0],
                           decoration: InputDecoration(
                               border: InputBorder.none,
+                              icon: Icon(Icons.account_balance),
                               hintText: 'สินค้า',
-                              labelText: 'กรอกสินค้า'),
+                              labelText: 'กรอกสินค้า 1'),
                           onSaved: (val) => newFood.products = val,
                         ),
+                        TextFormField(
+                          initialValue: document['products'][1],
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              icon: Icon(Icons.account_balance),
+                              hintText: 'สินค้า',
+                              labelText: 'กรอกสินค้า 2'),
+                          onSaved: (val) => newFood.products = val,
+                        ),
+                        _buildProductsForm(document['products']), 
                         RaisedButton(
                           onPressed: getImage,
                           child: Icon(Icons.add_a_photo),
@@ -124,6 +144,7 @@ class _UpdatePageState extends State<UpdatePage> {
                                 Text("โซน", style: TextStyle(fontSize: 18)),
                             DropdownButton<String>(
                               // value: document['zone'],
+                              value: dropdownValue,
                               onChanged: (String newValue) {
                                 setState(() {
                                   dropdownValue = newValue;
@@ -146,7 +167,7 @@ class _UpdatePageState extends State<UpdatePage> {
                         )
                       ],
                     ),
-                    _buildProductsForm(document['products']),
+                    
                     Column(
                       children: <Widget>[
                         Row(

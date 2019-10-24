@@ -53,6 +53,7 @@ class _InsertPageState extends State<InsertPage> {
       'zone': newFood.zone,
       'image': [imgUrl],
     });
+    
   }
 
   @override
@@ -70,7 +71,7 @@ class _InsertPageState extends State<InsertPage> {
               ),
               Center(
                 child: _image == null
-                    ? Text('No image selected.')
+                    ? Text('Image')
                     : Image.file(
                         _image,
                         width: 250,
@@ -78,8 +79,11 @@ class _InsertPageState extends State<InsertPage> {
                       ),
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  label1 = Text("โซน", style: TextStyle(fontSize: 18)),
+                  label1 = Text("โซน", style: TextStyle(fontSize: 18)
+                  ),
+                  
                   DropdownButton<String>(
                     value: dropdownValue,
                     onChanged: (String newValue) {
@@ -93,6 +97,7 @@ class _InsertPageState extends State<InsertPage> {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(value),
+
                       );
                     }).toList(),
                   ),
@@ -104,11 +109,33 @@ class _InsertPageState extends State<InsertPage> {
             children: <Widget>[
               TextFormField(
                 decoration: InputDecoration(
-                    border: InputBorder.none,
+                    icon: Icon(Icons.account_balance),
                     hintText: 'ชื่อร้าน',
                     labelText: 'กรอกชื่อร้าน'),
                 onSaved: (val) => newFood.nameStore = val,
               ),
+            ],
+          ),
+          Column(
+            children: <Widget>[
+              TextFormField(
+                decoration: InputDecoration(
+                    icon: Icon(Icons.account_balance),
+                    hintText: 'กรอกสินค้า',
+                    labelText: 'สินค้า'
+                    ),
+                onSaved: (val) => newFood.products = val,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                   // border: InputBorder.none,
+                    icon: Icon(Icons.account_balance),
+                    hintText: 'กรอกสินค้า',
+                    labelText: 'กรอกสินค้า'
+                    ),
+                onSaved: (val) => newFood.products = val,
+              ),
+
             ],
           ),
           Column(

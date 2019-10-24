@@ -13,6 +13,7 @@ class _LoginTwoState extends State<LoginTwo> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Welcome to my app'),
+        
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
