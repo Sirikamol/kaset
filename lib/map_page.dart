@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets.dart';
 
 class MapPage extends StatefulWidget {
   MapPage({Key key, this.title}) : super(key: key);
@@ -17,18 +18,12 @@ class _MapPageState extends State<MapPage> {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: <Widget>[
-              _buildCardListView(
+              buildCardListView(
                   "http://cdn.gotoknow.org/assets/media/files/000/649/246/large_9KU9.jpg?1290609025"),
             ],
           ),
         )
       ],
-    );
-  }
-
-  Card _buildCardListView(String imagePath) {
-    return Card(
-      child: Image.network(imagePath),
     );
   }
 

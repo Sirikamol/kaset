@@ -17,7 +17,7 @@ class _UpdatePageState extends State<UpdatePage> {
   String dropdownValue = 'A';
   String dropdownValue2 = 'การเกษตร';
 
-  final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   var label1;
   File _image;
@@ -34,7 +34,7 @@ class _UpdatePageState extends State<UpdatePage> {
 
   void _onUpdate() async {
     final FormState form = _formKey.currentState;
-    form.save(); //This invokes each onSaved event
+    form.save();
 
     print('Form save called, newContact is now up to date...');
     print('Name: ${newFood.nameStore}');
@@ -57,7 +57,7 @@ class _UpdatePageState extends State<UpdatePage> {
   }
 
   Widget _buildProductsForm(List<dynamic> products) {
-    return new Row(children: products.map((item) => new Text(item)).toList());
+    return Row(children: products.map((item) => Text(item)).toList());
   }
 
   @override
@@ -66,15 +66,12 @@ class _UpdatePageState extends State<UpdatePage> {
       appBar: AppBar(
         backgroundColor: Colors.green[300],
         title: Text('UpdateStore'),
-        
       ),
-      
       body: SafeArea(
           top: false,
           bottom: false,
           child: Form(
             key: _formKey,
-            // color: Colors.green[50],
             child: StreamBuilder(
               stream: Firestore.instance
                   .collection('food')
@@ -92,16 +89,17 @@ class _UpdatePageState extends State<UpdatePage> {
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'ชื่อร้าน',
-                              labelText: 'กรอกชื่อร้าน'),style: TextStyle(fontSize: 18, color: Colors.black),
+                              labelText: 'กรอกชื่อร้าน'),
+                          style: TextStyle(fontSize: 18, color: Colors.black),
                           onSaved: (val) => newFood.nameStore = val,
                         ),
-                        
                         Align(
                           alignment: Alignment.topLeft,
-                          
-                          child: Text("กรุณากรอกสินค้า",style: TextStyle(fontSize: 22, color: Colors.black),),),
-
-                        
+                          child: Text(
+                            "กรุณากรอกสินค้า",
+                            style: TextStyle(fontSize: 22, color: Colors.black),
+                          ),
+                        ),
                         TextFormField(
                           initialValue: document['products'][0],
                           decoration: InputDecoration(
@@ -120,7 +118,7 @@ class _UpdatePageState extends State<UpdatePage> {
                               labelText: 'กรอกสินค้า 2'),
                           onSaved: (val) => newFood.products = val,
                         ),
-                        _buildProductsForm(document['products']), 
+                        _buildProductsForm(document['products']),
                         RaisedButton(
                           onPressed: getImage,
                           child: Icon(Icons.add_a_photo),
@@ -143,7 +141,6 @@ class _UpdatePageState extends State<UpdatePage> {
                             label1 =
                                 Text("โซน", style: TextStyle(fontSize: 18)),
                             DropdownButton<String>(
-                              // value: document['zone'],
                               value: dropdownValue,
                               onChanged: (String newValue) {
                                 setState(() {
@@ -167,7 +164,6 @@ class _UpdatePageState extends State<UpdatePage> {
                         )
                       ],
                     ),
-                    
                     Column(
                       children: <Widget>[
                         Row(

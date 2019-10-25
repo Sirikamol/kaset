@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/painting.dart';
-import 'package:kasetsart/insert_page.dart';
-import 'package:kasetsart/update_page.dart';
+// import 'package:flutter/painting.dart';
+import 'package:kasetsart/app_navigate.dart';
 
 class FoodEdit extends StatefulWidget {
   FoodEdit({
@@ -14,11 +13,11 @@ class FoodEdit extends StatefulWidget {
 }
 
 class _FoodEditState extends State<FoodEdit> {
-
   Future _onDelete(String docID) async {
     Firestore.instance.collection('food').document(docID).delete();
     return null;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +25,7 @@ class _FoodEditState extends State<FoodEdit> {
           backgroundColor: Colors.blue[300],
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: ()=> navigateToInsertPage(context),
+          onPressed: () => navigateToInsertPage(context),
           child: Icon(Icons.add),
           backgroundColor: Colors.pink[100],
         ),
@@ -52,63 +51,43 @@ class _FoodEditState extends State<FoodEdit> {
                                   padding: EdgeInsets.all(7.0),
                                   child: Text(
                                     document['nameStore'],
-                                    style: TextStyle(fontSize: 18.0 ),
-                                    
+                                    style: TextStyle(fontSize: 18.0),
                                   )),
                             ]),
                             Row(
                               children: <Widget>[
                                 Image.network(
-                                    document['image'][0],
-                                    width: 200,
-                                    height: 200,
-                                  ),
-                                
+                                  document['image'][0],
+                                  width: 200,
+                                  height: 200,
+                                ),
                               ],
                             ),
                             ButtonTheme.bar(
                               child: ButtonBar(
                                 children: <Widget>[
-                                  FlatButton(child: 
-                                  const Text("Update"),
-                                  onPressed: () {
-                                    navigateToUpdatePage(context,document.documentID );
-                                  }
-                                  ),
-                                  FlatButton(child: 
-                                  const Text("Delete"),
-                                  onPressed: () {
-                                    _onDelete(document.documentID);
-                                  }
-                                  ),
-                                  ],),
+                                  FlatButton(
+                                      child: const Text("Update"),
+                                      onPressed: () {
+                                        navigateToUpdatePage(
+                                            context, document.documentID);
+                                      }),
+                                  FlatButton(
+                                      child: const Text("Delete"),
+                                      onPressed: () {
+                                        _onDelete(document.documentID);
+                                      }),
+                                ],
+                              ),
                             )
                           ],
                         ),
-                        
                       )),
                     );
                   }).toList(),
                 );
-                
             }
-            
           },
-          
-        )
-        
-        );
-        
+        ));
   }
 }
-navigateToUpdatePage(BuildContext context, String docID) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return UpdatePage(docID: docID);
-  }));
-}
-navigateToInsertPage(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return InsertPage();
-  }));
-}
-

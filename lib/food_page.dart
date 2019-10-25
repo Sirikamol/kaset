@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:kasetsart/food_search.dart';
+import 'package:kasetsart/app_navigate.dart';
 
 class FoodPage extends StatefulWidget {
   FoodPage({Key key}) : super(key: key);
@@ -13,7 +13,7 @@ class FoodPage extends StatefulWidget {
 class _FoodPageState extends State<FoodPage>
     with SingleTickerProviderStateMixin {
   static final GlobalKey<ScaffoldState> scaffoldKey =
-      new GlobalKey<ScaffoldState>();
+      GlobalKey<ScaffoldState>();
 
   TextEditingController _searchQuery;
   bool _isSearching = false;
@@ -22,13 +22,13 @@ class _FoodPageState extends State<FoodPage>
   @override
   void initState() {
     super.initState();
-    _searchQuery = new TextEditingController();
+    _searchQuery = TextEditingController();
   }
 
   void _startSearch() {
     print("open search box");
     ModalRoute.of(context)
-        .addLocalHistoryEntry(new LocalHistoryEntry(onRemove: _stopSearching));
+        .addLocalHistoryEntry(LocalHistoryEntry(onRemove: _stopSearching));
 
     setState(() {
       _isSearching = true;
@@ -55,11 +55,11 @@ class _FoodPageState extends State<FoodPage>
     var horizontalTitleAlignment =
         Platform.isIOS ? CrossAxisAlignment.center : CrossAxisAlignment.start;
 
-    return new InkWell(
+    return InkWell(
       onTap: () => scaffoldKey.currentState.openDrawer(),
-      child: new Padding(
+      child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
-        child: new Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: horizontalTitleAlignment,
           children: <Widget>[
@@ -71,7 +71,7 @@ class _FoodPageState extends State<FoodPage>
   }
 
   Widget _buildSearchField() {
-    return new TextField(
+    return TextField(
       controller: _searchQuery,
       autofocus: true,
       decoration: const InputDecoration(
@@ -94,7 +94,7 @@ class _FoodPageState extends State<FoodPage>
   List<Widget> _buildActions() {
     if (_isSearching) {
       return <Widget>[
-        new IconButton(
+        IconButton(
           icon: const Icon(Icons.clear),
           onPressed: () {
             if (_searchQuery == null || _searchQuery.text.isEmpty) {
@@ -104,7 +104,7 @@ class _FoodPageState extends State<FoodPage>
             _clearSearchQuery();
           },
         ),
-        new IconButton(
+        IconButton(
           icon: const Icon(Icons.search),
           onPressed: () {
             if (_searchQuery == null || _searchQuery.text.isEmpty) {
@@ -118,7 +118,7 @@ class _FoodPageState extends State<FoodPage>
     }
 
     return <Widget>[
-      new IconButton(
+      IconButton(
         icon: const Icon(Icons.search),
         onPressed: _startSearch,
       ),
@@ -195,17 +195,11 @@ class _FoodPageState extends State<FoodPage>
     ],
   );
 
-  navigateToFoodSearch(BuildContext context, String category) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return FoodSearch(category: category);
-    }));
-  }
-
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
         key: scaffoldKey,
-        appBar: new AppBar(
+        appBar: AppBar(
           leading: _isSearching ? const BackButton() : null,
           title: _isSearching ? _buildSearchField() : _buildTitle(context),
           actions: _buildActions(),

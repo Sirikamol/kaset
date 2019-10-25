@@ -41,46 +41,106 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  FlatButton.icon(
-                      onPressed: () => navigateToFoodPage(context),
-                      icon: Icon(
-                        Icons.restaurant,
-                        color: Colors.black,
-                        size: 50,
+                  GestureDetector(
+                    onTap: () {
+                      navigateToFoodPage(context);
+                    },
+                    child: Card(
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                              padding: EdgeInsets.all(7.0),
+                              child: Row(
+                                children: <Widget>[
+                                  Padding(
+                                    padding: EdgeInsets.all(7.0),
+                                    child: Icon(
+                                      Icons.restaurant,
+                                      color: Colors.black,
+                                      size: 50,
+                                    ),
+                                  ),
+                                ],
+                              ))
+                        ],
                       ),
-                      label: Text("",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 2))),
-                  FlatButton.icon(
-                      onPressed: () => navigateToInputPage(context),
-                      icon: Icon(
-                        Icons.local_florist,
-                        color: Colors.black,
-                        size: 50,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigateToFoodPage(context);
+                    },
+                    child: Card(
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                              padding: EdgeInsets.all(7.0),
+                              child: Row(
+                                children: <Widget>[
+                                  Padding(
+                                    padding: EdgeInsets.all(7.0),
+                                    child: Icon(
+                                      Icons.local_florist,
+                                      color: Colors.black,
+                                      size: 50,
+                                    ),
+                                  ),
+                                ],
+                              ))
+                        ],
                       ),
-                      label: Text("",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 2))),
-                  FlatButton.icon(
-                      onPressed: () => navigateToSecondPage(context),
-                      icon: Icon(
-                        Icons.pets,
-                        color: Colors.black,
-                        size: 50,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigateToFoodPage(context);
+                    },
+                    child: Card(
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                              padding: EdgeInsets.all(7.0),
+                              child: Row(
+                                children: <Widget>[
+                                  Padding(
+                                    padding: EdgeInsets.all(7.0),
+                                    child: Icon(
+                                      Icons.pets,
+                                      color: Colors.black,
+                                      size: 50,
+                                    ),
+                                  ),
+                                ],
+                              ))
+                        ],
                       ),
-                      label: Text("",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 2))),
-                  FlatButton.icon(
-                      onPressed: () => navigateToSecondPage(context),
-                      icon: Icon(
-                        Icons.shopping_basket,
-                        color: Colors.black,
-                        size: 50,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigateToFoodPage(context);
+                    },
+                    child: Card(
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                              padding: EdgeInsets.all(7.0),
+                              child: Row(
+                                children: <Widget>[
+                                  Padding(
+                                    padding: EdgeInsets.all(7.0),
+                                    child: Icon(
+                                      Icons.shopping_basket,
+                                      color: Colors.black,
+                                      size: 50,
+                                    ),
+                                  ),
+                                ],
+                              ))
+                        ],
                       ),
-                      label: Text("",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 12))),
+                    ),
+                  ),
                 ],
               ),
               Container(margin: EdgeInsets.only(left: 0))
@@ -117,7 +177,7 @@ class _HomeState extends State<Home> {
                           color: Colors.blue,
                           size: 35,
                         ),
-                        label: Text("map",
+                        label: Text("Map",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16))),
                     FlatButton.icon(
@@ -127,7 +187,7 @@ class _HomeState extends State<Home> {
                           color: Colors.blue,
                           size: 35,
                         ),
-                        label: Text("arking place",
+                        label: Text("Parking place",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16))),
                     FlatButton.icon(
@@ -137,7 +197,7 @@ class _HomeState extends State<Home> {
                           color: Colors.blue,
                           size: 35,
                         ),
-                        label: Text("history",
+                        label: Text("History",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16))),
                     FlatButton.icon(
@@ -147,7 +207,7 @@ class _HomeState extends State<Home> {
                           color: Colors.blue,
                           size: 35,
                         ),
-                        label: Text("tram",
+                        label: Text("Tram",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16))),
                     FlatButton.icon(
@@ -157,7 +217,7 @@ class _HomeState extends State<Home> {
                           color: Colors.blue,
                           size: 35,
                         ),
-                        label: Text("work table",
+                        label: Text("Work Table",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16))),
                     FlatButton.icon(

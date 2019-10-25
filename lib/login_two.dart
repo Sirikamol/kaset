@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kasetsart/food_edit.dart';
-
+import 'app_navigate.dart';
 
 class LoginTwo extends StatefulWidget {
   @override
@@ -13,33 +12,23 @@ class _LoginTwoState extends State<LoginTwo> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Welcome to my app'),
-        
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Center(
-          child:ButtonBar(children: <Widget>[
+            child: ButtonBar(
+          children: <Widget>[
             FlatButton(
-              onPressed: () => navigateToFoodEdit(context),
+                onPressed: () => navigateToFoodEdit(context),
                 color: Colors.red[300],
                 child: Text("Food", style: TextStyle(color: Colors.black))),
             FlatButton(
-              onPressed: () => navigateToFoodEdit(context),
+                onPressed: () => navigateToFoodEdit(context),
                 color: Colors.red[300],
                 child: Text("animals", style: TextStyle(color: Colors.black))),
-          ],)
-
-
-
-
-        ),
+          ],
+        )),
       ),
-      
-      );
+    );
   }
-}
-navigateToFoodEdit(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return FoodEdit();
-  }));
 }

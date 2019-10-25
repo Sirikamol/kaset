@@ -9,6 +9,9 @@ import 'map_page.dart';
 import 'tram_page.dart';
 import 'work_table.dart';
 import 'input_page.dart';
+import 'update_page.dart';
+import 'food_search.dart';
+import 'food_edit.dart';
 
 navigateToSecondPage(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -67,5 +70,23 @@ navigateToLoginPage(BuildContext context) {
 navigateToInsertPage(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return InsertPage();
+  }));
+}
+
+navigateToUpdatePage(BuildContext context, String docID) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return UpdatePage(docID: docID);
+  }));
+}
+
+navigateToFoodSearch(BuildContext context, String category) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return FoodSearch(category: category);
+  }));
+}
+
+navigateToFoodEdit(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return FoodEdit();
   }));
 }

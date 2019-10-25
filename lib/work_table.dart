@@ -26,12 +26,6 @@ class _WorkTableState extends State<WorkTable> {
     );
   }
 
-  // Widget _buildCardListView(String imagePath) {
-  //   return Card(
-  //     child: Image.network(imagePath),
-  //   );
-  // }
-
   Widget _twoSec() {
     return Column(
       children: <Widget>[

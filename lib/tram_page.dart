@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets.dart';
 
 class TramPage extends StatefulWidget {
   TramPage({Key key, this.title}) : super(key: key);
@@ -16,18 +17,12 @@ class _TramPageState extends State<TramPage> {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: <Widget>[
-              _buildCardListView(
+              buildCardListView(
                   "https://dok7xy59qfw9h.cloudfront.net/649/297/682/1940003015-1rgp2ke-65mglf4oebr8545/original/_a16.jpg"),
             ],
           ),
         )
       ],
-    );
-  }
-
-  Card _buildCardListView(String imagePath) {
-    return Card(
-      child: Image.network(imagePath),
     );
   }
 

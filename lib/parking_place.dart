@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets.dart';
 
 class ParkingPlace extends StatefulWidget {
   ParkingPlace({Key key, this.title}) : super(key: key);
@@ -7,12 +8,6 @@ class ParkingPlace extends StatefulWidget {
 }
 
 class _ParkingPlaceState extends State<ParkingPlace> {
-  Widget _buildCardListView(String imagePath) {
-    return Card(
-      child: Image.network(imagePath),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +23,7 @@ class _ParkingPlaceState extends State<ParkingPlace> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  _buildCardListView(
+                  buildCardListView(
                       "http://kps.ku.ac.th/v8/images/bg/kps-bus-routes.jpg"),
                 ],
               ),

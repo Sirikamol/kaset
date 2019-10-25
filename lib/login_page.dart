@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kasetsart/loginTwo.dart';
+import 'package:kasetsart/login_two.dart';
 //import 'package:kasetsart/mainLogin.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,6 +13,25 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController ctrlPassword = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+
+  doLogin() {
+    if (_formKey.currentState.validate()) {
+      String username = ctrlUsername.text;
+      String password = ctrlPassword.text;
+
+      print(username);
+      print(password);
+
+      if (username.toLowerCase() == 'admin' &&
+          password.toLowerCase() == 'admin') {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => LoginTwo()));
+      } else {
+        print('Invalid username/password');
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,22 +109,5 @@ class _LoginPageState extends State<LoginPage> {
         ],
       ),
     );
-  }
-
-  doLogin() {
-    if (_formKey.currentState.validate()) {
-      String username = ctrlUsername.text;
-      String password = ctrlPassword.text;
-
-      print(username);
-      print(password);
-
-      if (username == 'admin' && password == 'admin') {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LoginTwo()));
-      } else {
-        print('Invalid username/password');
-      }
-    }
   }
 }
