@@ -17,7 +17,8 @@ class _UpdatePageState extends State<UpdatePage> {
   String dropdownValue = 'A';
   String dropdownValue2 = 'การเกษตร';
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+  List<String> _updateProducts = List();
 
   var label1;
   File _image;
@@ -30,34 +31,64 @@ class _UpdatePageState extends State<UpdatePage> {
     });
   }
 
-  Food newFood = Food();
+  Food newFood = new Food();
 
-  void _onUpdate() async {
+  Future<Null> _onUpdate(DocumentSnapshot document) async {
     final FormState form = _formKey.currentState;
     form.save();
 
+    print(document['products']);
+
     print('Form save called, newContact is now up to date...');
     print('Name: ${newFood.nameStore}');
-    print('Name: ${newFood.category}');
-    print('Name: ${newFood.zone}');
-    print('Name: ${newFood.products}');
+    print('Category: ${newFood.category}');
+    print('Zone: ${newFood.zone}');
+    print('Products: ${_updateProducts}');
     print(_image);
-    String imgUrl = await onImageUploading(_image);
-    print(imgUrl);
-
-    if (imgUrl.isNotEmpty) {
+    if (_image != null) {
+      String imgUrl = await onImageUploading(_image);
+      print(imgUrl);
       Firestore.instance.collection('food').document(widget.docID).updateData({
         'nameStore': newFood.nameStore,
         'category': newFood.category,
-        'products': [newFood.products],
+        'products': _updateProducts,
         'zone': newFood.zone,
         'image': [imgUrl],
       });
+    } else {
+      Firestore.instance.collection('food').document(widget.docID).updateData({
+        'nameStore': newFood.nameStore,
+        'category': newFood.category,
+        'products': _updateProducts,
+        'zone': newFood.zone,
+      });
     }
+    return null;
   }
 
-  Widget _buildProductsForm(List<dynamic> products) {
-    return Row(children: products.map((item) => Text(item)).toList());
+  List<Widget> buildProductsForm(List<dynamic> products) {
+    if (products != null) {
+      return products
+          .map((item) => TextFormField(
+              initialValue: item,
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  icon: Icon(Icons.account_balance),
+                  hintText: 'สินค้า',
+                  labelText: 'กรอกสินค้า ${products.indexOf(item) + 1}'),
+              onSaved: (val) =>
+                  _updateProducts.insert(products.indexOf(item), val)))
+          .toList();
+    }
+    return [
+      TextFormField(
+          decoration: InputDecoration(
+              border: InputBorder.none,
+              icon: Icon(Icons.account_balance),
+              hintText: 'สินค้า',
+              labelText: 'กรอกสินค้า 1'),
+          onSaved: (val) => _updateProducts.insert(0, val))
+    ];
   }
 
   @override
@@ -100,25 +131,8 @@ class _UpdatePageState extends State<UpdatePage> {
                             style: TextStyle(fontSize: 22, color: Colors.black),
                           ),
                         ),
-                        TextFormField(
-                          initialValue: document['products'][0],
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              icon: Icon(Icons.account_balance),
-                              hintText: 'สินค้า',
-                              labelText: 'กรอกสินค้า 1'),
-                          onSaved: (val) => newFood.products = val,
-                        ),
-                        TextFormField(
-                          initialValue: document['products'][1],
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              icon: Icon(Icons.account_balance),
-                              hintText: 'สินค้า',
-                              labelText: 'กรอกสินค้า 2'),
-                          onSaved: (val) => newFood.products = val,
-                        ),
-                        _buildProductsForm(document['products']),
+                        Column(
+                            children: buildProductsForm(document['products'])),
                         RaisedButton(
                           onPressed: getImage,
                           child: Icon(Icons.add_a_photo),
@@ -198,9 +212,10 @@ class _UpdatePageState extends State<UpdatePage> {
                     Container(
                         padding: EdgeInsets.only(),
                         child: RaisedButton(
-                          child: Text('Update'),
-                          onPressed: _onUpdate,
-                        )),
+                            child: Text('Update'),
+                            onPressed: () {
+                              _onUpdate(document);
+                            })),
                   ],
                 );
               },

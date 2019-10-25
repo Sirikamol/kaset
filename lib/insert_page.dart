@@ -119,7 +119,7 @@ class _InsertPageState extends State<InsertPage> {
                     icon: Icon(Icons.account_balance),
                     hintText: 'กรอกสินค้า',
                     labelText: 'สินค้า'),
-                onSaved: (val) => newFood.products = val,
+                onSaved: (val) => newFood.products.add(val),
               ),
               TextFormField(
                 decoration: InputDecoration(
@@ -127,7 +127,7 @@ class _InsertPageState extends State<InsertPage> {
                     icon: Icon(Icons.account_balance),
                     hintText: 'กรอกสินค้า',
                     labelText: 'กรอกสินค้า'),
-                onSaved: (val) => newFood.products = val,
+                onSaved: (val) => newFood.products.add(val),
               ),
             ],
           ),
