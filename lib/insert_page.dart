@@ -7,8 +7,8 @@ import 'package:kasetsart/food.dart';
 import 'package:kasetsart/image_service.dart';
 
 class InsertPage extends StatefulWidget {
-  InsertPage({Key key}) : super(key: key);
-
+  InsertPage({Key key, this.docID}) : super(key: key);
+  final String docID;
   @override
   _InsertPageState createState() => _InsertPageState();
 }
@@ -19,7 +19,7 @@ class _InsertPageState extends State<InsertPage> {
   String dropdownValue2 = 'การเกษตร';
 
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
-
+  List<String> _insertProducts = List();
   var label1;
   File _image;
 
@@ -41,15 +41,15 @@ class _InsertPageState extends State<InsertPage> {
     print('Name: ${newFood.nameStore}');
     print('Name: ${newFood.category}');
     print('Name: ${newFood.zone}');
-    print('Name: ${newFood.products}');
+    print('Products: ${_insertProducts}');
     print(_image);
     String imgUrl = await onImageUploading(_image);
     print(imgUrl);
 
-    Firestore.instance.collection('food').document().setData({
+    Firestore.instance.collection('food').document(widget.docID).setData({
       'nameStore': newFood.nameStore,
       'category': newFood.category,
-      'products': [newFood.products],
+      'products': _insertProducts,
       'zone': newFood.zone,
       'image': [imgUrl],
     });
@@ -119,16 +119,17 @@ class _InsertPageState extends State<InsertPage> {
                     icon: Icon(Icons.account_balance),
                     hintText: 'กรอกสินค้า',
                     labelText: 'สินค้า'),
-                onSaved: (val) => newFood.products.add(val),
+                onSaved: (val) =>  _insertProducts.insert(0, val)
               ),
-              TextFormField(
-                decoration: InputDecoration(
-                    // border: InputBorder.none,
-                    icon: Icon(Icons.account_balance),
-                    hintText: 'กรอกสินค้า',
-                    labelText: 'กรอกสินค้า'),
-                onSaved: (val) => newFood.products.add(val),
-              ),
+              // TextFormField(
+              //   decoration: InputDecoration(
+              //       // border: InputBorder.none,
+              //       icon: Icon(Icons.account_balance),
+              //       hintText: 'กรอกสินค้า',
+              //       labelText: 'กรอกสินค้า'),
+              //   onSaved: (val) => newFood.products.insert(0, val)
+                
+              // ),
             ],
           ),
           Column(
@@ -146,7 +147,7 @@ class _InsertPageState extends State<InsertPage> {
                       });
                       newFood.category = newValue;
                     },
-                    items: <String>['การเกษตร', 'ของกิน', 'ของใช้', 'สัตว์']
+                    items: <String>[ 'การเกษตร', 'ของกิน', 'ของใช้', 'สัตว์']
                         .map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
