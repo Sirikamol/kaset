@@ -121,15 +121,15 @@ class _InsertPageState extends State<InsertPage> {
                     labelText: 'สินค้า'),
                 onSaved: (val) =>  _insertProducts.insert(0, val)
               ),
-              // TextFormField(
-              //   decoration: InputDecoration(
-              //       // border: InputBorder.none,
-              //       icon: Icon(Icons.account_balance),
-              //       hintText: 'กรอกสินค้า',
-              //       labelText: 'กรอกสินค้า'),
-              //   onSaved: (val) => newFood.products.insert(0, val)
+              TextFormField(
+                decoration: InputDecoration(
+                    // border: InputBorder.none,
+                    icon: Icon(Icons.account_balance),
+                    hintText: 'กรอกสินค้า',
+                    labelText: 'กรอกสินค้า'),
+                onSaved: (val) => newFood.products.insert(0, val)
                 
-              // ),
+              ),
             ],
           ),
           Column(
