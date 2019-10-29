@@ -126,7 +126,7 @@ class _InsertPageState extends State<InsertPage> {
                       icon: Icon(Icons.account_balance),
                       hintText: 'กรอกสินค้า',
                       labelText: 'กรอกสินค้า'),
-                  onSaved: (val) => newFood.products.insert(0, val)),
+                  onSaved: (val) => _insertProducts.insert(1, val)),
             ],
           ),
           Column(
