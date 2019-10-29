@@ -43,7 +43,7 @@ class _UpdatePageState extends State<UpdatePage> {
     print('Name: ${newFood.nameStore}');
     print('Category: ${newFood.category}');
     print('Zone: ${newFood.zone}');
-    print('Products: ${_updateProducts}');
+    print(_updateProducts);
     print(_image);
     if (_image != null) {
       String imgUrl = await onImageUploading(_image);

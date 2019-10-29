@@ -41,7 +41,7 @@ class _InsertPageState extends State<InsertPage> {
     print('Name: ${newFood.nameStore}');
     print('Name: ${newFood.category}');
     print('Name: ${newFood.zone}');
-    print('Products: ${_insertProducts}');
+    print(_insertProducts);
     print(_image);
     String imgUrl = await onImageUploading(_image);
     print(imgUrl);
@@ -115,21 +115,18 @@ class _InsertPageState extends State<InsertPage> {
           Column(
             children: <Widget>[
               TextFormField(
-                decoration: InputDecoration(
-                    icon: Icon(Icons.account_balance),
-                    hintText: 'กรอกสินค้า',
-                    labelText: 'สินค้า'),
-                onSaved: (val) =>  _insertProducts.insert(0, val)
-              ),
+                  decoration: InputDecoration(
+                      icon: Icon(Icons.account_balance),
+                      hintText: 'กรอกสินค้า',
+                      labelText: 'สินค้า'),
+                  onSaved: (val) => _insertProducts.insert(0, val)),
               TextFormField(
-                decoration: InputDecoration(
-                    // border: InputBorder.none,
-                    icon: Icon(Icons.account_balance),
-                    hintText: 'กรอกสินค้า',
-                    labelText: 'กรอกสินค้า'),
-                onSaved: (val) => newFood.products.insert(0, val)
-                
-              ),
+                  decoration: InputDecoration(
+                      // border: InputBorder.none,
+                      icon: Icon(Icons.account_balance),
+                      hintText: 'กรอกสินค้า',
+                      labelText: 'กรอกสินค้า'),
+                  onSaved: (val) => newFood.products.insert(0, val)),
             ],
           ),
           Column(
@@ -147,7 +144,7 @@ class _InsertPageState extends State<InsertPage> {
                       });
                       newFood.category = newValue;
                     },
-                    items: <String>[ 'การเกษตร', 'ของกิน', 'ของใช้', 'สัตว์']
+                    items: <String>['การเกษตร', 'ของกิน', 'ของใช้', 'สัตว์']
                         .map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,

@@ -144,14 +144,18 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     InputDecoration(labelText: 'ลิงค์/ที่อยู่รูปร้านค้า'),
               ),
               FlatButton(
-                  color: Colors.red[300],
-                  child: Text("อัพโหลดรูป",
-                      style: TextStyle(color: Colors.black))),
+                color: Colors.red[300],
+                child:
+                    Text("อัพโหลดรูป", style: TextStyle(color: Colors.black)),
+                onPressed: () {},
+              ),
             ],
           ),
           FlatButton(
-              color: Colors.red[300],
-              child: Text("NEXT", style: TextStyle(color: Colors.black))),
+            color: Colors.red[300],
+            child: Text("NEXT", style: TextStyle(color: Colors.black)),
+            onPressed: () {},
+          ),
         ],
       ),
     );
