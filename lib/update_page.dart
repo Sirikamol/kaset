@@ -22,6 +22,7 @@ class _UpdatePageState extends State<UpdatePage> {
 
   var label1;
   File _image;
+  int productCount;
 
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -30,11 +31,50 @@ class _UpdatePageState extends State<UpdatePage> {
       _image = image;
     });
   }
+  @override
+  void initState() {
+    super.initState();
+    productCount = 0;
+  }
+
+  List<Widget> _getListings() {
+    List listings = new List<Widget>();
+    int i = 0;
+    for (i = 0; i < productCount; i++) {
+      listings.add(TextFormField(
+          decoration: InputDecoration(
+              icon: Icon(Icons.account_balance),
+              hintText: 'กรอกสินค้า',
+              labelText: 'สินค้า'),
+          onSaved: (val) => {
+                if (val.isNotEmpty) {_updateProducts.add(val)}
+              }));
+    }
+    return listings;
+  }
+
+  void addList() {
+    setState(() {
+      productCount++;
+    });
+    print(productCount);
+  }
+
+  void removeList() {
+    setState(() {
+      productCount--;
+    });
+    print(productCount);
+  }
 
   Food newFood = new Food();
 
   Future<Null> _onUpdate(DocumentSnapshot document) async {
     final FormState form = _formKey.currentState;
+    print(form);
+    setState(() {
+      _updateProducts = [];
+    });
     form.save();
 
     print(document['products']);
@@ -73,7 +113,7 @@ class _UpdatePageState extends State<UpdatePage> {
               initialValue: item,
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  icon: Icon(Icons.account_balance),
+                  icon: Icon(Icons.mode_edit),
                   hintText: 'สินค้า',
                   labelText: 'กรอกสินค้า ${products.indexOf(item) + 1}'),
               onSaved: (val) =>
@@ -84,7 +124,7 @@ class _UpdatePageState extends State<UpdatePage> {
       TextFormField(
           decoration: InputDecoration(
               border: InputBorder.none,
-              icon: Icon(Icons.account_balance),
+              icon: Icon(Icons.mode_edit),
               hintText: 'สินค้า',
               labelText: 'กรอกสินค้า 1'),
           onSaved: (val) => _updateProducts.insert(0, val))
@@ -119,24 +159,13 @@ class _UpdatePageState extends State<UpdatePage> {
                           initialValue: document['nameStore'],
                           decoration: InputDecoration(
                               border: InputBorder.none,
+                              icon: Icon(Icons.account_balance),
                               hintText: 'ชื่อร้าน',
                               labelText: 'กรอกชื่อร้าน'),
                           style: TextStyle(fontSize: 18, color: Colors.black),
                           onSaved: (val) => newFood.nameStore = val,
                         ),
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "กรุณากรอกสินค้า",
-                            style: TextStyle(fontSize: 22, color: Colors.black),
-                          ),
-                        ),
-                        Column(
-                            children: buildProductsForm(document['products'])),
-                        RaisedButton(
-                          onPressed: getImage,
-                          child: Icon(Icons.add_a_photo),
-                        ),
+                        
                         Center(
                           child: _image == null
                               ? Image.network(
@@ -150,8 +179,27 @@ class _UpdatePageState extends State<UpdatePage> {
                                   height: 150,
                                 ),
                         ),
+                        RaisedButton(
+                          onPressed: getImage,
+                          child: Icon(Icons.add_a_photo),
+                        ),
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            "รายการสินค้า",
+                            style: TextStyle(fontSize: 22, color: Colors.black),
+                          ),
+                        ),
+                        Column(
+                            children: buildProductsForm(document['products'])),
+                            Column(
+                children: _getListings(),
+              ),
+                        
+                        
                         Row(
                           children: <Widget>[
+                            
                             label1 =
                                 Text("โซน", style: TextStyle(fontSize: 18)),
                             DropdownButton<String>(
@@ -221,6 +269,12 @@ class _UpdatePageState extends State<UpdatePage> {
               },
             ),
           )),
+          floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add),
+          onPressed: () {
+            addList();
+          },
+        )
     );
   }
 }

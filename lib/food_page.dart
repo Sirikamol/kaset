@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:kasetsart/app_navigate.dart';
+import 'package:kasetsart/insert_page.dart' as prefix0;
 
 class FoodPage extends StatefulWidget {
   FoodPage({Key key}) : super(key: key);
@@ -154,10 +155,13 @@ class _FoodPageState extends State<FoodPage>
             GestureDetector(
                 onTap: () {
                   print('hello1');
+                  
                 },
+                
                 child: Card(
                   child: Image.network(
                       "https://pbs.twimg.com/media/C3QbEqbVMAA0l2I.jpg"),
+                    
                 )),
             Card(
               child: Image.network(

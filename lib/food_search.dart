@@ -30,8 +30,7 @@ class _FoodSearchState extends State<FoodSearch> {
                 return ListView(
                   children:
                       snapshot.data.documents.map((DocumentSnapshot document) {
-                    return Center(
-                        child: Card(
+                    var card = Card(
                       child: Column(
                         children: <Widget>[
                           Row(children: <Widget>[
@@ -40,40 +39,46 @@ class _FoodSearchState extends State<FoodSearch> {
                                 child: Text(
                                   document['nameStore'],
                                   style: TextStyle(fontSize: 18.0),
-                                )),
+                                )
+                                ),
+
                           ]),
                           Image.network(
                             document['image'][0],
                           ),
-                          Padding(
-                              padding: EdgeInsets.all(7.0),
-                              child: Row(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: EdgeInsets.all(7.0),
-                                    child: Icon(Icons.thumb_up),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.all(7.0),
-                                    child: Text(
-                                      'Like',
-                                      style: TextStyle(fontSize: 18.0),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.all(7.0),
-                                    child: Icon(Icons.comment),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.all(7.0),
-                                    child: Text('Comments',
-                                        style: TextStyle(fontSize: 18.0)),
-                                  )
-                                ],
-                              ))
+
+                          // Padding(
+                          //     padding: EdgeInsets.all(7.0),
+                          //     child: Row(
+                          //       children: <Widget>[
+                          //         Padding(
+                          //           padding: EdgeInsets.all(7.0),
+                          //           child: Icon(Icons.thumb_up),
+                          //         ),
+                          //         Padding(
+                          //           padding: EdgeInsets.all(7.0),
+                          //           child: Text(
+                          //             'Like',
+                          //             style: TextStyle(fontSize: 18.0),
+                          //           ),
+                          //         ),
+                          //         Padding(
+                          //           padding: EdgeInsets.all(7.0),
+                          //           child: Icon(Icons.comment),
+                          //         ),
+                          //         Padding(
+                          //           padding: EdgeInsets.all(7.0),
+                          //           child: Text('Comments',
+                          //               style: TextStyle(fontSize: 18.0)),
+                          //         )
+                          //       ],
+                          //     ))
                         ],
                       ),
-                    ));
+                    );
+                    return Center(
+                      
+                        child: card);
                   }).toList(),
                 );
             }

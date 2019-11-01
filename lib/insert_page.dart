@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kasetsart/food.dart';
+import 'package:kasetsart/food_edit.dart';
 import 'package:kasetsart/image_service.dart';
 
 class InsertPage extends StatefulWidget {
@@ -30,7 +31,13 @@ class _InsertPageState extends State<InsertPage> {
     setState(() {
       _image = image;
     });
+   
   }
+
+  
+
+
+
 
   @override
   void initState() {
@@ -94,7 +101,31 @@ class _InsertPageState extends State<InsertPage> {
       'zone': newFood.zone,
       'image': [imgUrl],
     });
+     _alertinput();
   }
+
+  Future<void> _alertinput() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Input Success'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                navigateToFoodEdit(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -199,4 +230,9 @@ class _InsertPageState extends State<InsertPage> {
           },
         ));
   }
+}
+navigateToFoodEdit(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return FoodEdit();
+  }));
 }
