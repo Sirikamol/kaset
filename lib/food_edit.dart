@@ -27,7 +27,7 @@ class _FoodEditState extends State<FoodEdit> {
         floatingActionButton: FloatingActionButton(
           onPressed: () => navigateToInsertPage(context),
           child: Icon(Icons.add),
-          backgroundColor: Colors.pink[100],
+          backgroundColor: Colors.lightGreen,
         ),
         body: StreamBuilder<QuerySnapshot>(
           stream: Firestore.instance.collection('food').snapshots(),

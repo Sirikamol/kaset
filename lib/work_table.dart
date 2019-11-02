@@ -43,7 +43,7 @@ class _WorkTableState extends State<WorkTable> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue[300],
+          backgroundColor: Colors.lightGreen,
           title: Text("WorkTable"),
         ),
         body: ListView(

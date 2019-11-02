@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:kasetsart/app_navigate.dart';
-import 'package:kasetsart/insert_page.dart' as prefix0;
+import 'package:kasetsart/insert_page.dart';
 
 class FoodPage extends StatefulWidget {
   FoodPage({Key key}) : super(key: key);

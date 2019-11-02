@@ -52,7 +52,7 @@ class _MapPageState extends State<MapPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[300],
+        backgroundColor: Colors.lightGreen,
         title: Text("Hello"),
       ),
       body: ListView(

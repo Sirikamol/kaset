@@ -11,7 +11,7 @@ class Launcher extends StatelessWidget {
     return MaterialApp(
       title: 'Kasetfair App',
       theme: ThemeData(primarySwatch: Colors.lightGreen),
-      home: Home(title: 'Homepage'),
+      home: Home(title: 'Kasetfair 2019'),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -30,128 +30,131 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Kasetfair App'),
+        title: Text(widget.title),
       ),
-      body: ListView(
-        children: <Widget>[
-          headerSection(),
-          titleSetion(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: () {
-                      navigateToFoodPage(context);
-                    },
-                    child: Card(
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                              padding: EdgeInsets.all(7.0),
-                              child: Row(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: EdgeInsets.all(7.0),
-                                    child: Icon(
-                                      Icons.restaurant,
-                                      color: Colors.black,
-                                      size: 50,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            headerSection(),
+            titleSetion(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {
+                        navigateToFoodPage(context);
+                      },
+                      child: Card(
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                                padding: EdgeInsets.all(7.0),
+                                child: Row(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.all(7.0),
+                                      child: Icon(
+                                        Icons.restaurant,
+                                        color: Colors.black,
+                                        size: 50,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ))
-                        ],
+                                  ],
+                                ))
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      navigateToFoodPage(context);
-                    },
-                    child: Card(
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                              padding: EdgeInsets.all(7.0),
-                              child: Row(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: EdgeInsets.all(7.0),
-                                    child: Icon(
-                                      Icons.local_florist,
-                                      color: Colors.black,
-                                      size: 50,
+                    GestureDetector(
+                      onTap: () {
+                        navigateToFoodPage(context);
+                      },
+                      child: Card(
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                                padding: EdgeInsets.all(7.0),
+                                child: Row(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.all(7.0),
+                                      child: Icon(
+                                        Icons.local_florist,
+                                        color: Colors.black,
+                                        size: 50,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ))
-                        ],
+                                  ],
+                                ))
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      navigateToFoodPage(context);
-                    },
-                    child: Card(
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                              padding: EdgeInsets.all(7.0),
-                              child: Row(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: EdgeInsets.all(7.0),
-                                    child: Icon(
-                                      Icons.pets,
-                                      color: Colors.black,
-                                      size: 50,
+                    GestureDetector(
+                      onTap: () {
+                        navigateToFoodPage(context);
+                      },
+                      child: Card(
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                                padding: EdgeInsets.all(7.0),
+                                child: Row(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.all(7.0),
+                                      child: Icon(
+                                        Icons.pets,
+                                        color: Colors.black,
+                                        size: 50,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ))
-                        ],
+                                  ],
+                                ))
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      navigateToFoodPage(context);
-                    },
-                    child: Card(
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                              padding: EdgeInsets.all(7.0),
-                              child: Row(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: EdgeInsets.all(7.0),
-                                    child: Icon(
-                                      Icons.shopping_basket,
-                                      color: Colors.black,
-                                      size: 50,
+                    GestureDetector(
+                      onTap: () {
+                        navigateToFoodPage(context);
+                      },
+                      child: Card(
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                                padding: EdgeInsets.all(7.0),
+                                child: Row(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.all(7.0),
+                                      child: Icon(
+                                        Icons.shopping_basket,
+                                        color: Colors.black,
+                                        size: 50,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ))
-                        ],
+                                  ],
+                                ))
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Container(margin: EdgeInsets.only(left: 0))
-            ],
-          ),
-          button2Section(),
-          finalHeadSection(),
-          finalSection("พระเจ้าวรวงศ์เธอ พระองค์เจ้าโสมสวลีฯ",
-              "วันที่ 2 ธ.ค.ทรงเสด็จเปิดงานเกษตรครั้งที่ 23"),
-          finalSection("การเกษตร 4.0", "ภายในงานมีการโชว์นวัตกรรมทางการเกษตร"),
-        ],
+                  ],
+                ),
+                Container(margin: EdgeInsets.only(left: 0))
+              ],
+            ),
+            button2Section(),
+            finalHeadSection(),
+            finalSection("พระเจ้าวรวงศ์เธอ พระองค์เจ้าโสมสวลีฯ",
+                "วันที่ 2 ธ.ค.ทรงเสด็จเปิดงานเกษตรครั้งที่ 23"),
+            finalSection(
+                "การเกษตร 4.0", "ภายในงานมีการโชว์นวัตกรรมทางการเกษตร"),
+          ],
+        ),
       ),
       drawer: Drawer(
         child: ListView(

@@ -1,27 +1,13 @@
 import 'package:flutter/material.dart';
 
-class InputPage extends StatelessWidget {
-  static const String _title = 'Flutter Code Sample';
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: _title,
-      home: Scaffold(
-        appBar: AppBar(title: Text("Kasetfair App")),
-        body: MyStatefulWidget(),
-      ),
-    );
-  }
-}
-
-class MyStatefulWidget extends StatefulWidget {
-  MyStatefulWidget({Key key}) : super(key: key);
+class InputPage extends StatefulWidget {
+  InputPage({Key key}) : super(key: key);
 
   @override
-  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+  _InputPageState createState() => _InputPageState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class _InputPageState extends State<InputPage> {
   String dropdownValue = 'A';
   String dropdownValue1 = '1';
   String dropdownValue2 = 'การเกษตร';

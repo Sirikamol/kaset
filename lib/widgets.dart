@@ -75,11 +75,34 @@ Widget button2Section() {
 Widget finalHeadSection() {
   return Container(
     child: Text(
-      '   ข่าวสาร ',
+      'ข่าวสาร ',
       style: TextStyle(fontSize: 20, color: Colors.white),
     ),
     color: Colors.lightGreen[600],
     height: 40,
+  );
+}
+
+Widget newsSection() {
+  return ListView.builder(
+    itemCount: 5,
+    itemBuilder: (context, pos) {
+      return Padding(
+          padding: EdgeInsets.only(bottom: 16.0),
+          child: Card(
+            color: Colors.white,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
+              child: Text(
+                'hi',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  height: 1.6,
+                ),
+              ),
+            ),
+          ));
+    },
   );
 }
 

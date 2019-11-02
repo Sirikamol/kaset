@@ -12,7 +12,7 @@ class _ParkingPlaceState extends State<ParkingPlace> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue[300],
+          backgroundColor: Colors.lightGreen,
           title: Text("PARKING PLACE"),
         ),
         body: Column(
