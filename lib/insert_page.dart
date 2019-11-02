@@ -31,13 +31,7 @@ class _InsertPageState extends State<InsertPage> {
     setState(() {
       _image = image;
     });
-   
   }
-
-  
-
-
-
 
   @override
   void initState() {
@@ -101,7 +95,7 @@ class _InsertPageState extends State<InsertPage> {
       'zone': newFood.zone,
       'image': [imgUrl],
     });
-     _alertinput();
+    _alertinput();
   }
 
   Future<void> _alertinput() async {
@@ -124,8 +118,6 @@ class _InsertPageState extends State<InsertPage> {
       },
     );
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -231,6 +223,7 @@ class _InsertPageState extends State<InsertPage> {
         ));
   }
 }
+
 navigateToFoodEdit(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return FoodEdit();

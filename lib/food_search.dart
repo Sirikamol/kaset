@@ -39,9 +39,7 @@ class _FoodSearchState extends State<FoodSearch> {
                                 child: Text(
                                   document['nameStore'],
                                   style: TextStyle(fontSize: 18.0),
-                                )
-                                ),
-
+                                )),
                           ]),
                           Image.network(
                             document['image'][0],
@@ -76,9 +74,7 @@ class _FoodSearchState extends State<FoodSearch> {
                         ],
                       ),
                     );
-                    return Center(
-                      
-                        child: card);
+                    return Center(child: card);
                   }).toList(),
                 );
             }

@@ -155,13 +155,10 @@ class _FoodPageState extends State<FoodPage>
             GestureDetector(
                 onTap: () {
                   print('hello1');
-                  
                 },
-                
                 child: Card(
                   child: Image.network(
                       "https://pbs.twimg.com/media/C3QbEqbVMAA0l2I.jpg"),
-                    
                 )),
             Card(
               child: Image.network(
