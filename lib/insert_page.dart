@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kasetsart/food.dart';
-import 'package:kasetsart/food_edit.dart';
+import 'package:kasetsart/app_navigate.dart';
 import 'package:kasetsart/image_service.dart';
 
 class InsertPage extends StatefulWidget {
@@ -122,89 +122,116 @@ class _InsertPageState extends State<InsertPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.lightGreen,
+          title: Text("เพิ่มข้อมูล"),
+        ),
         body: Form(
           key: _formKey,
           child: ListView(
             children: <Widget>[
-              Column(
-                children: <Widget>[
-                  RaisedButton(
-                    onPressed: getImage,
-                    child: Icon(Icons.add_a_photo),
-                  ),
-                  Center(
-                    child: _image == null
-                        ? Text('Image')
-                        : Image.file(
-                            _image,
-                            width: 250,
-                            height: 150,
-                          ),
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      label1 = Text("โซน", style: TextStyle(fontSize: 18)),
-                      DropdownButton<String>(
-                        value: dropdownValue,
-                        onChanged: (String newValue) {
-                          setState(() {
-                            dropdownValue = newValue;
-                          });
-                          newFood.zone = newValue;
-                        },
-                        items: <String>['A', 'B', 'C', 'D']
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                      ),
-                    ],
-                  )
-                ],
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      decoration: InputDecoration(
+                          icon: Icon(Icons.account_balance),
+                          hintText: 'ชื่อร้าน',
+                          labelText: 'กรอกชื่อร้าน'),
+                      onSaved: (val) => newFood.nameStore = val,
+                    ),
+                  ],
+                ),
               ),
-              Column(
-                children: <Widget>[
-                  TextFormField(
-                    decoration: InputDecoration(
-                        icon: Icon(Icons.account_balance),
-                        hintText: 'ชื่อร้าน',
-                        labelText: 'กรอกชื่อร้าน'),
-                    onSaved: (val) => newFood.nameStore = val,
-                  ),
-                ],
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  children: _getListings(),
+                ),
               ),
-              Column(
-                children: _getListings(),
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        label1 = Text("โซน", style: TextStyle(fontSize: 18)),
+                        DropdownButton<String>(
+                          value: dropdownValue,
+                          onChanged: (String newValue) {
+                            setState(() {
+                              dropdownValue = newValue;
+                            });
+                            newFood.zone = newValue;
+                          },
+                          items: <String>['A', 'B', 'C', 'D']
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
-              Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      label1 = Text("ประเภท",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16)),
-                      DropdownButton<String>(
-                        value: dropdownValue2,
-                        onChanged: (String newValue) {
-                          setState(() {
-                            dropdownValue2 = newValue;
-                          });
-                          newFood.category = newValue;
-                        },
-                        items: <String>['การเกษตร', 'ของกิน', 'ของใช้', 'สัตว์']
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                      ),
-                    ],
-                  )
-                ],
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        label1 = Text("ประเภท",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16)),
+                        DropdownButton<String>(
+                          value: dropdownValue2,
+                          onChanged: (String newValue) {
+                            setState(() {
+                              dropdownValue2 = newValue;
+                            });
+                            newFood.category = newValue;
+                          },
+                          items: <String>[
+                            'การเกษตร',
+                            'ของกิน',
+                            'ของใช้',
+                            'สัตว์'
+                          ].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                    Center(
+                      child: _image == null
+                          ? Text('Please select an image')
+                          : Image.file(
+                              _image,
+                              width: 250,
+                              height: 250,
+                            ),
+                    ),
+                    RaisedButton(
+                      onPressed: getImage,
+                      child: Icon(Icons.add_a_photo),
+                    ),
+                  ],
+                ),
               ),
               Container(
                   padding: EdgeInsets.only(),
@@ -222,10 +249,4 @@ class _InsertPageState extends State<InsertPage> {
           },
         ));
   }
-}
-
-navigateToFoodEdit(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return FoodEdit();
-  }));
 }

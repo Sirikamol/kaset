@@ -9,7 +9,7 @@ class HistoryPage extends StatelessWidget {
     return Container(
       child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.blue[300],
+            backgroundColor: Colors.lightGreen,
             title: Text("HISTORY"),
           ),
           body: SingleChildScrollView(

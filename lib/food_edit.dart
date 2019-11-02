@@ -22,7 +22,7 @@ class _FoodEditState extends State<FoodEdit> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue[300],
+          backgroundColor: Colors.lightGreen,
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => navigateToInsertPage(context),

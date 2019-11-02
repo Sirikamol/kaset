@@ -18,15 +18,8 @@ class _ParkingPlaceState extends State<ParkingPlace> {
         body: Column(
           children: <Widget>[
             Container(
-              height: 250,
-              width: 2000,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  buildCardListView(
-                      "http://kps.ku.ac.th/v8/images/bg/kps-bus-routes.jpg"),
-                ],
-              ),
+              child: buildCardListView(
+                  "http://kps.ku.ac.th/v8/images/bg/kps-bus-routes.jpg"),
             )
           ],
         ));

@@ -12,7 +12,7 @@ class _FoodSearchState extends State<FoodSearch> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue[300],
+          backgroundColor: Colors.lightGreen,
           title: Text(widget.category),
         ),
         body: StreamBuilder<QuerySnapshot>(
