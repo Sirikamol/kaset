@@ -4,17 +4,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:flutter/painting.dart';
 import 'package:kasetsart/app_navigate.dart';
 
-class AnimalsEdit extends StatefulWidget {
-  AnimalsEdit({
+class AgricultureEdit extends StatefulWidget {
+  AgricultureEdit({
     Key key,
   }) : super(key: key);
 
-  _AnimalsEditState createState() => _AnimalsEditState();
+  _AgricultureEditState createState() => _AgricultureEditState();
 }
 
-class _AnimalsEditState extends State<AnimalsEdit> {
+class _AgricultureEditState extends State<AgricultureEdit> {
   Future _onDelete(String docID) async {
-    Firestore.instance.collection('animal').document(docID).delete();
+    Firestore.instance.collection('agriculture').document(docID).delete();
     return null;
   }
 
@@ -25,12 +25,12 @@ class _AnimalsEditState extends State<AnimalsEdit> {
           backgroundColor: Colors.lightGreen,
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => navigateToInsertAnimalsPage(context),
+          onPressed: () => navigateToInsertAgriculturePage(context),
           child: Icon(Icons.add),
           backgroundColor: Colors.lightGreen,
         ),
         body: StreamBuilder<QuerySnapshot>(
-          stream: Firestore.instance.collection('animal').snapshots(),
+          stream: Firestore.instance.collection('agriculture').snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.hasError) return Text('Error: ${snapshot.error}');
@@ -68,7 +68,7 @@ class _AnimalsEditState extends State<AnimalsEdit> {
                                                       FlatButton(
                                                           child: const Text("Update"),
                                                           onPressed: () {
-                                                            navigateToUpdateAnimalsPage(
+                                                            navigateToUpdateAgriculturePage(
                                                                 context, document.documentID);
                                                           }),
                                                       FlatButton(

@@ -3,19 +3,18 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:kasetsart/animals.dart';
-// import 'package:kasetsart/food.dart';
 import 'package:kasetsart/image_service.dart';
+import 'agriculture.dart';
 
 
-class UpdateAnimalsPage extends StatefulWidget {
-  UpdateAnimalsPage({Key key, this.docID}) : super(key: key);
+class UpdateAgriculturePage extends StatefulWidget {
+  UpdateAgriculturePage({Key key, this.docID}) : super(key: key);
   final String docID;
 
-  _UpdateAnimalsPageState createState() => _UpdateAnimalsPageState();
+  _UpdateAgriculturePageState createState() => _UpdateAgriculturePageState();
 }
 
-class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
+class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
   String dropdownValue = 'A';
   String dropdownValue2 = 'การเกษตร';
 
@@ -70,7 +69,7 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
     print(productCount);
   }
 
-  Animals newAnimals = new Animals();
+  Agriculture newAgriculture = new Agriculture();
 
   Future<Null> _onUpdate(DocumentSnapshot document) async {
     final FormState form = _formKey.currentState;
@@ -83,27 +82,27 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
     print(document['products']);
 
     print('Form save called, newContact is now up to date...');
-    print('Name: ${newAnimals.nameStore}');
-    print('Category: ${newAnimals.category}');
-    print('Zone: ${newAnimals.zone}');
+    print('Name: ${newAgriculture.nameStore}');
+    print('Category: ${newAgriculture.category}');
+    print('Zone: ${newAgriculture.zone}');
     print(_updateProducts);
     print(_image);
     if (_image != null) {
       String imgUrl = await onImageUploading(_image);
       print(imgUrl);
-      Firestore.instance.collection('animal').document(widget.docID).updateData({
-        'nameStore': newAnimals.nameStore,
-        'category': newAnimals.category,
+      Firestore.instance.collection('agriculture').document(widget.docID).updateData({
+        'nameStore': newAgriculture.nameStore,
+        'category': newAgriculture.category,
         'products': _updateProducts,
-        'zone': newAnimals.zone,
+        'zone': newAgriculture.zone,
         'image': [imgUrl],
       });
     } else {
-      Firestore.instance.collection('animal').document(widget.docID).updateData({
-        'nameStore': newAnimals.nameStore,
-        'category': newAnimals.category,
+      Firestore.instance.collection('agriculture').document(widget.docID).updateData({
+        'nameStore': newAgriculture.nameStore,
+        'category': newAgriculture.category,
         'products': _updateProducts,
-        'zone': newAnimals.zone,
+        'zone': newAgriculture.zone,
       });
     }
     return null;
@@ -150,7 +149,7 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
               key: _formKey,
               child: StreamBuilder(
                 stream: Firestore.instance
-                    .collection('animal')
+                    .collection('agriculture')
                     .document(widget.docID)
                     .snapshots(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -161,14 +160,14 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
                       Column(
                         children: <Widget>[
                           TextFormField(
-                            initialValue: document['nameStore'].toString(),
+                            initialValue: document['nameStore'],
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 icon: Icon(Icons.account_balance),
                                 hintText: 'ชื่อร้าน',
                                 labelText: 'กรอกชื่อร้าน'),
                             style: TextStyle(fontSize: 18, color: Colors.black),
-                            onSaved: (val) => newAnimals.nameStore = val,
+                            onSaved: (val) => newAgriculture.nameStore = val,
                           ),
                           Center(
                             child: _image == null
@@ -211,7 +210,7 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
                                   setState(() {
                                     dropdownValue = newValue;
                                   });
-                                  newAnimals.zone = newValue;
+                                  newAgriculture.zone = newValue;
                                 },
                                 items: <String>[
                                   'A',
@@ -243,7 +242,7 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
                                   setState(() {
                                     dropdownValue2 = newValue;
                                   });
-                                  newAnimals.category = newValue;
+                                  newAgriculture.category = newValue;
                                 },
                                 items: <String>[
                                   'การเกษตร',

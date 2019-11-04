@@ -26,6 +26,10 @@ class _LoginTwoState extends State<LoginTwo> {
                 onPressed: () => navigateToAnimalsEdit(context),
                 color: Colors.red[300],
                 child: Text("animals", style: TextStyle(color: Colors.black))),
+            FlatButton(
+                onPressed: () => navigateToAgricultureEdit(context),
+                color: Colors.red[300],
+                child: Text("agriculture", style: TextStyle(color: Colors.black))),
           ],
         )),
       ),
