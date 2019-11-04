@@ -54,6 +54,7 @@ class _FoodSearchState extends State<FoodSearch> {
                             document['image'][0],
                             width: 200,
                             height: 200,
+                            
                           ),
                           Row(children: <Widget>[
                             Row(

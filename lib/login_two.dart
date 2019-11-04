@@ -23,7 +23,7 @@ class _LoginTwoState extends State<LoginTwo> {
                 color: Colors.red[300],
                 child: Text("Food", style: TextStyle(color: Colors.black))),
             FlatButton(
-                onPressed: () => navigateToFoodEdit(context),
+                onPressed: () => navigateToAnimalsEdit(context),
                 color: Colors.red[300],
                 child: Text("animals", style: TextStyle(color: Colors.black))),
           ],
@@ -32,3 +32,4 @@ class _LoginTwoState extends State<LoginTwo> {
     );
   }
 }
+

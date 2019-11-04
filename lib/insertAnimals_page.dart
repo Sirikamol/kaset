@@ -3,18 +3,19 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:kasetsart/food.dart';
+import 'package:kasetsart/animals.dart';
+
 import 'package:kasetsart/app_navigate.dart';
 import 'package:kasetsart/image_service.dart';
 
-class InsertPage extends StatefulWidget {
-  InsertPage({Key key, this.docID}) : super(key: key);
+class InsertAnimalsPage extends StatefulWidget {
+  InsertAnimalsPage({Key key, this.docID}) : super(key: key);
   final String docID;
   @override
-  _InsertPageState createState() => _InsertPageState();
+  _InsertAnimalsPageState createState() => _InsertAnimalsPageState();
 }
 
-class _InsertPageState extends State<InsertPage> {
+class _InsertAnimalsPageState extends State<InsertAnimalsPage> {
   String dropdownValue = 'A';
   String dropdownValue1 = '1';
   String dropdownValue2 = 'การเกษตร';
@@ -69,7 +70,7 @@ class _InsertPageState extends State<InsertPage> {
     print(productCount);
   }
 
-  Food newFood = Food();
+  Animals newAnimals = Animals();
 
   void _onSubmit() async {
     final FormState form = _formKey.currentState;
@@ -80,19 +81,19 @@ class _InsertPageState extends State<InsertPage> {
     form.save(); //This invokes each onSaved event
 
     print('Form save called, newContact is now up to date...');
-    print('Name: ${newFood.nameStore}');
-    print('Category: ${newFood.category}');
-    print('Zone: ${newFood.zone}');
+    print('Name: ${newAnimals.nameStore}');
+    print('Category: ${newAnimals.category}');
+    print('Zone: ${newAnimals.zone}');
     print(_insertProducts);
     print(_image);
     String imgUrl = await onImageUploading(_image);
     print(imgUrl);
 
-    Firestore.instance.collection('food').document(widget.docID).setData({
-      'nameStore': newFood.nameStore,
-      'category': newFood.category,
+    Firestore.instance.collection('animal').document(widget.docID).setData({
+      'nameStore': newAnimals.nameStore,
+      'category': newAnimals.category,
       'products': _insertProducts,
-      'zone': newFood.zone,
+      'zone': newAnimals.zone,
       'image': [imgUrl],
     });
     _alertinput();
@@ -110,7 +111,7 @@ class _InsertPageState extends State<InsertPage> {
               child: Text('Ok'),
               onPressed: () {
                 Navigator.of(context).pop();
-                navigateToFoodEdit(context);
+                navigateToAnimalsEdit(context);
               },
             ),
           ],
@@ -139,7 +140,7 @@ class _InsertPageState extends State<InsertPage> {
                           icon: Icon(Icons.account_balance),
                           hintText: 'ชื่อร้าน',
                           labelText: 'กรอกชื่อร้าน'),
-                      onSaved: (val) => newFood.nameStore = val,
+                      onSaved: (val) => newAnimals.nameStore = val,
                     ),
                   ],
                 ),
@@ -164,7 +165,7 @@ class _InsertPageState extends State<InsertPage> {
                             setState(() {
                               dropdownValue = newValue;
                             });
-                            newFood.zone = newValue;
+                            newAnimals.zone = newValue;
                           },
                           items: <String>['A', 'B', 'C', 'D']
                               .map<DropdownMenuItem<String>>((String value) {
@@ -194,7 +195,7 @@ class _InsertPageState extends State<InsertPage> {
                             setState(() {
                               dropdownValue2 = newValue;
                             });
-                            newFood.category = newValue;
+                            newAnimals.category = newValue;
                           },
                           items: <String>[
                             'การเกษตร',

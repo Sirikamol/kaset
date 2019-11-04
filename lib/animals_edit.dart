@@ -4,17 +4,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:flutter/painting.dart';
 import 'package:kasetsart/app_navigate.dart';
 
-class FoodEdit extends StatefulWidget {
-  FoodEdit({
+class AnimalsEdit extends StatefulWidget {
+  AnimalsEdit({
     Key key,
   }) : super(key: key);
 
-  _FoodEditState createState() => _FoodEditState();
+  _AnimalsEditState createState() => _AnimalsEditState();
 }
 
-class _FoodEditState extends State<FoodEdit> {
+class _AnimalsEditState extends State<AnimalsEdit> {
   Future _onDelete(String docID) async {
-    Firestore.instance.collection('food').document(docID).delete();
+    Firestore.instance.collection('animal').document(docID).delete();
     return null;
   }
 
@@ -25,12 +25,12 @@ class _FoodEditState extends State<FoodEdit> {
           backgroundColor: Colors.lightGreen,
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => navigateToInsertPage(context),
+          onPressed: () => navigateToInsertAnimalsPage(context),
           child: Icon(Icons.add),
           backgroundColor: Colors.lightGreen,
         ),
         body: StreamBuilder<QuerySnapshot>(
-          stream: Firestore.instance.collection('food').snapshots(),
+          stream: Firestore.instance.collection('animal').snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.hasError) return Text('Error: ${snapshot.error}');
@@ -62,14 +62,13 @@ class _FoodEditState extends State<FoodEdit> {
                                                     ),
                                                   ],
                                                 ),
-                                                
                                                 ButtonTheme.bar(
                                                   child: ButtonBar(
                                                     children: <Widget>[
                                                       FlatButton(
                                                           child: const Text("Update"),
                                                           onPressed: () {
-                                                            navigateToUpdatePage(
+                                                            navigateToUpdateAnimalPage(
                                                                 context, document.documentID);
                                                           }),
                                                       FlatButton(
