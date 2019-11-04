@@ -14,14 +14,14 @@ class _LoginTwoState extends State<LoginTwo> {
         title: Text('Welcome to my app'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(2.0),
         child: Center(
             child: ButtonBar(
           children: <Widget>[
-            FlatButton(
-                onPressed: () => navigateToFoodEdit(context),
-                color: Colors.red[300],
-                child: Text("Food", style: TextStyle(color: Colors.black))),
+            // FlatButton(
+            //     onPressed: () => navigateToFoodEdit(context),
+            //     color: Colors.red[300],
+            //     child: Text("Food", style: TextStyle(color: Colors.black))),
             FlatButton(
                 onPressed: () => navigateToAnimalsEdit(context),
                 color: Colors.red[300],
@@ -30,7 +30,12 @@ class _LoginTwoState extends State<LoginTwo> {
                 onPressed: () => navigateToAgricultureEdit(context),
                 color: Colors.red[300],
                 child: Text("agriculture", style: TextStyle(color: Colors.black))),
+            FlatButton(
+                onPressed: () => navigateToGeneralEdit(context),
+                color: Colors.red[300],
+                child: Text("general", style: TextStyle(color: Colors.black))),
           ],
+          
         )),
       ),
     );

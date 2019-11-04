@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 // import 'package:kasetsart/animals_edit.dart';
 import 'agriculture_edit.dart';
+import 'general_edit.dart';
 import 'insertAgriculture_page.dart';
 import 'insertAnimals_page.dart';
+import 'insertGenerals_page.dart';
 import 'parking_place.dart';
 import 'history_page.dart';
 import 'insertFood_page.dart';
@@ -13,6 +15,7 @@ import 'map_page.dart';
 import 'tram_page.dart';
 import 'updateAgriculture_page.dart';
 import 'updateAnimal_page.dart';
+import 'updateGenerals_page.dart';
 import 'work_table.dart';
 import 'input_page.dart';
 import 'updateFood_page.dart';
@@ -127,6 +130,21 @@ navigateToUpdateAgriculturePage(BuildContext context ,String docID) {
 navigateToInsertAgriculturePage(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return InsertAgriculturePage();
+  }));
+}
+navigateToGeneralEdit(BuildContext context ) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return GeneralEdit();
+  }));
+}
+navigateToUpdateGeneralsPage(BuildContext context ,String docID) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return UpdateGeneralsPage(docID: docID);
+  }));
+}
+navigateToInsertGeneralsPage(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return InsertGeneralsPage();
   }));
 }
 
