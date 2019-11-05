@@ -8,7 +8,6 @@ import 'general.dart';
 // import 'package:kasetsart/food.dart';
 import 'package:kasetsart/image_service.dart';
 
-
 class UpdateGeneralsPage extends StatefulWidget {
   UpdateGeneralsPage({Key key, this.docID}) : super(key: key);
   final String docID;
@@ -92,7 +91,10 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
     if (_image != null) {
       String imgUrl = await onImageUploading(_image);
       print(imgUrl);
-      Firestore.instance.collection('generals').document(widget.docID).updateData({
+      Firestore.instance
+          .collection('generals')
+          .document(widget.docID)
+          .updateData({
         'nameStore': newGenerals.nameStore,
         'category': newGenerals.category,
         'products': _updateProducts,
@@ -100,7 +102,10 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
         'image': [imgUrl],
       });
     } else {
-      Firestore.instance.collection('generals').document(widget.docID).updateData({
+      Firestore.instance
+          .collection('generals')
+          .document(widget.docID)
+          .updateData({
         'nameStore': newGenerals.nameStore,
         'category': newGenerals.category,
         'products': _updateProducts,
@@ -109,7 +114,6 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
     }
     // _alertinput();
     return null;
-    
   }
 
   // Future<void> _alertinput() async {
@@ -154,9 +158,7 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
               icon: Icon(Icons.mode_edit),
               hintText: 'สินค้า',
               labelText: 'กรอกสินค้า 1'),
-
           onSaved: (val) => _updateProducts.insert(0, val)),
-
     ];
   }
 
@@ -302,7 +304,6 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
           onPressed: () {
             addList();
           },
-        )
-        );
+        ));
   }
 }

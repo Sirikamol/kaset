@@ -1,115 +1,186 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'algolia_service.dart';
+import 'food.dart';
 
 class FoodSearch extends StatefulWidget {
-  FoodSearch({Key key, this.category}) : super(key: key);
-  final String category;
-  _FoodSearchState createState() => _FoodSearchState();
+  @override
+  State<StatefulWidget> createState() => FoodSearchState();
 }
 
-class _FoodSearchState extends State<FoodSearch> {
+class FoodSearchState extends State<FoodSearch> {
+  Widget headerSec = Column(
+    children: <Widget>[
+      Container(
+        height: 210,
+        width: 1500,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            Card(
+              child: Image.network(
+                  "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),
+            ),
+          ],
+        ),
+      )
+    ],
+  );
+
+  Widget titleSection = Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+      Container(
+        height: 150,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            GestureDetector(
+                onTap: () {
+                  print('hello1');
+                },
+                child: Card(
+                  child: Image.network(
+                      "https://pbs.twimg.com/media/C3QbEqbVMAA0l2I.jpg"),
+                )),
+            Card(
+              child: Image.network(
+                  "https://pbs.twimg.com/media/CmBxHzDWgAAvuGo.jpg"),
+            ),
+            Card(
+              child: Image.network(
+                  "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
+            )
+          ],
+        ),
+      )
+    ],
+  );
+
+  Widget title2Section = Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+      Container(
+        height: 200,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            Card(
+              child: Image.network(
+                  "https://www.chillpainai.com/src/wewakeup/scoop/img_scoop/scoop/kang/fabuary2017/kasetfair/IMG_2468.jpg"),
+            ),
+            Card(
+              child: Image.network(
+                  "https://arch.punpromotion.com/wp-content/uploads/2017/06/S__2523145-1.jpg"),
+            ),
+          ],
+        ),
+      )
+    ],
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.lightGreen,
-          title: Text(widget.category),
-        ),
-        body: StreamBuilder<QuerySnapshot>(
-          stream: Firestore.instance
-              .collection('food')
-              .where('products', arrayContains: widget.category)
-              .snapshots(),
-          builder:
-              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting:
-                return Text('Loading...');
-              default:
-                return ListView(
-                  children:
-                      snapshot.data.documents.map((DocumentSnapshot document) {
-                    var card = Card(color: Colors.yellow[100],
-                      child: Column(
-                        children: <Widget>[
-                          Row(children: <Widget>[
-                            Row(
-                              children: <Widget>[Text("ชื่อร้าน : ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
-                                Padding(
-                                    padding: EdgeInsets.all(7.0),
-                                    child: Text(
-                                      document['nameStore'],
-                                      style: TextStyle(fontSize: 18.0),
+      appBar: AppBar(
+        title: Text('ค้นหา'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              showSearch(context: context, delegate: DataSearch());
+            },
+          )
+        ],
+      ),
+      body:
+          ListView(children: <Widget>[headerSec, titleSection, title2Section]),
+    );
+  }
+}
 
-                                    )
-                                    ),
-                              ],
-                            ),
+class DataSearch extends SearchDelegate<String> {
+  final algoliaService = AlgoliaService.instance;
 
-                          ]),
-                          Image.network(
-                            document['image'][0],
-                            width: 200,
-                            height: 200,
-                            
-                          ),
-                          Row(children: <Widget>[
-                            Row(
-                              children: <Widget>[Text("โซน : ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
-                                Padding(
-                                    padding: EdgeInsets.all(7.0),
-                                    child: Text(
-                                      document['zone'].toString(),
-                                      style: TextStyle(fontSize: 18.0),
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    // Actions for app bar
+    return [
+      IconButton(
+          icon: Icon(Icons.clear),
+          onPressed: () {
+            query = "";
+          })
+    ];
+  }
 
-                                    )
-                                    ),
-                              ],
-                            ),
-                          ]),
-                          Row(children: <Widget>[
-                            Row(
-                              children: <Widget>[Text("ประเภทสินค้า : ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
-                                Padding(
-                                    padding: EdgeInsets.all(7.0),
-                                    child: Text(
-                                      document['category'].toString(),
-                                      style: TextStyle(fontSize: 18.0),
+  @override
+  Widget buildLeading(BuildContext context) {
+    // Leading icon on the left of the app bar
+    return IconButton(
+        icon: AnimatedIcon(
+            icon: AnimatedIcons.menu_arrow, progress: transitionAnimation),
+        onPressed: () {
+          close(context, null);
+        });
+  }
 
-                                    )
-                                    ),
-                              ],
-                            ),
-                          ]),
-                          Row(children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                 Text("สินค้า : ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
-                                Padding(
-                                    padding: EdgeInsets.all(7.0),
-                                    child: 
-                                    Text(
-                                      document['products'].toString(),
-                                      style: TextStyle(fontSize: 18.0),
+  @override
+  Widget buildResults(BuildContext context) {
+    return Container();
+  }
 
-                                    )
-                                    ),
-                              ],
-                            ),
-                          ]),
-                          
-                        ],
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    return FutureBuilder<List<Food>>(
+      future: algoliaService.performSearchQuery(text: query),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          final foods = snapshot.data.map((food) {
+            return Container(
+              child: Center(
+                  child: Card(
+                color: Colors.yellow[100],
+                child: Column(
+                  children: <Widget>[
+                    Row(children: <Widget>[
+                      Text(
+                        "ชื่อร้าน : ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
                       ),
-                      
-                    );
-                    return Center(child: card);
-                  }).toList(),
-                );
-            }
-          },
-        ));
+                      Padding(
+                          padding: EdgeInsets.all(7.0),
+                          child: Text(
+                            food.nameStore.toString(),
+                            style: TextStyle(fontSize: 18.0),
+                          )),
+                    ]),
+                    Row(
+                      children: <Widget>[
+                        Image.network(
+                          food.image,
+                          width: 200,
+                          height: 200,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              )),
+            );
+          }).toList();
+
+          return ListView(children: foods);
+        } else if (snapshot.hasError) {
+          return Center(
+            child: Text("${snapshot.error.toString()}"),
+          );
+        }
+
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
   }
 }

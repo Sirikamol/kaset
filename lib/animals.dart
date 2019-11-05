@@ -5,6 +5,6 @@ class Animals {
   List<String> products;
   String image;
 
-  Animals({this.nameStore, this.zone, this.category, this.products, this.image});
-  
+  Animals(
+      {this.nameStore, this.zone, this.category, this.products, this.image});
 }

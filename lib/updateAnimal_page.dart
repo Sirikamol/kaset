@@ -7,7 +7,6 @@ import 'package:kasetsart/animals.dart';
 // import 'package:kasetsart/food.dart';
 import 'package:kasetsart/image_service.dart';
 
-
 class UpdateAnimalsPage extends StatefulWidget {
   UpdateAnimalsPage({Key key, this.docID}) : super(key: key);
   final String docID;
@@ -91,7 +90,10 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
     if (_image != null) {
       String imgUrl = await onImageUploading(_image);
       print(imgUrl);
-      Firestore.instance.collection('animal').document(widget.docID).updateData({
+      Firestore.instance
+          .collection('animal')
+          .document(widget.docID)
+          .updateData({
         'nameStore': newAnimals.nameStore,
         'category': newAnimals.category,
         'products': _updateProducts,
@@ -99,7 +101,10 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
         'image': [imgUrl],
       });
     } else {
-      Firestore.instance.collection('animal').document(widget.docID).updateData({
+      Firestore.instance
+          .collection('animal')
+          .document(widget.docID)
+          .updateData({
         'nameStore': newAnimals.nameStore,
         'category': newAnimals.category,
         'products': _updateProducts,
@@ -130,9 +135,7 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
               icon: Icon(Icons.mode_edit),
               hintText: 'สินค้า',
               labelText: 'กรอกสินค้า 1'),
-
           onSaved: (val) => _updateProducts.insert(0, val)),
-
     ];
   }
 
@@ -278,7 +281,6 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
           onPressed: () {
             addList();
           },
-        )
-        );
+        ));
   }
 }

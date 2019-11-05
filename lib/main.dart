@@ -44,7 +44,7 @@ class _HomeState extends State<Home> {
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-                        navigateToFoodPage(context);
+                        navigateToFoodSearch(context);
                       },
                       child: Card(
                         child: Column(
@@ -69,7 +69,7 @@ class _HomeState extends State<Home> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        navigateToFoodPage(context);
+                        navigateToFoodSearch(context);
                       },
                       child: Card(
                         child: Column(
@@ -94,7 +94,7 @@ class _HomeState extends State<Home> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        navigateToFoodPage(context);
+                        navigateToFoodSearch(context);
                       },
                       child: Card(
                         child: Column(
@@ -119,7 +119,7 @@ class _HomeState extends State<Home> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        navigateToFoodPage(context);
+                        navigateToFoodSearch(context);
                       },
                       child: Card(
                         child: Column(

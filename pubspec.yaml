@@ -28,12 +28,14 @@ dependencies:
   image_picker: ^0.6.1+4
   uuid: ^2.0.2
   firebase_storage: ^3.0.6
+  algolia: ^0.1.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_native_splash: ^0.1.9
+
 flutter_native_splash:
   image: assets/Logo_kasetsart.jpg
   color: "#FFFFFF"

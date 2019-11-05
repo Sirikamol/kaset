@@ -6,7 +6,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:kasetsart/image_service.dart';
 import 'agriculture.dart';
 
-
 class UpdateAgriculturePage extends StatefulWidget {
   UpdateAgriculturePage({Key key, this.docID}) : super(key: key);
   final String docID;
@@ -90,7 +89,10 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
     if (_image != null) {
       String imgUrl = await onImageUploading(_image);
       print(imgUrl);
-      Firestore.instance.collection('agriculture').document(widget.docID).updateData({
+      Firestore.instance
+          .collection('agriculture')
+          .document(widget.docID)
+          .updateData({
         'nameStore': newAgriculture.nameStore,
         'category': newAgriculture.category,
         'products': _updateProducts,
@@ -98,7 +100,10 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
         'image': [imgUrl],
       });
     } else {
-      Firestore.instance.collection('agriculture').document(widget.docID).updateData({
+      Firestore.instance
+          .collection('agriculture')
+          .document(widget.docID)
+          .updateData({
         'nameStore': newAgriculture.nameStore,
         'category': newAgriculture.category,
         'products': _updateProducts,
@@ -129,9 +134,7 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
               icon: Icon(Icons.mode_edit),
               hintText: 'สินค้า',
               labelText: 'กรอกสินค้า 1'),
-
           onSaved: (val) => _updateProducts.insert(0, val)),
-
     ];
   }
 
@@ -277,7 +280,6 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
           onPressed: () {
             addList();
           },
-        )
-        );
+        ));
   }
 }

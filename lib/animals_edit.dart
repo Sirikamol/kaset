@@ -41,50 +41,54 @@ class _AnimalsEditState extends State<AnimalsEdit> {
                 return ListView(
                   children:
                       snapshot.data.documents.map((DocumentSnapshot document) {
-                    var card = new Card(color: Colors.yellow[100],
-                                            child: Column(
-                                              children: <Widget>[
-                                                Row(children: <Widget>[Text("ชื่อร้าน : ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
-                                                  Padding(
-                                                      padding: EdgeInsets.all(7.0),
-                                                      child: Text(
-                                                        document['nameStore'].toString(),
-                                                        style: TextStyle(fontSize: 18.0),
-                                                      )
-                                                      ),
-                                                ]),
-                                                Row(
-                                                  children: <Widget>[
-                                                    Image.network(
-                                                      document['image'][0],
-                                                      width: 200,
-                                                      height: 200,
-                                                    ),
-                                                  ],
-                                                ),
-                                                ButtonTheme.bar(
-                                                  child: ButtonBar(
-                                                    children: <Widget>[
-                                                      FlatButton(
-                                                          child: const Text("Update"),
-                                                          onPressed: () {
-                                                            navigateToUpdateAnimalsPage(
-                                                                context, document.documentID);
-                                                          }),
-                                                      FlatButton(
-                                                          child: const Text("Delete"),
-                                                          onPressed: () {
-                                                            _onDelete(document.documentID);
-                                                          }),
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          );
-                                        return Container(
-                                          child: Center(
-                                              child: card),
+                    var card = new Card(
+                      color: Colors.yellow[100],
+                      child: Column(
+                        children: <Widget>[
+                          Row(children: <Widget>[
+                            Text(
+                              "ชื่อร้าน : ",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                            Padding(
+                                padding: EdgeInsets.all(7.0),
+                                child: Text(
+                                  document['nameStore'].toString(),
+                                  style: TextStyle(fontSize: 18.0),
+                                )),
+                          ]),
+                          Row(
+                            children: <Widget>[
+                              Image.network(
+                                document['image'][0],
+                                width: 200,
+                                height: 200,
+                              ),
+                            ],
+                          ),
+                          ButtonTheme.bar(
+                            child: ButtonBar(
+                              children: <Widget>[
+                                FlatButton(
+                                    child: const Text("Update"),
+                                    onPressed: () {
+                                      navigateToUpdateAnimalsPage(
+                                          context, document.documentID);
+                                    }),
+                                FlatButton(
+                                    child: const Text("Delete"),
+                                    onPressed: () {
+                                      _onDelete(document.documentID);
+                                    }),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                    return Container(
+                      child: Center(child: card),
                     );
                   }).toList(),
                 );

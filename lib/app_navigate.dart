@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:kasetsart/animals_edit.dart';
+import 'food_search.dart';
 import 'agriculture_edit.dart';
 import 'general_edit.dart';
 import 'insertAgriculture_page.dart';
@@ -10,7 +10,6 @@ import 'history_page.dart';
 import 'insertFood_page.dart';
 import 'login_page.dart';
 import 'second_page.dart';
-import 'food_page.dart';
 import 'map_page.dart';
 import 'tram_page.dart';
 import 'updateAgriculture_page.dart';
@@ -19,11 +18,8 @@ import 'updateGenerals_page.dart';
 import 'work_table.dart';
 import 'input_page.dart';
 import 'updateFood_page.dart';
-import 'food_search.dart';
 import 'food_edit.dart';
 import 'animals_edit.dart';
-
-
 
 navigateToSecondPage(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -37,9 +33,9 @@ navigateToInputPage(BuildContext context) {
   }));
 }
 
-navigateToFoodPage(BuildContext context) {
+navigateToFoodSearch(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return FoodPage();
+    return FoodSearch();
   }));
 }
 
@@ -91,60 +87,62 @@ navigateToUpdatePage(BuildContext context, String docID) {
   }));
 }
 
-navigateToFoodSearch(BuildContext context, String category) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return FoodSearch(category: category);
-  }));
-}
-
 navigateToFoodEdit(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return FoodEdit();
   }));
 }
+
 navigateToAnimalsEdit(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return AnimalsEdit();
   }));
 }
+
 navigateToInsertAnimalsPage(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return InsertAnimalsPage();
   }));
 }
-navigateToUpdateAnimalsPage(BuildContext context ,String docID) {
+
+navigateToUpdateAnimalsPage(BuildContext context, String docID) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return UpdateAnimalsPage(docID: docID);
   }));
 }
-navigateToAgricultureEdit(BuildContext context ) {
+
+navigateToAgricultureEdit(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return AgricultureEdit();
   }));
 }
-navigateToUpdateAgriculturePage(BuildContext context ,String docID) {
+
+navigateToUpdateAgriculturePage(BuildContext context, String docID) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return UpdateAgriculturePage(docID: docID);
   }));
 }
+
 navigateToInsertAgriculturePage(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return InsertAgriculturePage();
   }));
 }
-navigateToGeneralEdit(BuildContext context ) {
+
+navigateToGeneralEdit(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return GeneralEdit();
   }));
 }
-navigateToUpdateGeneralsPage(BuildContext context ,String docID) {
+
+navigateToUpdateGeneralsPage(BuildContext context, String docID) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return UpdateGeneralsPage(docID: docID);
   }));
 }
+
 navigateToInsertGeneralsPage(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return InsertGeneralsPage();
   }));
 }
-

@@ -89,7 +89,10 @@ class _InsertAgriculturePageState extends State<InsertAgriculturePage> {
     String imgUrl = await onImageUploading(_image);
     print(imgUrl);
 
-    Firestore.instance.collection('agriculture').document(widget.docID).setData({
+    Firestore.instance
+        .collection('agriculture')
+        .document(widget.docID)
+        .setData({
       'nameStore': newAgriculture.nameStore,
       'category': newAgriculture.category,
       'products': _insertProducts,

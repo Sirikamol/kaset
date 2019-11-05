@@ -128,9 +128,7 @@ class _UpdatePageState extends State<UpdatePage> {
               icon: Icon(Icons.mode_edit),
               hintText: 'สินค้า',
               labelText: 'กรอกสินค้า 1'),
-
           onSaved: (val) => _updateProducts.insert(0, val)),
-
     ];
   }
 
@@ -276,7 +274,6 @@ class _UpdatePageState extends State<UpdatePage> {
           onPressed: () {
             addList();
           },
-        )
-        );
+        ));
   }
 }
