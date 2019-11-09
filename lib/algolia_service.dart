@@ -8,12 +8,14 @@ class AlgoliaService {
   static final AlgoliaService instance = AlgoliaService._privateConstructor();
 
   final Algolia _algolia = Algolia.init(
-    applicationId: 'DBB13CQ6MX',
-    apiKey: '75c1bb1bb53efffc5711ba3df99d18a6',
+    // applicationId: 'DBB13CQ6MX',
+    // apiKey: '75c1bb1bb53efffc5711ba3df99d18a6',
+    applicationId: 'T374A0CYK0',
+    apiKey: 'c028fff8b21e3233d5fa2fd412dcad41',
   );
 
   AlgoliaIndexReference get _foodIndex => _algolia.instance.index('food');
-  AlgoliaIndexReference get _animalIndex => _algolia.instance.index('animals');
+  AlgoliaIndexReference get _animalIndex => _algolia.instance.index('animal');
 
   Future<List<Food>> performSearchQuery({text: String}) async {
     final query = _foodIndex.search(text);

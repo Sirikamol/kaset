@@ -146,3 +146,7 @@ navigateToInsertGeneralsPage(BuildContext context) {
     return InsertGeneralsPage();
   }));
 }
+
+
+
+
