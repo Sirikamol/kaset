@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'agriculture_search.dart';
+import 'animal_search.dart';
 import 'food_search.dart';
 import 'agriculture_edit.dart';
 import 'general_edit.dart';
+import 'generals_search.dart';
 import 'insertAgriculture_page.dart';
 import 'insertAnimals_page.dart';
 import 'insertGenerals_page.dart';
@@ -38,6 +41,22 @@ navigateToFoodSearch(BuildContext context) {
     return FoodSearch();
   }));
 }
+navigateToAnimalSearch(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return AnimalSearch();
+  }));
+}
+navigateToAgricultureSearch(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return AgricultureSearch();
+  }));
+}
+navigateToGeneralsSearch(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return GeneralsSearch();
+  }));
+}
+
 
 navigateToMapPage(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {

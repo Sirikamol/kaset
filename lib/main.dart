@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'widgets.dart';
 import 'app_navigate.dart';
 
@@ -69,7 +68,7 @@ class _HomeState extends State<Home> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        navigateToFoodSearch(context);
+                        navigateToAgricultureSearch(context);
                       },
                       child: Card(
                         child: Column(
@@ -94,7 +93,7 @@ class _HomeState extends State<Home> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        navigateToFoodSearch(context);
+                        navigateToAnimalSearch(context);
                       },
                       child: Card(
                         child: Column(
@@ -119,7 +118,7 @@ class _HomeState extends State<Home> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        navigateToFoodSearch(context);
+                        navigateToGeneralsSearch(context);
                       },
                       child: Card(
                         child: Column(

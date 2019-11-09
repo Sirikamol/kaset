@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:kasetsart/agriculture.dart';
 import 'algolia_service.dart';
-import 'food.dart';
+import 'agriculture.dart';
 import 'app_navigate.dart';
 
-class FoodSearch extends StatefulWidget {
+class AgricultureSearch extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => FoodSearchState();
+  State<StatefulWidget> createState() => AgricultureSearchState();
 }
 
-class FoodSearchState extends State<FoodSearch> {
+class AgricultureSearchState extends State<AgricultureSearch> {
   
 
   @override
@@ -42,7 +43,7 @@ class FoodSearchState extends State<FoodSearch> {
                 },
             child: Card(
               child: Image.network(
-                  "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),
+                  "https://my.kapook.com/imagescontent/fb_img/530/s_203918_9482.jpg"),
             ),),
           ],
         ),
@@ -64,7 +65,7 @@ class FoodSearchState extends State<FoodSearch> {
                 },
             child:Card(
               child: Image.network(
-                  "https://pbs.twimg.com/media/C3QbEqbVMAA0l2I.jpg"),
+                  "http://www.clicksii.com/photostock/wp-content/uploads/2018/06/cactus-4-560x420.jpg"),
             ),),
             GestureDetector(
               onTap: () {
@@ -73,18 +74,18 @@ class FoodSearchState extends State<FoodSearch> {
                 },
             child:Card(
               child: Image.network(
-                  "https://pbs.twimg.com/media/CmBxHzDWgAAvuGo.jpg"),
+                  "https://i.ytimg.com/vi/uq5T6u_Towg/maxresdefault.jpg"),
             ),
             ),
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
-            ),),
+            // GestureDetector(
+            //   onTap: () {
+            //       // print('hello1');
+            //       navigateToFoodEdit(context);
+            //     },
+            // child:Card(
+            //   child: Image.network(
+            //       "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
+            // ),),
           ],
         ),
       )
@@ -107,7 +108,7 @@ class FoodSearchState extends State<FoodSearch> {
                 },
             child:Card(
               child: Image.network(
-                  "https://www.chillpainai.com/src/wewakeup/scoop/img_scoop/scoop/kang/fabuary2017/kasetfair/IMG_2468.jpg"),
+                  "https://travel.mthai.com/app/uploads/2018/11/sunflower-9.jpg"),
             ),),
             GestureDetector(
               onTap: () {
@@ -116,7 +117,7 @@ class FoodSearchState extends State<FoodSearch> {
                 },
             child:Card(
               child: Image.network(
-                  "https://arch.punpromotion.com/wp-content/uploads/2017/06/S__2523145-1.jpg"),
+                  "https://www.organicfarmthailand.com/wp-content/uploads/2016/01/WP_20160130_067.jpg"),
             ),
             ),
           ],
@@ -164,11 +165,11 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return FutureBuilder<List<Food>>(
-      future: algoliaService.performSearchQuery(text: query),
+    return FutureBuilder<List<Agriculture>>(
+      future: algoliaService.performAgricultureQuery(text: query),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          final foods = snapshot.data.map((food) {
+          final agriculture = snapshot.data.map((agriculture) {
             return Container(
               child: Center(
                   child: Card(
@@ -184,14 +185,14 @@ class DataSearch extends SearchDelegate<String> {
                       Padding(
                           padding: EdgeInsets.all(7.0),
                           child: Text(
-                            food.nameStore.toString(),
+                            agriculture.nameStore.toString(),
                             style: TextStyle(fontSize: 18.0),
                           )),
                     ]),
                     Row(
                       children: <Widget>[
                         Image.network(
-                          food.image,
+                          agriculture.image,
                           width: 200,
                           height: 200,
                         ),
@@ -206,7 +207,7 @@ class DataSearch extends SearchDelegate<String> {
                       Padding(
                           padding: EdgeInsets.all(7.0),
                           child: Text(
-                            food.zone,
+                            agriculture.zone,
                             style: TextStyle(fontSize: 18.0),
                           )),
                     ]),
@@ -219,7 +220,7 @@ class DataSearch extends SearchDelegate<String> {
                       Padding(
                           padding: EdgeInsets.all(7.0),
                           child: Text(
-                            food.products.toString(),
+                            agriculture.products.toString(),
                             style: TextStyle(fontSize: 18.0),
                           )),
                     ]),
@@ -232,7 +233,7 @@ class DataSearch extends SearchDelegate<String> {
                       Padding(
                           padding: EdgeInsets.all(7.0),
                           child: Text(
-                            food.category,
+                            agriculture.category,
                             style: TextStyle(fontSize: 18.0),
                           )),
                     ]),
@@ -242,7 +243,7 @@ class DataSearch extends SearchDelegate<String> {
             );
           }).toList();
 
-          return ListView(children: foods);
+          return ListView(children: agriculture);
         } else if (snapshot.hasError) {
           return Center(
             child: Text("${snapshot.error.toString()}"),

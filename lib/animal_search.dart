@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'algolia_service.dart';
-import 'food.dart';
+import 'animals.dart';
 import 'app_navigate.dart';
 
-class FoodSearch extends StatefulWidget {
+class AnimalSearch extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => FoodSearchState();
+  State<StatefulWidget> createState() => AnimalSearchState();
 }
 
-class FoodSearchState extends State<FoodSearch> {
+class AnimalSearchState extends State<AnimalSearch> {
   
 
   @override
@@ -42,7 +42,7 @@ class FoodSearchState extends State<FoodSearch> {
                 },
             child: Card(
               child: Image.network(
-                  "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),
+                  "https://i.ytimg.com/vi/iwvHrupRk6I/maxresdefault.jpg"),
             ),),
           ],
         ),
@@ -64,7 +64,7 @@ class FoodSearchState extends State<FoodSearch> {
                 },
             child:Card(
               child: Image.network(
-                  "https://pbs.twimg.com/media/C3QbEqbVMAA0l2I.jpg"),
+                  "https://f.ptcdn.info/020/013/000/1386375631-DSC0056JPG-o.jpg"),
             ),),
             GestureDetector(
               onTap: () {
@@ -73,18 +73,18 @@ class FoodSearchState extends State<FoodSearch> {
                 },
             child:Card(
               child: Image.network(
-                  "https://pbs.twimg.com/media/CmBxHzDWgAAvuGo.jpg"),
+                  "http://chailaibackpacker.com/wp-content/uploads/2017/01/Page1.jpg"),
             ),
             ),
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
-            ),),
+            // GestureDetector(
+            //   onTap: () {
+            //       // print('hello1');
+            //       navigateToFoodEdit(context);
+            //     },
+            // child:Card(
+            //   child: Image.network(
+            //       "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
+            // ),),
           ],
         ),
       )
@@ -107,7 +107,7 @@ class FoodSearchState extends State<FoodSearch> {
                 },
             child:Card(
               child: Image.network(
-                  "https://www.chillpainai.com/src/wewakeup/scoop/img_scoop/scoop/kang/fabuary2017/kasetfair/IMG_2468.jpg"),
+                  "http://images.voicetv.co.th/media/640/0/storage0/1020294.jpg"),
             ),),
             GestureDetector(
               onTap: () {
@@ -116,7 +116,7 @@ class FoodSearchState extends State<FoodSearch> {
                 },
             child:Card(
               child: Image.network(
-                  "https://arch.punpromotion.com/wp-content/uploads/2017/06/S__2523145-1.jpg"),
+                  "http://jjpetonline.com/picture/shop373/shop_373_6020_1.jpg"),
             ),
             ),
           ],
@@ -164,11 +164,11 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return FutureBuilder<List<Food>>(
-      future: algoliaService.performSearchQuery(text: query),
+    return FutureBuilder<List<Animals>>(
+      future: algoliaService.performAnimalQuery(text: query),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          final foods = snapshot.data.map((food) {
+          final animals = snapshot.data.map((animals) {
             return Container(
               child: Center(
                   child: Card(
@@ -184,14 +184,14 @@ class DataSearch extends SearchDelegate<String> {
                       Padding(
                           padding: EdgeInsets.all(7.0),
                           child: Text(
-                            food.nameStore.toString(),
+                            animals.nameStore.toString(),
                             style: TextStyle(fontSize: 18.0),
                           )),
                     ]),
                     Row(
                       children: <Widget>[
                         Image.network(
-                          food.image,
+                          animals.image,
                           width: 200,
                           height: 200,
                         ),
@@ -206,7 +206,7 @@ class DataSearch extends SearchDelegate<String> {
                       Padding(
                           padding: EdgeInsets.all(7.0),
                           child: Text(
-                            food.zone,
+                            animals.zone,
                             style: TextStyle(fontSize: 18.0),
                           )),
                     ]),
@@ -219,7 +219,7 @@ class DataSearch extends SearchDelegate<String> {
                       Padding(
                           padding: EdgeInsets.all(7.0),
                           child: Text(
-                            food.products.toString(),
+                            animals.products.toString(),
                             style: TextStyle(fontSize: 18.0),
                           )),
                     ]),
@@ -232,7 +232,7 @@ class DataSearch extends SearchDelegate<String> {
                       Padding(
                           padding: EdgeInsets.all(7.0),
                           child: Text(
-                            food.category,
+                            animals.category,
                             style: TextStyle(fontSize: 18.0),
                           )),
                     ]),
@@ -242,7 +242,7 @@ class DataSearch extends SearchDelegate<String> {
             );
           }).toList();
 
-          return ListView(children: foods);
+          return ListView(children: animals);
         } else if (snapshot.hasError) {
           return Center(
             child: Text("${snapshot.error.toString()}"),
