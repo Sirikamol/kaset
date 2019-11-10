@@ -148,12 +148,68 @@ class _HomeState extends State<Home> {
             ),
             button2Section(),
             finalHeadSection(),
-            finalSection("พระเจ้าวรวงศ์เธอ พระองค์เจ้าโสมสวลีฯ",
-                "วันที่ 2 ธ.ค.ทรงเสด็จเปิดงานเกษตรครั้งที่ 23"),
-            finalSection(
-                "การเกษตร 4.0", "ภายในงานมีการโชว์นวัตกรรมทางการเกษตร"),
+            // finalSection("พระเจ้าวรวงศ์เธอ พระองค์เจ้าโสมสวลีฯ",
+            //     "วันที่ 2 ธ.ค.ทรงเสด็จเปิดงานเกษตรครั้งที่ 23"),
+            // finalSection(
+            //     "การเกษตร 4.0", "ภายในงานมีการโชว์นวัตกรรมทางการเกษตร"),
+            Card(
+              
+          child: Row(
+            
+            children: <Widget>[
+              GestureDetector(
+                onTap: () {
+                  // print('hello1');
+                  navigateToFoodEdit(context);
+                },
+        child: Icon(Icons.arrow_right, color: Colors.lightGreenAccent[700], size: 35),),
+        Expanded(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text("พระเจ้าวรวงศ์เธอ พระองค์เจ้าโสมสวลีฯ",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            Text(
+              "วันที่ 2 ธ.ค.ทรงเสด็จเปิดงานเกษตรครั้งที่ 23",
+              style: TextStyle(color: Colors.grey[500], fontSize: 14),
+            ),
+          ],
+        )),
+      ],
+          ),),
+           Card(
+              
+          child: Row(
+            
+            children: <Widget>[
+              GestureDetector(
+                onTap: () {
+                  // print('hello1');
+                  navigateToFoodEdit(context);
+                },
+        child: Icon(Icons.arrow_right, color: Colors.lightGreenAccent[700], size: 35),),
+        Expanded(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text("การเกษตร 4.0",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            Text(
+              "ภายในงานมีการโชว์นวัตกรรมทางการเกษตร",
+              style: TextStyle(color: Colors.grey[500], fontSize: 14),
+            ),
+          ],
+        )),
+      ],
+          ),),
+
+
+
+
+
           ],
         ),
+        
       ),
       drawer: Drawer(
         child: ListView(

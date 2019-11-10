@@ -106,28 +106,32 @@ Widget newsSection() {
   );
 }
 
-Widget finalSection(String text1, String text2) {
-  return Padding(
-    padding: EdgeInsets.all(20),
-    child: Row(
-      children: <Widget>[
-        Icon(Icons.arrow_right, color: Colors.lightGreenAccent[700], size: 35),
-        Expanded(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(text1,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-            Text(
-              text2,
-              style: TextStyle(color: Colors.grey[500], fontSize: 14),
-            ),
-          ],
-        )),
-      ],
-    ),
-  );
-}
+// Widget finalSection(String text1, String text2) {
+//   return  Card(
+
+//   child: Padding(
+//     padding: EdgeInsets.all(20),
+    
+//     child: Row(
+
+//       children: <Widget>[
+//         Icon(Icons.arrow_right, color: Colors.lightGreenAccent[700], size: 35),
+//         Expanded(
+//             child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: <Widget>[
+//             Text(text1,
+//                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+//             Text(
+//               text2,
+//               style: TextStyle(color: Colors.grey[500], fontSize: 14),
+//             ),
+//           ],
+//         )),
+//       ],
+//     ),
+//   ),);
+// }
 
 Widget buildCardListView(String imagePath) {
   return Card(

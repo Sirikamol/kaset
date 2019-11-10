@@ -27,7 +27,9 @@ class _WorkTableState extends State<WorkTable> {
   }
 
   Widget _twoSec() {
-    return Column(
+    return  Card(
+
+    child: Column(
       children: <Widget>[
         Text("ประวัติมหาวิทยาลัยเกษตรศาสตร์",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
@@ -36,7 +38,7 @@ class _WorkTableState extends State<WorkTable> {
           style: TextStyle(color: Colors.grey[500], fontSize: 20),
         ),
       ],
-    );
+    ));
   }
 
   @override
@@ -50,6 +52,7 @@ class _WorkTableState extends State<WorkTable> {
           children: <Widget>[
             _oneSec(),
             _twoSec(),
+            
           ],
         ));
   }
