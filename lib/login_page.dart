@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
         fit: StackFit.expand,
         children: <Widget>[
           Container(
-            color: Colors.blueGrey,
+            color: Colors.green[200],
           ),
           Padding(
             padding: const EdgeInsets.all(20.0),
@@ -52,8 +52,8 @@ class _LoginPageState extends State<LoginPage> {
                     'MY LOGIN APP',
                     style: TextStyle(
                         fontSize: 40.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.grey[700],),
                   ),
                   TextFormField(
                     validator: (String value) {
@@ -64,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                         prefixIcon: Icon(Icons.email),
                         labelText: 'Username',
                         labelStyle:
-                            TextStyle(color: Colors.white, fontSize: 20.0),
+                            TextStyle(color: Colors.grey[500], fontSize: 20.0),
                         filled: true,
                         fillColor: Colors.white70,
                         border: InputBorder.none),
@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                         prefixIcon: Icon(Icons.vpn_key),
                         labelText: 'Password',
                         labelStyle:
-                            TextStyle(color: Colors.white, fontSize: 20.0),
+                            TextStyle(color: Colors.grey[500], fontSize: 20.0),
                         filled: true,
                         fillColor: Colors.white70,
                         border: InputBorder.none),
@@ -92,11 +92,11 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   RaisedButton(
                     onPressed: () => doLogin(),
-                    color: Colors.pink,
+                    color: Colors.green[100],
                     child: Text(
                       'Login to app',
                       style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.grey[700],
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold),
                     ),

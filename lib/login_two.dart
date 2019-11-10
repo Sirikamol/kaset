@@ -26,6 +26,8 @@ class _LoginTwoState extends State<LoginTwo> {
                           navigateToFoodEdit(context);
                         },
                         child: Card(
+                          
+                          color: Colors.pink[100],
                           child: Column(
                             children: <Widget>[
                               Padding(
@@ -51,6 +53,7 @@ class _LoginTwoState extends State<LoginTwo> {
                           navigateToAgricultureEdit(context);
                         },
                         child: Card(
+                          color: Colors.green[200],
                           child: Column(
                             children: <Widget>[
                               Padding(
@@ -76,6 +79,7 @@ class _LoginTwoState extends State<LoginTwo> {
                           navigateToAnimalsEdit(context);
                         },
                         child: Card(
+                          color: Colors.yellow[200],
                           child: Column(
                             children: <Widget>[
                               Padding(
@@ -101,6 +105,7 @@ class _LoginTwoState extends State<LoginTwo> {
                           navigateToGeneralEdit(context);
                         },
                         child: Card(
+                          color: Colors.purple[200],
                           child: Column(
                             children: <Widget>[
                               Padding(
