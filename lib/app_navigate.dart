@@ -4,7 +4,7 @@ import 'animal_search.dart';
 import 'food_search.dart';
 import 'agriculture_edit.dart';
 import 'general_edit.dart';
-import 'generals_search.dart';
+import 'general_search.dart';
 import 'insertAgriculture_page.dart';
 import 'insertAnimals_page.dart';
 import 'insertGenerals_page.dart';
@@ -51,11 +51,12 @@ navigateToAgricultureSearch(BuildContext context) {
     return AgricultureSearch();
   }));
 }
-navigateToGeneralsSearch(BuildContext context) {
+navigateToGeneralSearch(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return GeneralsSearch();
+    return GeneralSearch();
   }));
 }
+
 
 
 navigateToMapPage(BuildContext context) {

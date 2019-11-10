@@ -118,7 +118,7 @@ class _HomeState extends State<Home> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        navigateToGeneralsSearch(context);
+                        navigateToGeneralSearch(context);
                       },
                       child: Card(
                         child: Column(

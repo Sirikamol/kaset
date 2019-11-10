@@ -3,12 +3,12 @@ import 'package:kasetsart/general.dart';
 import 'algolia_service.dart';
 import 'app_navigate.dart';
 
-class GeneralsSearch extends StatefulWidget {
+class GeneralSearch extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => GeneralsSearchState();
+  State<StatefulWidget> createState() => GeneralSearchState();
 }
 
-class GeneralsSearchState extends State<GeneralsSearch> {
+class GeneralSearchState extends State<GeneralSearch> {
   
 
   @override
