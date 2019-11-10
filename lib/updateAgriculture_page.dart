@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kasetsart/image_service.dart';
 import 'agriculture.dart';
+import 'app_navigate.dart';
 
 class UpdateAgriculturePage extends StatefulWidget {
   UpdateAgriculturePage({Key key, this.docID}) : super(key: key);
@@ -110,8 +111,33 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
         'zone': newAgriculture.zone,
       });
     }
+    _alertupdate() ;
     return null;
   }
+
+  Future<void> _alertupdate() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Update Success'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                navigateToAgricultureEdit(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
+
 
   List<Widget> buildProductsForm(List<dynamic> products) {
     if (products != null) {

@@ -6,6 +6,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:kasetsart/food.dart';
 import 'package:kasetsart/image_service.dart';
 
+import 'app_navigate.dart';
+
 class UpdatePage extends StatefulWidget {
   UpdatePage({Key key, this.docID}) : super(key: key);
   final String docID;
@@ -104,8 +106,37 @@ class _UpdatePageState extends State<UpdatePage> {
         'zone': newFood.zone,
       });
     }
+    _alertinput();
     return null;
+    
   }
+
+  Future<void> _alertinput() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Update Success'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                navigateToFoodEdit(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
+
+
+
+
 
   List<Widget> buildProductsForm(List<dynamic> products) {
     if (products != null) {

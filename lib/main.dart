@@ -167,12 +167,15 @@ class _HomeState extends State<Home> {
               color: Colors.black,
               size: 30,
             ),
-            Column(
+            Card(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Column(
                   children: <Widget>[
-                    FlatButton.icon(
+                    Align(
+                    alignment: Alignment.topLeft,
+                    child: FlatButton.icon(
                         onPressed: () => navigateToMapPage(context),
                         icon: Icon(
                           Icons.location_on,
@@ -181,8 +184,10 @@ class _HomeState extends State<Home> {
                         ),
                         label: Text("Map",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16))),
-                    FlatButton.icon(
+                                fontWeight: FontWeight.bold, fontSize: 16))),),
+                    Align(
+                    alignment: Alignment.topLeft,
+                    child: FlatButton.icon(
                         onPressed: () => navigateToArkingPlace(context),
                         icon: Icon(
                           Icons.drive_eta,
@@ -191,8 +196,10 @@ class _HomeState extends State<Home> {
                         ),
                         label: Text("Parking place",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16))),
-                    FlatButton.icon(
+                                fontWeight: FontWeight.bold, fontSize: 16))),),
+                    Align(
+                    alignment: Alignment.topLeft,
+                    child: FlatButton.icon(
                         onPressed: () => navigateToHistoryPage(context),
                         icon: Icon(
                           Icons.change_history,
@@ -201,8 +208,10 @@ class _HomeState extends State<Home> {
                         ),
                         label: Text("History",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16))),
-                    FlatButton.icon(
+                                fontWeight: FontWeight.bold, fontSize: 16))),),
+                    Align(
+                    alignment: Alignment.topLeft,
+                    child: FlatButton.icon(
                         onPressed: () => navigateToTramPage(context),
                         icon: Icon(
                           Icons.departure_board,
@@ -211,8 +220,10 @@ class _HomeState extends State<Home> {
                         ),
                         label: Text("Tram",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16))),
-                    FlatButton.icon(
+                                fontWeight: FontWeight.bold, fontSize: 16))),),
+                    Align(
+                    alignment: Alignment.topLeft,
+                    child: FlatButton.icon(
                         onPressed: () => navigateToWorkTable(context),
                         icon: Icon(
                           Icons.grid_on,
@@ -221,8 +232,10 @@ class _HomeState extends State<Home> {
                         ),
                         label: Text("Work Table",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16))),
-                    FlatButton.icon(
+                                fontWeight: FontWeight.bold, fontSize: 16))),),
+                    Align(
+                    alignment: Alignment.topLeft,
+                    child: FlatButton.icon(
                         onPressed: () => navigateToInsertPage(context),
                         icon: Icon(
                           Icons.verified_user,
@@ -231,15 +244,18 @@ class _HomeState extends State<Home> {
                         ),
                         label: Text("Help",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16))),
+                                fontWeight: FontWeight.bold, fontSize: 16))),),
                   ],
                 ),
                 //Container(margin: EdgeInsets.only(left: 0)),
               ],
             ),
+            ),
             Column(
               children: <Widget>[
-                FlatButton.icon(
+                Align(
+                alignment: Alignment.topLeft,
+                child: FlatButton.icon(
                     onPressed: () => navigateToLoginPage(context),
                     icon: Icon(
                       Icons.supervisor_account,
@@ -248,7 +264,7 @@ class _HomeState extends State<Home> {
                     ),
                     label: Text("Login",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16))),
+                            fontWeight: FontWeight.bold, fontSize: 16))),),
               ],
             )
           ],

@@ -112,31 +112,30 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
         'zone': newGenerals.zone,
       });
     }
-    // _alertinput();
+    _alertupdate() ;
     return null;
   }
 
-  // Future<void> _alertinput() async {
-  //   return showDialog<void>(
-  //     context: context,
-  //     barrierDismissible: false, // user must tap button!
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         title: Text('Input Success'),
-  //         actions: <Widget>[
-  //           FlatButton(
-  //             child: Text('Ok'),
-  //             onPressed: () {
-  //               Navigator.of(context).pop();
-  //               navigateToGeneralEdit(context);
-  //             },
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
-
+  Future<void> _alertupdate() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Update Success'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                navigateToGeneralEdit(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
   List<Widget> buildProductsForm(List<dynamic> products) {
     if (products != null) {
       return products

@@ -7,6 +7,8 @@ import 'package:kasetsart/animals.dart';
 // import 'package:kasetsart/food.dart';
 import 'package:kasetsart/image_service.dart';
 
+import 'app_navigate.dart';
+
 class UpdateAnimalsPage extends StatefulWidget {
   UpdateAnimalsPage({Key key, this.docID}) : super(key: key);
   final String docID;
@@ -111,8 +113,34 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
         'zone': newAnimals.zone,
       });
     }
+   
+   _alertupdate() ;
     return null;
   }
+
+  Future<void> _alertupdate() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Update Success'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                navigateToAnimalsEdit(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
+
 
   List<Widget> buildProductsForm(List<dynamic> products) {
     if (products != null) {

@@ -48,7 +48,7 @@ class _LoginTwoState extends State<LoginTwo> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          navigateToAnimalsEdit(context);
+                          navigateToAgricultureEdit(context);
                         },
                         child: Card(
                           child: Column(
@@ -73,7 +73,7 @@ class _LoginTwoState extends State<LoginTwo> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          navigateToAgricultureEdit(context);
+                          navigateToAnimalsEdit(context);
                         },
                         child: Card(
                           child: Column(
