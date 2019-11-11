@@ -74,11 +74,13 @@ Widget button2Section() {
 
 Widget finalHeadSection() {
   return Container(
+    alignment: Alignment.topLeft,
     child: Text(
       'ข่าวสาร ',
       style: TextStyle(fontSize: 20, color: Colors.white),
     ),
     color: Colors.lightGreen[600],
+    
     height: 40,
   );
 }

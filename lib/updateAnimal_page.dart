@@ -172,7 +172,7 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.green[300],
-          title: Text('UpdateStore'),
+          title: Text('Update Animals'),
         ),
         body: SafeArea(
             top: false,

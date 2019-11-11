@@ -23,11 +23,13 @@ class _GeneralEditState extends State<GeneralEdit> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightGreen,
+          title: Text('Generals'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => navigateToInsertGeneralsPage(context),
           child: Icon(Icons.add),
           backgroundColor: Colors.lightGreen,
+          
         ),
         body: StreamBuilder<QuerySnapshot>(
           stream: Firestore.instance.collection('generals').snapshots(),

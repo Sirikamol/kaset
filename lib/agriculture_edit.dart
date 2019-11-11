@@ -23,6 +23,7 @@ class _AgricultureEditState extends State<AgricultureEdit> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightGreen,
+          title: Text('Agriculture'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => navigateToInsertAgriculturePage(context),

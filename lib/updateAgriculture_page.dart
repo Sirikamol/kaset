@@ -169,7 +169,8 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.green[300],
-          title: Text('UpdateStore'),
+          title: Text('Update agriculture'),
+          
         ),
         body: SafeArea(
             top: false,

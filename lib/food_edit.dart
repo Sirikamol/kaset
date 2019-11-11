@@ -23,6 +23,7 @@ class _FoodEditState extends State<FoodEdit> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightGreen,
+          title: Text('Food'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => navigateToInsertPage(context),

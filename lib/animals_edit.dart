@@ -23,6 +23,7 @@ class _AnimalsEditState extends State<AnimalsEdit> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightGreen,
+          title: Text('Animals'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => navigateToInsertAnimalsPage(context),

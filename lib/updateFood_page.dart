@@ -168,7 +168,7 @@ class _UpdatePageState extends State<UpdatePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.green[300],
-          title: Text('UpdateStore'),
+          title: Text('Update Food'),
         ),
         body: SafeArea(
             top: false,
@@ -183,7 +183,9 @@ class _UpdatePageState extends State<UpdatePage> {
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   print(snapshot.data);
                   var document = snapshot.data;
-                  return ListView(
+                  return Card(
+                    color: Colors.yellow[100],
+                  child: ListView(
                     children: <Widget>[
                       Column(
                         children: <Widget>[
@@ -213,6 +215,7 @@ class _UpdatePageState extends State<UpdatePage> {
                           RaisedButton(
                             onPressed: getImage,
                             child: Icon(Icons.add_a_photo),
+                          
                           ),
                           Align(
                             alignment: Alignment.topLeft,
@@ -296,12 +299,16 @@ class _UpdatePageState extends State<UpdatePage> {
                                 _onUpdate(document);
                               })),
                     ],
+                  )
                   );
                 },
               ),
             )),
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
+        floatingActionButton: FloatingActionButton.extended(
+            icon: Icon(Icons.add),
+          label: Text("เพิ่มสินค้า"),
+          backgroundColor: Colors.pink[200],
+          foregroundColor: Colors.white,
           onPressed: () {
             addList();
           },

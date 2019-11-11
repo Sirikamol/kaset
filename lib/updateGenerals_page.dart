@@ -166,7 +166,7 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.green[300],
-          title: Text('UpdateStore'),
+          title: Text('Update Generals'),
         ),
         body: SafeArea(
             top: false,

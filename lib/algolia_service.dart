@@ -37,7 +37,7 @@ class AlgoliaService {
   }
 
   Future<List<Agriculture>> performAgricultureQuery({text: String}) async {
-    final query = _animalIndex.search(text);
+    final query = _agricultureIndex.search(text);
     final snap = await query.getObjects();
     final agriculture =
         snap.hits.map((agriculture) => Agriculture.fromJSON(agriculture.data)).toList();

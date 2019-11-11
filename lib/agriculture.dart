@@ -2,7 +2,7 @@ class Agriculture {
   String nameStore;
   String zone;
   String category;
-  List<String> products;
+  List<dynamic> products;
   String image;
 
   Agriculture(
