@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kasetsart/Image_food1.dart';
+import 'package:kasetsart/image_fodd2.dart';
+import 'package:kasetsart/image_food3.dart';
+import 'package:kasetsart/image_food4.dart';
+import 'package:kasetsart/image_food5.dart';
+import 'package:kasetsart/tidings_two.dart';
 import 'agriculture_search.dart';
 import 'animal_search.dart';
 import 'food_search.dart';
@@ -14,6 +20,7 @@ import 'insertFood_page.dart';
 import 'login_page.dart';
 import 'second_page.dart';
 import 'map_page.dart';
+import 'tidings_one.dart';
 import 'tram_page.dart';
 import 'updateAgriculture_page.dart';
 import 'updateAnimal_page.dart';
@@ -166,6 +173,48 @@ navigateToInsertGeneralsPage(BuildContext context) {
     return InsertGeneralsPage();
   }));
 }
+navigateToImageFoodA(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageFoodA();
+  }));
+}
+navigateToImageFoodB(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageFoodB();
+  }));
+}
+navigateToImageFoodC(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageFoodC();
+  }));
+}
+navigateToImageFoodD(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageFoodD();
+  }));
+}
+navigateToImageFoodE(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageFoodE();
+  }));
+}
+
+
+
+navigateToTidingsOne(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return TidingsOne();
+  }));
+}
+navigateToTidingsTwo(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return TidingsTwo();
+  }));
+}
+
+
+
+
 
 
 

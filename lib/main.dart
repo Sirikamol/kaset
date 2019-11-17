@@ -160,7 +160,7 @@ class _HomeState extends State<Home> {
               GestureDetector(
                 onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToTidingsOne(context);
                 },
         child: Icon(Icons.arrow_right, color: Colors.lightGreenAccent[700], size: 35),),
         Expanded(
@@ -185,7 +185,7 @@ class _HomeState extends State<Home> {
               GestureDetector(
                 onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToTidingsTwo(context);
                 },
         child: Icon(Icons.arrow_right, color: Colors.lightGreenAccent[700], size: 35),),
         Expanded(
@@ -195,7 +195,7 @@ class _HomeState extends State<Home> {
             Text("การเกษตร 4.0",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
             Text(
-              "ภายในงานมีการโชว์นวัตกรรมทางการเกษตร",
+              "การเกษตร4.0! มกอช. จับมือสมาพันธ์ SME ดันยุทธศาสตร์พระพิรุณ",
               style: TextStyle(color: Colors.grey[500], fontSize: 14),
             ),
           ],

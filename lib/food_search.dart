@@ -36,10 +36,10 @@ class FoodSearchState extends State<FoodSearch> {
           scrollDirection: Axis.horizontal,
           children: <Widget>[
             GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
+              // onTap: () {
+              //     // print('hello1');
+              //     navigateToImageFood(context);
+              //   },
             child: Card(
               child: Image.network(
                   "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),
@@ -60,7 +60,7 @@ class FoodSearchState extends State<FoodSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageFoodA(context);
                 },
             child:Card(
               child: Image.network(
@@ -69,7 +69,7 @@ class FoodSearchState extends State<FoodSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageFoodB(context);
                 },
             child:Card(
               child: Image.network(
@@ -79,7 +79,7 @@ class FoodSearchState extends State<FoodSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageFoodC(context);
                 },
             child:Card(
               child: Image.network(
@@ -103,7 +103,7 @@ class FoodSearchState extends State<FoodSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageFoodD(context);
                 },
             child:Card(
               child: Image.network(
@@ -112,7 +112,7 @@ class FoodSearchState extends State<FoodSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageFoodE(context);
                 },
             child:Card(
               child: Image.network(
@@ -129,6 +129,8 @@ class FoodSearchState extends State<FoodSearch> {
       )
     );
   }
+
+  void navigateToFoodImage(BuildContext context) {}
 }
 
 class DataSearch extends SearchDelegate<String> {

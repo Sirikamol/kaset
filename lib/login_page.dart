@@ -67,6 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                             TextStyle(color: Colors.grey[500], fontSize: 20.0),
                         filled: true,
                         fillColor: Colors.white70,
+                        
                         border: InputBorder.none),
                   ),
                   SizedBox(
@@ -99,7 +100,9 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.grey[700],
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold),
+                          
                     ),
+                    
                   )
                   //FlatButton(onPressed: () {},child: Text('Help me',style: TextStyle(fontSize: 20.0, color: Colors.white),),),
                 ],
