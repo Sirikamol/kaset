@@ -88,6 +88,7 @@ class _InsertAnimalsPageState extends State<InsertAnimalsPage> {
     print(_image);
     String imgUrl = await onImageUploading(_image);
     print(imgUrl);
+    print('ID: ${newAnimals.idStore}'); //* 
 
     Firestore.instance.collection('animal').document(widget.docID).setData({
       'nameStore': newAnimals.nameStore,
@@ -95,6 +96,7 @@ class _InsertAnimalsPageState extends State<InsertAnimalsPage> {
       'products': _insertProducts,
       'zone': newAnimals.zone,
       'image': [imgUrl],
+      'idStore': newAnimals.idStore,
     });
     _alertinput();
   }
@@ -141,6 +143,20 @@ class _InsertAnimalsPageState extends State<InsertAnimalsPage> {
                           hintText: 'ชื่อร้าน',
                           labelText: 'กรอกชื่อร้าน'),
                       onSaved: (val) => newAnimals.nameStore = val,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(   //*
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      decoration: InputDecoration(
+                          icon: Icon(Icons.account_balance),
+                          hintText: 'เลขที่ร้าน',
+                          labelText: 'กรอกเลขที่ร้าน'),
+                      onSaved: (val) => newAnimals.idStore = val,
                     ),
                   ],
                 ),

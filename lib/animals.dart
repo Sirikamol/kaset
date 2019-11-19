@@ -4,9 +4,10 @@ class Animals {
   String category;
   List<dynamic> products;
   String image;
+  String idStore;  //* 
 
   Animals(
-      {this.nameStore, this.zone, this.category, this.products, this.image});
+      {this.nameStore, this.zone, this.category, this.products, this.image, this.idStore});
   factory Animals.fromJSON(Map<String, dynamic> json) {
     return Animals(
       nameStore: json['nameStore'],
@@ -14,6 +15,7 @@ class Animals {
       category: json['category'],
       products: json['products'],
       image: json['image'],
+      idStore: json['idStore'],
     );
   }
 }

@@ -84,6 +84,7 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
 
     print('Form save called, newContact is now up to date...');
     print('Name: ${newGenerals.nameStore}');
+    print('ID: ${newGenerals.idStore}'); //*
     print('Category: ${newGenerals.category}');
     print('Zone: ${newGenerals.zone}');
     print(_updateProducts);
@@ -100,6 +101,7 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
         'products': _updateProducts,
         'zone': newGenerals.zone,
         'image': [imgUrl],
+        'idStore': newGenerals.idStore,
       });
     } else {
       Firestore.instance
@@ -110,6 +112,7 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
         'category': newGenerals.category,
         'products': _updateProducts,
         'zone': newGenerals.zone,
+        'idStore': newGenerals.idStore,
       });
     }
     _alertupdate() ;
@@ -194,6 +197,16 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
                                 labelText: 'กรอกชื่อร้าน'),
                             style: TextStyle(fontSize: 18, color: Colors.black),
                             onSaved: (val) => newGenerals.nameStore = val,
+                          ),
+                          TextFormField(
+                            initialValue: document['idStore'],
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                icon: Icon(Icons.account_balance),
+                                hintText: 'เลขที่ร้าน',
+                                labelText: 'กรอกเลขที่ร้าน'),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
+                            onSaved: (val) => newGenerals.idStore = val,
                           ),
                           Center(
                             child: _image == null

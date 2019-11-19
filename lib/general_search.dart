@@ -199,6 +199,19 @@ class DataSearch extends SearchDelegate<String> {
                     ),
                     Row(children: <Widget>[
                       Text(
+                        "ID : ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Padding(
+                          padding: EdgeInsets.all(7.0),
+                          child: Text(
+                            generals.idStore,
+                            style: TextStyle(fontSize: 18.0),
+                          )),
+                    ]),
+                    Row(children: <Widget>[
+                      Text(
                         "zone : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),

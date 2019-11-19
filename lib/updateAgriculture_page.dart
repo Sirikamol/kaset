@@ -83,6 +83,7 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
 
     print('Form save called, newContact is now up to date...');
     print('Name: ${newAgriculture.nameStore}');
+    print('ID: ${newAgriculture.idStore}'); //*
     print('Category: ${newAgriculture.category}');
     print('Zone: ${newAgriculture.zone}');
     print(_updateProducts);
@@ -99,6 +100,7 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
         'products': _updateProducts,
         'zone': newAgriculture.zone,
         'image': [imgUrl],
+        'idStore': newAgriculture.idStore,
       });
     } else {
       Firestore.instance
@@ -109,6 +111,7 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
         'category': newAgriculture.category,
         'products': _updateProducts,
         'zone': newAgriculture.zone,
+        'idStore': newAgriculture.idStore,
       });
     }
     _alertupdate() ;
@@ -198,6 +201,16 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
                                 labelText: 'กรอกชื่อร้าน'),
                             style: TextStyle(fontSize: 18, color: Colors.black),
                             onSaved: (val) => newAgriculture.nameStore = val,
+                          ),
+                          TextFormField(
+                            initialValue: document['idStore'],
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                icon: Icon(Icons.account_balance),
+                                hintText: 'เลขที่ร้าน',
+                                labelText: 'กรอกเลขที่ร้าน'),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
+                            onSaved: (val) => newAgriculture.idStore = val,
                           ),
                           Center(
                             child: _image == null

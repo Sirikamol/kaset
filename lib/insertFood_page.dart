@@ -87,6 +87,7 @@ class _InsertFoodPageState extends State<InsertPage> {
     print(_image);
     String imgUrl = await onImageUploading(_image);
     print(imgUrl);
+    print('ID: ${newFood.idStore}'); //* 
 
     Firestore.instance.collection('food').document(widget.docID).setData({
       'nameStore': newFood.nameStore,
@@ -94,6 +95,7 @@ class _InsertFoodPageState extends State<InsertPage> {
       'products': _insertProducts,
       'zone': newFood.zone,
       'image': [imgUrl],
+      'idStore': newFood.idStore, //*
     });
     _alertinput();
   }
@@ -140,6 +142,20 @@ class _InsertFoodPageState extends State<InsertPage> {
                           hintText: 'ชื่อร้าน',
                           labelText: 'กรอกชื่อร้าน'),
                       onSaved: (val) => newFood.nameStore = val,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(   //*
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      decoration: InputDecoration(
+                          icon: Icon(Icons.account_balance),
+                          hintText: 'เลขที่ร้าน',
+                          labelText: 'กรอกเลขที่ร้าน'),
+                      onSaved: (val) => newFood.idStore = val,
                     ),
                   ],
                 ),

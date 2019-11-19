@@ -85,6 +85,7 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
 
     print('Form save called, newContact is now up to date...');
     print('Name: ${newAnimals.nameStore}');
+    print('ID: ${newAnimals.idStore}'); //*
     print('Category: ${newAnimals.category}');
     print('Zone: ${newAnimals.zone}');
     print(_updateProducts);
@@ -101,6 +102,7 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
         'products': _updateProducts,
         'zone': newAnimals.zone,
         'image': [imgUrl],
+        'idStore': newAnimals.idStore,
       });
     } else {
       Firestore.instance
@@ -111,6 +113,7 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
         'category': newAnimals.category,
         'products': _updateProducts,
         'zone': newAnimals.zone,
+        'idStore': newAnimals.idStore,
       });
     }
    
@@ -200,6 +203,16 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
                                 labelText: 'กรอกชื่อร้าน'),
                             style: TextStyle(fontSize: 18, color: Colors.black),
                             onSaved: (val) => newAnimals.nameStore = val,
+                          ),
+                          TextFormField(
+                            initialValue: document['idStore'],
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                icon: Icon(Icons.account_balance),
+                                hintText: 'เลขที่ร้าน',
+                                labelText: 'กรอกเลขที่ร้าน'),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
+                            onSaved: (val) => newAnimals.idStore = val,
                           ),
                           Center(
                             child: _image == null

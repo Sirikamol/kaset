@@ -89,6 +89,7 @@ class _InsertGeneralsPageState extends State<InsertGeneralsPage> {
     print(_image);
     String imgUrl = await onImageUploading(_image);
     print(imgUrl);
+    print('ID: ${newGenerals.idStore}'); //* 
 
     Firestore.instance.collection('generals').document(widget.docID).setData({
       'nameStore': newGenerals.nameStore,
@@ -96,6 +97,7 @@ class _InsertGeneralsPageState extends State<InsertGeneralsPage> {
       'products': _insertProducts,
       'zone': newGenerals.zone,
       'image': [imgUrl],
+      'idStore': newGenerals.idStore,
     });
     _alertinput();
   }
@@ -142,6 +144,20 @@ class _InsertGeneralsPageState extends State<InsertGeneralsPage> {
                           hintText: 'ชื่อร้าน',
                           labelText: 'กรอกชื่อร้าน'),
                       onSaved: (val) => newGenerals.nameStore = val,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(   //*
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      decoration: InputDecoration(
+                          icon: Icon(Icons.account_balance),
+                          hintText: 'เลขที่ร้าน',
+                          labelText: 'กรอกเลขที่ร้าน'),
+                      onSaved: (val) => newGenerals.idStore = val,
                     ),
                   ],
                 ),

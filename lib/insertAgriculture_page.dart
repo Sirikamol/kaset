@@ -88,6 +88,7 @@ class _InsertAgriculturePageState extends State<InsertAgriculturePage> {
     print(_image);
     String imgUrl = await onImageUploading(_image);
     print(imgUrl);
+    print('ID: ${newAgriculture.idStore}'); //* 
 
     Firestore.instance
         .collection('agriculture')
@@ -98,6 +99,7 @@ class _InsertAgriculturePageState extends State<InsertAgriculturePage> {
       'products': _insertProducts,
       'zone': newAgriculture.zone,
       'image': [imgUrl],
+      'idStore': newAgriculture.idStore,
     });
     _alertinput();
   }
@@ -144,6 +146,20 @@ class _InsertAgriculturePageState extends State<InsertAgriculturePage> {
                           hintText: 'ชื่อร้าน',
                           labelText: 'กรอกชื่อร้าน'),
                       onSaved: (val) => newAgriculture.nameStore = val,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(   //*
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      decoration: InputDecoration(
+                          icon: Icon(Icons.account_balance),
+                          hintText: 'เลขที่ร้าน',
+                          labelText: 'กรอกเลขที่ร้าน'),
+                      onSaved: (val) => newAgriculture.idStore = val,
                     ),
                   ],
                 ),

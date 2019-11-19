@@ -4,9 +4,10 @@ class Agriculture {
   String category;
   List<dynamic> products;
   String image;
+  String idStore;  //* 
 
   Agriculture(
-      {this.nameStore, this.zone, this.category, this.products, this.image});
+      {this.nameStore, this.zone, this.category, this.products, this.image, this.idStore});
       factory Agriculture.fromJSON(Map<String, dynamic> json) {
     return Agriculture(
       nameStore: json['nameStore'],
@@ -14,6 +15,7 @@ class Agriculture {
       category: json['category'],
       products: json['products'],
       image: json['image'],
+      idStore: json['idStore'],
     );
   }
 }

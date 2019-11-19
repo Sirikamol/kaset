@@ -84,6 +84,7 @@ class _UpdatePageState extends State<UpdatePage> {
 
     print('Form save called, newContact is now up to date...');
     print('Name: ${newFood.nameStore}');
+    print('ID: ${newFood.idStore}'); //*
     print('Category: ${newFood.category}');
     print('Zone: ${newFood.zone}');
     print(_updateProducts);
@@ -97,6 +98,7 @@ class _UpdatePageState extends State<UpdatePage> {
         'products': _updateProducts,
         'zone': newFood.zone,
         'image': [imgUrl],
+        'idStore':newFood.idStore, //*
       });
     } else {
       Firestore.instance.collection('food').document(widget.docID).updateData({
@@ -104,6 +106,7 @@ class _UpdatePageState extends State<UpdatePage> {
         'category': newFood.category,
         'products': _updateProducts,
         'zone': newFood.zone,
+        'idStore': newFood.idStore //*
       });
     }
     _alertinput();
@@ -198,6 +201,16 @@ class _UpdatePageState extends State<UpdatePage> {
                                 labelText: 'กรอกชื่อร้าน'),
                             style: TextStyle(fontSize: 18, color: Colors.black),
                             onSaved: (val) => newFood.nameStore = val,
+                          ),
+                          TextFormField(
+                            initialValue: document['idStore'],
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                icon: Icon(Icons.account_balance),
+                                hintText: 'เลขที่ร้าน',
+                                labelText: 'กรอกเลขที่ร้าน'),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
+                            onSaved: (val) => newFood.idStore = val,
                           ),
                           Center(
                             child: _image == null
