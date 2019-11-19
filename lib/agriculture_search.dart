@@ -37,10 +37,7 @@ class AgricultureSearchState extends State<AgricultureSearch> {
           scrollDirection: Axis.horizontal,
           children: <Widget>[
             GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
+              
             child: Card(
               child: Image.network(
                   "https://my.kapook.com/imagescontent/fb_img/530/s_203918_9482.jpg"),
@@ -61,7 +58,7 @@ class AgricultureSearchState extends State<AgricultureSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageAgricultureA(context);
                 },
             child:Card(
               child: Image.network(
@@ -70,7 +67,7 @@ class AgricultureSearchState extends State<AgricultureSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageAgricultureB(context);
                 },
             child:Card(
               child: Image.network(
@@ -104,7 +101,7 @@ class AgricultureSearchState extends State<AgricultureSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageAgricultureC(context);
                 },
             child:Card(
               child: Image.network(
@@ -113,7 +110,7 @@ class AgricultureSearchState extends State<AgricultureSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageAgricultureD(context);
                 },
             child:Card(
               child: Image.network(

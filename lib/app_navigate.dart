@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kasetsart/Image_food1.dart';
+import 'package:kasetsart/image_agriculture2.dart';
 import 'package:kasetsart/image_fodd2.dart';
 import 'package:kasetsart/image_food3.dart';
 import 'package:kasetsart/image_food4.dart';
@@ -11,6 +12,9 @@ import 'food_search.dart';
 import 'agriculture_edit.dart';
 import 'general_edit.dart';
 import 'general_search.dart';
+import 'image_agriculture1.dart';
+import 'image_agriculture3.dart';
+import 'image_agriculture4.dart';
 import 'insertAgriculture_page.dart';
 import 'insertAnimals_page.dart';
 import 'insertGenerals_page.dart';
@@ -198,6 +202,27 @@ navigateToImageFoodE(BuildContext context) {
     return ImageFoodE();
   }));
 }
+navigateToImageAgricultureA(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAgricultureA();
+  }));
+}
+navigateToImageAgricultureB(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAgricultureB();
+  }));
+}
+navigateToImageAgricultureC(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAgricultureC();
+  }));
+}
+navigateToImageAgricultureD(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAgricultureD();
+  }));
+}
+
 
 
 

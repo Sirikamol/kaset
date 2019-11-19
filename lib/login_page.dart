@@ -68,7 +68,8 @@ class _LoginPageState extends State<LoginPage> {
                         filled: true,
                         fillColor: Colors.white70,
                         
-                        border: InputBorder.none),
+                        border: InputBorder.none
+                        ),
                   ),
                   SizedBox(
                     height: 10.0,
