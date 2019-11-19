@@ -36,10 +36,10 @@ class AnimalSearchState extends State<AnimalSearch> {
           scrollDirection: Axis.horizontal,
           children: <Widget>[
             GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
+              // onTap: () {
+              //     // print('hello1');
+              //     navigateToFoodEdit(context);
+              //   },
             child: Card(
               child: Image.network(
                   "https://i.ytimg.com/vi/iwvHrupRk6I/maxresdefault.jpg"),
@@ -60,7 +60,7 @@ class AnimalSearchState extends State<AnimalSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageAnimalsA(context);
                 },
             child:Card(
               child: Image.network(
@@ -69,7 +69,7 @@ class AnimalSearchState extends State<AnimalSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageAnimalsB(context);
                 },
             child:Card(
               child: Image.network(
@@ -103,7 +103,7 @@ class AnimalSearchState extends State<AnimalSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageAnimalsC(context);
                 },
             child:Card(
               child: Image.network(
@@ -112,7 +112,7 @@ class AnimalSearchState extends State<AnimalSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageAnimalsD(context);
                 },
             child:Card(
               child: Image.network(

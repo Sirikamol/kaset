@@ -30,6 +30,7 @@ class _FoodEditState extends State<FoodEdit> {
           child: Icon(Icons.add),
           backgroundColor: Colors.lightGreen,
         ),
+        
         body: StreamBuilder<QuerySnapshot>(
           stream: Firestore.instance.collection('food').snapshots(),
           builder:

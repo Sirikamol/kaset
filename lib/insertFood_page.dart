@@ -258,8 +258,11 @@ class _InsertFoodPageState extends State<InsertPage> {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
+        floatingActionButton: FloatingActionButton.extended(
+            icon: Icon(Icons.add),
+          label: Text("เพิ่มสินค้า"),
+          backgroundColor: Colors.pink[200],
+          foregroundColor: Colors.white,
           onPressed: () {
             addList();
           },

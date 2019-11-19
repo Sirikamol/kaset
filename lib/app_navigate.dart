@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:kasetsart/Image_food1.dart';
 import 'package:kasetsart/image_agriculture2.dart';
+import 'package:kasetsart/image_animals2.dart';
+import 'package:kasetsart/image_animals4.dart';
 import 'package:kasetsart/image_fodd2.dart';
 import 'package:kasetsart/image_food3.dart';
 import 'package:kasetsart/image_food4.dart';
 import 'package:kasetsart/image_food5.dart';
+import 'package:kasetsart/image_generals2.dart';
+import 'package:kasetsart/image_generals3.dart';
+import 'package:kasetsart/image_generals4.dart';
+import 'package:kasetsart/imge_animals3.dart';
 import 'package:kasetsart/tidings_two.dart';
 import 'agriculture_search.dart';
 import 'animal_search.dart';
@@ -15,6 +21,8 @@ import 'general_search.dart';
 import 'image_agriculture1.dart';
 import 'image_agriculture3.dart';
 import 'image_agriculture4.dart';
+import 'image_animals1.dart';
+import 'image_generals1.dart';
 import 'insertAgriculture_page.dart';
 import 'insertAnimals_page.dart';
 import 'insertGenerals_page.dart';
@@ -222,6 +230,47 @@ navigateToImageAgricultureD(BuildContext context) {
     return ImageAgricultureD();
   }));
 }
+navigateToImageAnimalsA(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAnimalsA();
+  }));
+}
+navigateToImageAnimalsB(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAnimalsB();
+  }));
+}
+navigateToImageAnimalsC(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAnimalsC();
+  }));
+}
+navigateToImageAnimalsD(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAnimalsD();
+  }));
+}
+navigateToImageGeneralsA(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageGeneralsA();
+  }));
+}
+navigateToImageGeneralsB(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageGeneralsB();
+  }));
+}
+navigateToImageGeneralsC(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageGeneralsC();
+  }));
+}
+navigateToImageGeneralsD(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageGeneralsD();
+  }));
+}
+
 
 
 

@@ -36,10 +36,10 @@ class GeneralSearchState extends State<GeneralSearch> {
           scrollDirection: Axis.horizontal,
           children: <Widget>[
             GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
+              // onTap: () {
+              //     // print('hello1');
+              //     navigateToFoodEdit(context);
+              //   },
             child: Card(
               child: Image.network(
                   "https://s359.kapook.com/pagebuilder/65f2fcb3-a1b6-4cd4-a53a-a03d97250f51.jpg"),
@@ -60,7 +60,7 @@ class GeneralSearchState extends State<GeneralSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageGeneralsA(context);
                 },
             child:Card(
               child: Image.network(
@@ -69,7 +69,7 @@ class GeneralSearchState extends State<GeneralSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageGeneralsB(context);
                 },
             child:Card(
               child: Image.network(
@@ -103,7 +103,7 @@ class GeneralSearchState extends State<GeneralSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageGeneralsC(context);
                 },
             child:Card(
               child: Image.network(
@@ -112,7 +112,7 @@ class GeneralSearchState extends State<GeneralSearch> {
             GestureDetector(
               onTap: () {
                   // print('hello1');
-                  navigateToFoodEdit(context);
+                  navigateToImageGeneralsD(context);
                 },
             child:Card(
               child: Image.network(
