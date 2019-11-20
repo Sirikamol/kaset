@@ -174,7 +174,7 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.green[300],
+          backgroundColor: Colors.lightGreen,
           title: Text('Update Animals'),
         ),
         body: SafeArea(
@@ -190,7 +190,9 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   print(snapshot.data);
                   var document = snapshot.data;
-                  return ListView(
+                  return  Card(
+                    color: Colors.yellow[100],
+                  child: ListView(
                     children: <Widget>[
                       Column(
                         children: <Widget>[
@@ -313,6 +315,7 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
                                 _onUpdate(document);
                               })),
                     ],
+                  ),
                   );
                 },
               ),

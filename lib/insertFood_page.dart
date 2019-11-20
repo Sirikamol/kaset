@@ -128,7 +128,9 @@ class _InsertFoodPageState extends State<InsertPage> {
           backgroundColor: Colors.lightGreen,
           title: Text("เพิ่มข้อมูล"),
         ),
-        body: Form(
+        body: Card(
+        color: Colors.lightGreen[200],
+        child: Form(
           key: _formKey,
           child: ListView(
             children: <Widget>[
@@ -152,7 +154,7 @@ class _InsertFoodPageState extends State<InsertPage> {
                   children: <Widget>[
                     TextFormField(
                       decoration: InputDecoration(
-                          icon: Icon(Icons.account_balance),
+                          icon: Icon(Icons.recent_actors),
                           hintText: 'เลขที่ร้าน',
                           labelText: 'กรอกเลขที่ร้าน'),
                       onSaved: (val) => newFood.idStore = val,
@@ -160,6 +162,14 @@ class _InsertFoodPageState extends State<InsertPage> {
                   ],
                 ),
               ),
+               Align(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              "  + กรุณาเพิ่มรายการสินค้า",
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.black),
+                            ),
+                          ),
               Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Column(
@@ -173,7 +183,10 @@ class _InsertFoodPageState extends State<InsertPage> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        label1 = Text("โซน", style: TextStyle(fontSize: 18)),
+                        
+                        label1 = Text("        โซน         ", 
+                        style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
                         DropdownButton<String>(
                           value: dropdownValue,
                           onChanged: (String newValue) {
@@ -201,9 +214,9 @@ class _InsertFoodPageState extends State<InsertPage> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        label1 = Text("ประเภท",
+                        label1 = Text("        ประเภท   ",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16)),
+                                fontWeight: FontWeight.bold, fontSize: 18)),
                         DropdownButton<String>(
                           value: dropdownValue2,
                           onChanged: (String newValue) {
@@ -243,6 +256,7 @@ class _InsertFoodPageState extends State<InsertPage> {
                             ),
                     ),
                     RaisedButton(
+                      color: Colors.lightGreen[100],
                       onPressed: getImage,
                       child: Icon(Icons.add_a_photo),
                     ),
@@ -251,21 +265,25 @@ class _InsertFoodPageState extends State<InsertPage> {
               ),
               Container(
                   padding: EdgeInsets.only(),
+                  color: Colors.lightGreen[300],
                   child: RaisedButton(
                     child: Text('Submit'),
+                    color: Colors.lightGreen,
                     onPressed: _onSubmit,
                   )),
             ],
           ),
         ),
+        ),
         floatingActionButton: FloatingActionButton.extended(
             icon: Icon(Icons.add),
           label: Text("เพิ่มสินค้า"),
-          backgroundColor: Colors.pink[200],
-          foregroundColor: Colors.white,
+          backgroundColor: Colors.yellow[200],
+          foregroundColor: Colors.black,
           onPressed: () {
             addList();
           },
-        ));
+        )
+    );
   }
 }

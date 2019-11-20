@@ -170,8 +170,7 @@ class _UpdatePageState extends State<UpdatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.green[300],
-          title: Text('Update Food'),
+          backgroundColor: Colors.lightGreen
         ),
         body: SafeArea(
             top: false,
