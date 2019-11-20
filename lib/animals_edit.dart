@@ -43,23 +43,24 @@ class _AnimalsEditState extends State<AnimalsEdit> {
                   children:
                       snapshot.data.documents.map((DocumentSnapshot document) {
                     var card = new Card(
-                      color: Colors.yellow[100],
+                      color: Colors.lightGreen[200],
                       child: Column(
                         children: <Widget>[
                           Row(children: <Widget>[
                             Text(
-                              "ชื่อร้าน : ",
+                              "   ชื่อร้าน : ",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
                             Padding(
-                                padding: EdgeInsets.all(7.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Text(
                                   document['nameStore'].toString(),
                                   style: TextStyle(fontSize: 18.0),
                                 )),
                           ]),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Image.network(
                                 document['image'][0],
@@ -72,13 +73,16 @@ class _AnimalsEditState extends State<AnimalsEdit> {
                             child: ButtonBar(
                               children: <Widget>[
                                 FlatButton(
-                                    child: const Text("Update"),
+                                    child: const Text("Update",style: TextStyle(fontSize: 15)),
+                                    textColor: Colors.lightGreen,
                                     onPressed: () {
                                       navigateToUpdateAnimalsPage(
                                           context, document.documentID);
                                     }),
                                 FlatButton(
-                                    child: const Text("Delete"),
+                                    child: const Text("Delete",style: TextStyle(fontSize: 15)),
+                                    textColor: Colors.lightGreen,
+                                    
                                     onPressed: () {
                                       _onDelete(document.documentID);
                                     }),

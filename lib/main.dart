@@ -46,6 +46,7 @@ class _HomeState extends State<Home> {
                         navigateToFoodSearch(context);
                       },
                       child: Card(
+                        // color: Colors.black,
                         child: Column(
                           children: <Widget>[
                             Padding(
@@ -71,6 +72,7 @@ class _HomeState extends State<Home> {
                         navigateToAgricultureSearch(context);
                       },
                       child: Card(
+                        // color: Colors.black,
                         child: Column(
                           children: <Widget>[
                             Padding(
@@ -96,6 +98,7 @@ class _HomeState extends State<Home> {
                         navigateToAnimalSearch(context);
                       },
                       child: Card(
+                        // color: Colors.black,
                         child: Column(
                           children: <Widget>[
                             Padding(
@@ -121,6 +124,8 @@ class _HomeState extends State<Home> {
                         navigateToGeneralSearch(context);
                       },
                       child: Card(
+                        // color: Colors.orange[200],
+                        // color: Colors.black,
                         child: Column(
                           children: <Widget>[
                             Padding(

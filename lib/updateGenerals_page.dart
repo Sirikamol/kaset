@@ -185,98 +185,102 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
                   print(snapshot.data);
                   var document = snapshot.data;
                   return  Card(
-                    color: Colors.yellow[100],
+                    color: Colors.lightGreen[200],
                   child: ListView(
                     children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          TextFormField(
-                            initialValue: document['nameStore'],
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                icon: Icon(Icons.account_balance),
-                                hintText: 'ชื่อร้าน',
-                                labelText: 'กรอกชื่อร้าน'),
-                            style: TextStyle(fontSize: 18, color: Colors.black),
-                            onSaved: (val) => newGenerals.nameStore = val,
-                          ),
-                          TextFormField(
-                            initialValue: document['idStore'],
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                icon: Icon(Icons.account_balance),
-                                hintText: 'เลขที่ร้าน',
-                                labelText: 'กรอกเลขที่ร้าน'),
-                            style: TextStyle(fontSize: 18, color: Colors.black),
-                            onSaved: (val) => newGenerals.idStore = val,
-                          ),
-                          Center(
-                            child: _image == null
-                                ? Image.network(
-                                    document["image"][0],
-                                    width: 250,
-                                    height: 150,
-                                  )
-                                : Image.file(
-                                    _image,
-                                    width: 250,
-                                    height: 150,
-                                  ),
-                          ),
-                          RaisedButton(
-                            onPressed: getImage,
-                            child: Icon(Icons.add_a_photo),
-                          ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              "รายการสินค้า",
-                              style:
-                                  TextStyle(fontSize: 22, color: Colors.black),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          children: <Widget>[
+                            TextFormField(
+                              initialValue: document['nameStore'],
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  icon: Icon(Icons.account_balance),
+                                  hintText: 'ชื่อร้าน',
+                                  labelText: 'กรอกชื่อร้าน'),
+                              style: TextStyle(fontSize: 18, color: Colors.black),
+                              onSaved: (val) => newGenerals.nameStore = val,
                             ),
-                          ),
-                          Column(
-                              children:
-                                  buildProductsForm(document['products'])),
-                          Column(
-                            children: _getListings(),
-                          ),
-                          Row(
-                            children: <Widget>[
-                              label1 =
-                                  Text("โซน", style: TextStyle(fontSize: 18)),
-                              DropdownButton<String>(
-                                value: dropdownValue,
-                                onChanged: (String newValue) {
-                                  setState(() {
-                                    dropdownValue = newValue;
-                                  });
-                                  newGenerals.zone = newValue;
-                                },
-                                items: <String>[
-                                  'A',
-                                  'B',
-                                  'C',
-                                  'D'
-                                ].map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
+                            TextFormField(
+                              initialValue: document['idStore'],
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  icon: Icon(Icons.recent_actors),
+                                  hintText: 'เลขที่ร้าน',
+                                  labelText: 'กรอกเลขที่ร้าน'),
+                              style: TextStyle(fontSize: 18, color: Colors.black),
+                              onSaved: (val) => newGenerals.idStore = val,
+                            ),
+                            Center(
+                              child: _image == null
+                                  ? Image.network(
+                                      document["image"][0],
+                                      width: 250,
+                                      height: 150,
+                                    )
+                                  : Image.file(
+                                      _image,
+                                      width: 250,
+                                      height: 150,
+                                    ),
+                            ),
+                            RaisedButton(
+                              color: Colors.lightGreen[100],
+                              onPressed: getImage,
+                              child: Icon(Icons.add_a_photo),
+                            ),
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                " +  รายการสินค้า",
+                                style:
+                                    TextStyle(fontSize: 20, color: Colors.black),
                               ),
-                            ],
-                          )
-                        ],
+                            ),
+                            Column(
+                                children:
+                                    buildProductsForm(document['products'])),
+                            Column(
+                              children: _getListings(),
+                            ),
+                            Row(
+                              children: <Widget>[
+                                  label1 = Text("      * โซน         ", 
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
+                                DropdownButton<String>(
+                                  value: dropdownValue,
+                                  onChanged: (String newValue) {
+                                    setState(() {
+                                      dropdownValue = newValue;
+                                    });
+                                    newGenerals.zone = newValue;
+                                  },
+                                  items: <String>[
+                                    'A',
+                                    'B',
+                                    'C',
+                                    'D'
+                                  ].map<DropdownMenuItem<String>>((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                       Column(
                         children: <Widget>[
                           Row(
                             children: <Widget>[
-                              label1 = Text("ประเภท",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16)),
+                              label1 = Text("        * ประเภท   ",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
                               DropdownButton<String>(
                                 value: dropdownValue2,
                                 onChanged: (String newValue) {
@@ -303,8 +307,10 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
                       ),
                       Container(
                           padding: EdgeInsets.only(),
+                          color: Colors.lightGreen[300],
                           child: RaisedButton(
                               child: Text('Update'),
+                              color: Colors.lightGreen,
                               onPressed: () {
                                 _onUpdate(document);
                               })),
@@ -317,8 +323,8 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
         floatingActionButton: FloatingActionButton.extended(
             icon: Icon(Icons.add),
           label: Text("เพิ่มสินค้า"),
-          backgroundColor: Colors.pink[200],
-          foregroundColor: Colors.white,
+          backgroundColor: Colors.yellow[200],
+          foregroundColor: Colors.black,
           onPressed: () {
             addList();
           },
