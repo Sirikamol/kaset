@@ -8,10 +8,9 @@ class AlgoliaService {
   AlgoliaService._privateConstructor();
 
   static final AlgoliaService instance = AlgoliaService._privateConstructor();
+  AlgoliaTask taskadded;
 
   final Algolia _algolia = Algolia.init(
-    // applicationId: 'DBB13CQ6MX',
-    // apiKey: '75c1bb1bb53efffc5711ba3df99d18a6',
     applicationId: 'T374A0CYK0',
     apiKey: 'c028fff8b21e3233d5fa2fd412dcad41',
   );
@@ -20,6 +19,10 @@ class AlgoliaService {
   AlgoliaIndexReference get _animalIndex => _algolia.instance.index('animals');
   AlgoliaIndexReference get _agricultureIndex => _algolia.instance.index('agriculture');
   AlgoliaIndexReference get _generalsIndex => _algolia.instance.index('generals');
+
+  Future<Null> performAddFoodObject(addData){
+    _foodIndex.addObject(addData);
+  }
 
   Future<List<Food>> performSearchQuery({text: String}) async {
     final query = _foodIndex.search(text);
@@ -43,7 +46,7 @@ class AlgoliaService {
         snap.hits.map((agriculture) => Agriculture.fromJSON(agriculture.data)).toList();
     return agriculture;
   }
-  
+
  Future<List<Generals>> performGeneralsQuery({text: String}) async {
     final query = _generalsIndex.search(text);
     final snap = await query.getObjects();
@@ -51,5 +54,7 @@ class AlgoliaService {
         snap.hits.map((generals) => Generals.fromJSON(generals.data)).toList();
     return generals;
   }
+
+
 
 }

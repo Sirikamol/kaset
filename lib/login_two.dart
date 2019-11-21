@@ -11,7 +11,7 @@ class _LoginTwoState extends State<LoginTwo> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Menu'),
+          title: Text('Menu  '),
         ),
         body: SingleChildScrollView(
           child: Column(
