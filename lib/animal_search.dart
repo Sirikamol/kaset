@@ -191,7 +191,7 @@ class DataSearch extends SearchDelegate<String> {
                     Row(
                       children: <Widget>[
                         Image.network(
-                          animals.image,
+                          animals.image[0],
                           width: 200,
                           height: 200,
                         ),

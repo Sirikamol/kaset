@@ -16,6 +16,7 @@ class _FoodEditState extends State<FoodEdit> {
   Future _onDelete(String docID) async {
     Firestore.instance.collection('food').document(docID).delete();
     return null;
+    
   }
 
   @override

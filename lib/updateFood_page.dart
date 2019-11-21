@@ -7,6 +7,7 @@ import 'package:kasetsart/food.dart';
 import 'package:kasetsart/image_service.dart';
 
 import 'app_navigate.dart';
+import 'algolia_service.dart';
 
 class UpdatePage extends StatefulWidget {
   UpdatePage({Key key, this.docID}) : super(key: key);
@@ -25,6 +26,7 @@ class _UpdatePageState extends State<UpdatePage> {
   var label1;
   File _image;
   int productCount;
+  final algoliaService = AlgoliaService.instance;
 
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -89,29 +91,40 @@ class _UpdatePageState extends State<UpdatePage> {
     print('Zone: ${newFood.zone}');
     print(_updateProducts);
     print(_image);
+
+  
+
+
     if (_image != null) {
       String imgUrl = await onImageUploading(_image);
       print(imgUrl);
-      Firestore.instance.collection('food').document(widget.docID).updateData({
-        'nameStore': newFood.nameStore,
-        'category': newFood.category,
-        'products': _updateProducts,
-        'zone': newFood.zone,
-        'image': [imgUrl],
-        'idStore':newFood.idStore, //*
-      });
+      Map<String, dynamic> updateData = {
+      'nameStore': newFood.nameStore,
+      'category': newFood.category,
+      'products': _updateProducts,
+      'zone': newFood.zone,
+      'image': [imgUrl],
+      'idStore':newFood.idStore,
+    };
+      Firestore.instance
+      .collection('food')
+      .document(widget.docID)
+      .updateData(updateData
+      );
+      await algoliaService.performUpdateFoodObject(updateData);
     } else {
-      Firestore.instance.collection('food').document(widget.docID).updateData({
+      Map<String, dynamic> updateData = {
         'nameStore': newFood.nameStore,
         'category': newFood.category,
         'products': _updateProducts,
         'zone': newFood.zone,
         'idStore': newFood.idStore //*
-      });
+      };
+      Firestore.instance.collection('food').document(widget.docID).updateData(updateData);
+      await algoliaService.performUpdateFoodObject(updateData);
     }
-    _alertinput();
-    return null;
     
+
   }
 
   Future<void> _alertinput() async {

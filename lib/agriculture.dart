@@ -3,8 +3,8 @@ class Agriculture {
   String zone;
   String category;
   List<dynamic> products;
-  String image;
-  String idStore;  //* 
+  List<dynamic> image;
+  String idStore;
 
   Agriculture(
       {this.nameStore, this.zone, this.category, this.products, this.image, this.idStore});

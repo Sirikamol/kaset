@@ -4,11 +4,15 @@ import 'package:kasetsart/animals.dart';
 import 'package:kasetsart/food.dart';
 import 'package:kasetsart/general.dart';
 
+
 class AlgoliaService {
   AlgoliaService._privateConstructor();
+  
 
   static final AlgoliaService instance = AlgoliaService._privateConstructor();
   AlgoliaTask taskadded;
+  
+  // AlgoliaTask taskdelete;
 
   final Algolia _algolia = Algolia.init(
     applicationId: 'T374A0CYK0',
@@ -23,6 +27,23 @@ class AlgoliaService {
   Future<Null> performAddFoodObject(addData){
     _foodIndex.addObject(addData);
   }
+  Future<Null> performAddAgricultureObject(addData){
+    _agricultureIndex.addObject(addData);
+  }
+  Future<Null> performAddAnimalObject(addData){
+    _animalIndex.addObject(addData);
+  }
+  Future<Null> performAddGeneralsObject(addData){
+    _generalsIndex.addObject(addData);
+  }
+  Future<Null> performUpdateFoodObject(updateData){
+    _foodIndex.addObject(updateData);
+  }
+
+
+  // Future<Null> performDeleteFoodObject(deleteData){
+  //   _foodIndex.deleteIndex(deleteData);
+  // }
 
   Future<List<Food>> performSearchQuery({text: String}) async {
     final query = _foodIndex.search(text);

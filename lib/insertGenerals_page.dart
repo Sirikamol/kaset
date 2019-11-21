@@ -3,11 +3,10 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
 import 'package:kasetsart/app_navigate.dart';
 import 'package:kasetsart/image_service.dart';
-
 import 'general.dart';
+import 'algolia_service.dart';
 
 class InsertGeneralsPage extends StatefulWidget {
   InsertGeneralsPage({Key key, this.docID}) : super(key: key);
@@ -26,6 +25,7 @@ class _InsertGeneralsPageState extends State<InsertGeneralsPage> {
   var label1;
   File _image;
   int productCount;
+  final algoliaService = AlgoliaService.instance;
 
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -89,16 +89,22 @@ class _InsertGeneralsPageState extends State<InsertGeneralsPage> {
     print(_image);
     String imgUrl = await onImageUploading(_image);
     print(imgUrl);
-    print('ID: ${newGenerals.idStore}'); //* 
+    print('ID: ${newGenerals.idStore}'); 
 
-    Firestore.instance.collection('generals').document(widget.docID).setData({
+    Map<String, dynamic> addData = {
       'nameStore': newGenerals.nameStore,
       'category': newGenerals.category,
       'products': _insertProducts,
       'zone': newGenerals.zone,
       'image': [imgUrl],
       'idStore': newGenerals.idStore,
-    });
+    };
+
+    Firestore.instance
+    .collection('generals')
+    .document(widget.docID)
+    .setData(addData);
+    await algoliaService.performAddGeneralsObject(addData);
     _alertinput();
   }
 

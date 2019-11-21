@@ -4,7 +4,7 @@ class Food {
   String category;
   List<dynamic> products;
   List<dynamic> image;
-  String idStore;  //*
+  String idStore;
 
   Food({this.nameStore, this.zone, this.category, this.products, this.image, this.idStore});
 

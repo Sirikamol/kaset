@@ -168,6 +168,7 @@ class DataSearch extends SearchDelegate<String> {
   Widget buildSuggestions(BuildContext context) {
     return FutureBuilder<List<Food>>(
       future: algoliaService.performSearchQuery(text: query),
+
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           final foods = snapshot.data.map((food) {

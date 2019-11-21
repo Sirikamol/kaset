@@ -7,6 +7,7 @@ import 'package:kasetsart/animals.dart';
 
 import 'package:kasetsart/app_navigate.dart';
 import 'package:kasetsart/image_service.dart';
+import 'algolia_service.dart';
 
 class InsertAnimalsPage extends StatefulWidget {
   InsertAnimalsPage({Key key, this.docID}) : super(key: key);
@@ -25,6 +26,7 @@ class _InsertAnimalsPageState extends State<InsertAnimalsPage> {
   var label1;
   File _image;
   int productCount;
+  final algoliaService = AlgoliaService.instance;
 
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -88,16 +90,22 @@ class _InsertAnimalsPageState extends State<InsertAnimalsPage> {
     print(_image);
     String imgUrl = await onImageUploading(_image);
     print(imgUrl);
-    print('ID: ${newAnimals.idStore}'); //* 
+    print('ID: ${newAnimals.idStore}'); 
 
-    Firestore.instance.collection('animal').document(widget.docID).setData({
+    Map<String, dynamic> addData = {
       'nameStore': newAnimals.nameStore,
       'category': newAnimals.category,
       'products': _insertProducts,
       'zone': newAnimals.zone,
       'image': [imgUrl],
       'idStore': newAnimals.idStore,
-    });
+    };
+
+    Firestore.instance
+    .collection('animal')
+    .document(widget.docID)
+    .setData(addData);
+    await algoliaService.performAddAnimalObject(addData);
     _alertinput();
   }
 

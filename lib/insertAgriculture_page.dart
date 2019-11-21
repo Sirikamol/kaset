@@ -7,6 +7,7 @@ import 'agriculture.dart';
 
 import 'package:kasetsart/app_navigate.dart';
 import 'package:kasetsart/image_service.dart';
+import 'algolia_service.dart';
 
 class InsertAgriculturePage extends StatefulWidget {
   InsertAgriculturePage({Key key, this.docID}) : super(key: key);
@@ -25,6 +26,7 @@ class _InsertAgriculturePageState extends State<InsertAgriculturePage> {
   var label1;
   File _image;
   int productCount;
+  final algoliaService = AlgoliaService.instance;
 
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -90,17 +92,20 @@ class _InsertAgriculturePageState extends State<InsertAgriculturePage> {
     print(imgUrl);
     print('ID: ${newAgriculture.idStore}'); //* 
 
-    Firestore.instance
-        .collection('agriculture')
-        .document(widget.docID)
-        .setData({
+      Map<String, dynamic> addData = {
       'nameStore': newAgriculture.nameStore,
       'category': newAgriculture.category,
       'products': _insertProducts,
       'zone': newAgriculture.zone,
       'image': [imgUrl],
       'idStore': newAgriculture.idStore,
-    });
+    };
+
+    Firestore.instance
+        .collection('agriculture')
+        .document(widget.docID)
+        .setData(addData);
+    await algoliaService.performAddAgricultureObject(addData);
     _alertinput();
   }
 
