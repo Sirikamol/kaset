@@ -9,125 +9,113 @@ class GeneralSearch extends StatefulWidget {
 }
 
 class GeneralSearchState extends State<GeneralSearch> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ค้นหา'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              showSearch(context: context, delegate: DataSearch());
-            },
-          )
-        ],
-      ),
-      body:ListView(
-        children: <Widget>[
-          Column(
-    children: <Widget>[
-      Container(
-        height: 210,
-        width: 1500,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child: Card(
-              child: Image.network(
-                  "https://s359.kapook.com/pagebuilder/65f2fcb3-a1b6-4cd4-a53a-a03d97250f51.jpg"),
-            ),),
+        appBar: AppBar(
+          title: Text('ค้นหา'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: DataSearch());
+              },
+            )
           ],
         ),
-      )
-    ],
-  ),
-  Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Container(
-        height: 170,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
+        body: ListView(
           children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "https://miro.medium.com/max/4000/1*-0GnyjiGWUG1PhQiR7_kIg.jpeg"),
-            ),),
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "https://pbs.twimg.com/media/Db8v_l-UQAALADn.jpg"),
+            Column(
+              children: <Widget>[
+                Container(
+                  height: 210,
+                  width: 1500,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://s359.kapook.com/pagebuilder/65f2fcb3-a1b6-4cd4-a53a-a03d97250f51.jpg"),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  height: 170,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://miro.medium.com/max/4000/1*-0GnyjiGWUG1PhQiR7_kIg.jpeg"),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://pbs.twimg.com/media/Db8v_l-UQAALADn.jpg"),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
-            // GestureDetector(
-            //   onTap: () {
-            //       // print('hello1');
-            //       navigateToFoodEdit(context);
-            //     },
-            // child:Card(
-            //   child: Image.network(
-            //       "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
-            // ),),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  height: 170,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://arch.punpromotion.com/wp-content/uploads/2018/03/29542170_1706983906004622_2199627233934483432_n.jpg"),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://aboutmom.co/wp-content/uploads/2019/04/nanmeebooks_9-500x500.jpg"),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ],
-        ),
-      )
-    ],
-    ),
-   
-  
-    Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Container(
-        height: 170,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "https://arch.punpromotion.com/wp-content/uploads/2018/03/29542170_1706983906004622_2199627233934483432_n.jpg"),
-            ),),
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "https://aboutmom.co/wp-content/uploads/2019/04/nanmeebooks_9-500x500.jpg"),
-            ),
-            ),
-          ],
-        ),
-      )
-    ],
-    ),
-
-        ],
-      )
-    );
+        ));
   }
 }
 

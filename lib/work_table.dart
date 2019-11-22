@@ -27,9 +27,8 @@ class _WorkTableState extends State<WorkTable> {
   }
 
   Widget _twoSec() {
-    return  Card(
-
-    child: Column(
+    return Card(
+        child: Column(
       children: <Widget>[
         Text("ประวัติมหาวิทยาลัยเกษตรศาสตร์",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
@@ -52,7 +51,6 @@ class _WorkTableState extends State<WorkTable> {
           children: <Widget>[
             _oneSec(),
             _twoSec(),
-            
           ],
         ));
   }

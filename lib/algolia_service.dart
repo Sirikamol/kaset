@@ -10,16 +10,16 @@ class AlgoliaService {
   static final AlgoliaService instance = AlgoliaService._privateConstructor();
 
   final Algolia _algolia = Algolia.init(
-    // applicationId: 'DBB13CQ6MX',
-    // apiKey: '75c1bb1bb53efffc5711ba3df99d18a6',
     applicationId: 'T374A0CYK0',
     apiKey: 'c028fff8b21e3233d5fa2fd412dcad41',
   );
 
   AlgoliaIndexReference get _foodIndex => _algolia.instance.index('food');
   AlgoliaIndexReference get _animalIndex => _algolia.instance.index('animals');
-  AlgoliaIndexReference get _agricultureIndex => _algolia.instance.index('agriculture');
-  AlgoliaIndexReference get _generalsIndex => _algolia.instance.index('generals');
+  AlgoliaIndexReference get _agricultureIndex =>
+      _algolia.instance.index('agriculture');
+  AlgoliaIndexReference get _generalsIndex =>
+      _algolia.instance.index('generals');
 
   Future<List<Food>> performSearchQuery({text: String}) async {
     final query = _foodIndex.search(text);
@@ -37,19 +37,19 @@ class AlgoliaService {
   }
 
   Future<List<Agriculture>> performAgricultureQuery({text: String}) async {
-    final query = _animalIndex.search(text);
+    final query = _agricultureIndex.search(text);
     final snap = await query.getObjects();
-    final agriculture =
-        snap.hits.map((agriculture) => Agriculture.fromJSON(agriculture.data)).toList();
-    return agriculture;
+    final agricultures = snap.hits
+        .map((agriculture) => Agriculture.fromJSON(agriculture.data))
+        .toList();
+    return agricultures;
   }
-  
- Future<List<Generals>> performGeneralsQuery({text: String}) async {
+
+  Future<List<Generals>> performGeneralsQuery({text: String}) async {
     final query = _generalsIndex.search(text);
     final snap = await query.getObjects();
     final generals =
         snap.hits.map((generals) => Generals.fromJSON(generals.data)).toList();
     return generals;
   }
-
 }

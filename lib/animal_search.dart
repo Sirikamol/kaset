@@ -9,125 +9,113 @@ class AnimalSearch extends StatefulWidget {
 }
 
 class AnimalSearchState extends State<AnimalSearch> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ค้นหา'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              showSearch(context: context, delegate: DataSearch());
-            },
-          )
-        ],
-      ),
-      body:ListView(
-        children: <Widget>[
-          Column(
-    children: <Widget>[
-      Container(
-        height: 210,
-        width: 1500,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child: Card(
-              child: Image.network(
-                  "https://i.ytimg.com/vi/iwvHrupRk6I/maxresdefault.jpg"),
-            ),),
+        appBar: AppBar(
+          title: Text('ค้นหา'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: DataSearch());
+              },
+            )
           ],
         ),
-      )
-    ],
-  ),
-  Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Container(
-        height: 170,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
+        body: ListView(
           children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "https://f.ptcdn.info/020/013/000/1386375631-DSC0056JPG-o.jpg"),
-            ),),
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "http://chailaibackpacker.com/wp-content/uploads/2017/01/Page1.jpg"),
+            Column(
+              children: <Widget>[
+                Container(
+                  height: 210,
+                  width: 1500,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://i.ytimg.com/vi/iwvHrupRk6I/maxresdefault.jpg"),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  height: 170,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://f.ptcdn.info/020/013/000/1386375631-DSC0056JPG-o.jpg"),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "http://chailaibackpacker.com/wp-content/uploads/2017/01/Page1.jpg"),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
-            // GestureDetector(
-            //   onTap: () {
-            //       // print('hello1');
-            //       navigateToFoodEdit(context);
-            //     },
-            // child:Card(
-            //   child: Image.network(
-            //       "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
-            // ),),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  height: 170,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "http://images.voicetv.co.th/media/640/0/storage0/1020294.jpg"),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "http://jjpetonline.com/picture/shop373/shop_373_6020_1.jpg"),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ],
-        ),
-      )
-    ],
-    ),
-   
-  
-    Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Container(
-        height: 170,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "http://images.voicetv.co.th/media/640/0/storage0/1020294.jpg"),
-            ),),
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "http://jjpetonline.com/picture/shop373/shop_373_6020_1.jpg"),
-            ),
-            ),
-          ],
-        ),
-      )
-    ],
-    ),
-
-        ],
-      )
-    );
+        ));
   }
 }
 

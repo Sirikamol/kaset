@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kasetsart/login_two.dart';
-//import 'package:kasetsart/mainLogin.dart';
+import 'login_two.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -51,9 +50,10 @@ class _LoginPageState extends State<LoginPage> {
                   Text(
                     'MY LOGIN APP',
                     style: TextStyle(
-                        fontSize: 40.0,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.grey[700],),
+                      fontSize: 40.0,
+                      // fontWeight: FontWeight.bold,
+                      color: Colors.grey[700],
+                    ),
                   ),
                   TextFormField(
                     validator: (String value) {

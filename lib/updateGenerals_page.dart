@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'app_navigate.dart';
 import 'general.dart';
-// import 'package:kasetsart/food.dart';
-import 'package:kasetsart/image_service.dart';
+import 'image_service.dart';
 
 class UpdateGeneralsPage extends StatefulWidget {
   UpdateGeneralsPage({Key key, this.docID}) : super(key: key);
@@ -112,7 +111,7 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
         'zone': newGenerals.zone,
       });
     }
-    _alertupdate() ;
+    _alertupdate();
     return null;
   }
 
@@ -136,6 +135,7 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
       },
     );
   }
+
   List<Widget> buildProductsForm(List<dynamic> products) {
     if (products != null) {
       return products

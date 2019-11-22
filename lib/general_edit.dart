@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:flutter/painting.dart';
-import 'package:kasetsart/app_navigate.dart';
+import 'app_navigate.dart';
 
 class GeneralEdit extends StatefulWidget {
   GeneralEdit({

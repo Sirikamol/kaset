@@ -3,10 +3,9 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:kasetsart/animals.dart';
-
-import 'package:kasetsart/app_navigate.dart';
-import 'package:kasetsart/image_service.dart';
+import 'animals.dart';
+import 'app_navigate.dart';
+import 'image_service.dart';
 
 class InsertAnimalsPage extends StatefulWidget {
   InsertAnimalsPage({Key key, this.docID}) : super(key: key);

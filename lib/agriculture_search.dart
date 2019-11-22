@@ -10,125 +10,122 @@ class AgricultureSearch extends StatefulWidget {
 }
 
 class AgricultureSearchState extends State<AgricultureSearch> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ค้นหา'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              showSearch(context: context, delegate: DataSearch());
-            },
-          )
-        ],
-      ),
-      body:ListView(
-        children: <Widget>[
-          Column(
-    children: <Widget>[
-      Container(
-        height: 210,
-        width: 1500,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child: Card(
-              child: Image.network(
-                  "https://my.kapook.com/imagescontent/fb_img/530/s_203918_9482.jpg"),
-            ),),
+        appBar: AppBar(
+          title: Text('ค้นหา'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: DataSearch());
+              },
+            )
           ],
         ),
-      )
-    ],
-  ),
-  Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Container(
-        height: 170,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
+        body: ListView(
           children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "http://www.clicksii.com/photostock/wp-content/uploads/2018/06/cactus-4-560x420.jpg"),
-            ),),
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "https://i.ytimg.com/vi/uq5T6u_Towg/maxresdefault.jpg"),
+            Column(
+              children: <Widget>[
+                Container(
+                  height: 210,
+                  width: 1500,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://my.kapook.com/imagescontent/fb_img/530/s_203918_9482.jpg"),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  height: 170,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "http://www.clicksii.com/photostock/wp-content/uploads/2018/06/cactus-4-560x420.jpg"),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://i.ytimg.com/vi/uq5T6u_Towg/maxresdefault.jpg"),
+                        ),
+                      ),
+                      // GestureDetector(
+                      //   onTap: () {
+                      //       // print('hello1');
+                      //       navigateToFoodEdit(context);
+                      //     },
+                      // child:Card(
+                      //   child: Image.network(
+                      //       "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
+                      // ),),
+                    ],
+                  ),
+                )
+              ],
             ),
-            // GestureDetector(
-            //   onTap: () {
-            //       // print('hello1');
-            //       navigateToFoodEdit(context);
-            //     },
-            // child:Card(
-            //   child: Image.network(
-            //       "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
-            // ),),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  height: 170,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://travel.mthai.com/app/uploads/2018/11/sunflower-9.jpg"),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://www.organicfarmthailand.com/wp-content/uploads/2016/01/WP_20160130_067.jpg"),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ],
-        ),
-      )
-    ],
-    ),
-   
-  
-    Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Container(
-        height: 170,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "https://travel.mthai.com/app/uploads/2018/11/sunflower-9.jpg"),
-            ),),
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "https://www.organicfarmthailand.com/wp-content/uploads/2016/01/WP_20160130_067.jpg"),
-            ),
-            ),
-          ],
-        ),
-      )
-    ],
-    ),
-
-        ],
-      )
-    );
+        ));
   }
 }
 

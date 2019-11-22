@@ -9,125 +9,123 @@ class FoodSearch extends StatefulWidget {
 }
 
 class FoodSearchState extends State<FoodSearch> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ค้นหา'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              showSearch(context: context, delegate: DataSearch());
-            },
-          )
-        ],
-      ),
-      body:ListView(
-        children: <Widget>[
-          Column(
-    children: <Widget>[
-      Container(
-        height: 210,
-        width: 1500,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child: Card(
-              child: Image.network(
-                  "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),
-            ),),
+        appBar: AppBar(
+          title: Text('ค้นหา'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: DataSearch());
+              },
+            )
           ],
         ),
-      )
-    ],
-  ),
-  Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Container(
-        height: 170,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
+        body: ListView(
           children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "https://pbs.twimg.com/media/C3QbEqbVMAA0l2I.jpg"),
-            ),),
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "https://pbs.twimg.com/media/CmBxHzDWgAAvuGo.jpg"),
+            Column(
+              children: <Widget>[
+                Container(
+                  height: 210,
+                  width: 1500,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  height: 170,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://pbs.twimg.com/media/C3QbEqbVMAA0l2I.jpg"),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://pbs.twimg.com/media/CmBxHzDWgAAvuGo.jpg"),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
-            ),),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  height: 170,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://www.chillpainai.com/src/wewakeup/scoop/img_scoop/scoop/kang/fabuary2017/kasetfair/IMG_2468.jpg"),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // print('hello1');
+                          navigateToFoodEdit(context);
+                        },
+                        child: Card(
+                          child: Image.network(
+                              "https://arch.punpromotion.com/wp-content/uploads/2017/06/S__2523145-1.jpg"),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ],
-        ),
-      )
-    ],
-    ),
-   
-  
-    Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Container(
-        height: 170,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "https://www.chillpainai.com/src/wewakeup/scoop/img_scoop/scoop/kang/fabuary2017/kasetfair/IMG_2468.jpg"),
-            ),),
-            GestureDetector(
-              onTap: () {
-                  // print('hello1');
-                  navigateToFoodEdit(context);
-                },
-            child:Card(
-              child: Image.network(
-                  "https://arch.punpromotion.com/wp-content/uploads/2017/06/S__2523145-1.jpg"),
-            ),
-            ),
-          ],
-        ),
-      )
-    ],
-    ),
-
-        ],
-      )
-    );
+        ));
   }
 }
 

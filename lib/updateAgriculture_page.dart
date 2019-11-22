@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:kasetsart/image_service.dart';
+import 'image_service.dart';
 import 'agriculture.dart';
 import 'app_navigate.dart';
 
@@ -111,7 +111,7 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
         'zone': newAgriculture.zone,
       });
     }
-    _alertupdate() ;
+    _alertupdate();
     return null;
   }
 
@@ -135,9 +135,6 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
       },
     );
   }
-
-
-
 
   List<Widget> buildProductsForm(List<dynamic> products) {
     if (products != null) {

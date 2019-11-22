@@ -3,9 +3,8 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:kasetsart/animals.dart';
-// import 'package:kasetsart/food.dart';
-import 'package:kasetsart/image_service.dart';
+import 'animals.dart';
+import 'image_service.dart';
 
 import 'app_navigate.dart';
 
@@ -113,8 +112,8 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
         'zone': newAnimals.zone,
       });
     }
-   
-   _alertupdate() ;
+
+    _alertupdate();
     return null;
   }
 
@@ -138,9 +137,6 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
       },
     );
   }
-
-
-
 
   List<Widget> buildProductsForm(List<dynamic> products) {
     if (products != null) {

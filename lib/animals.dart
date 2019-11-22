@@ -7,6 +7,7 @@ class Animals {
 
   Animals(
       {this.nameStore, this.zone, this.category, this.products, this.image});
+
   factory Animals.fromJSON(Map<String, dynamic> json) {
     return Animals(
       nameStore: json['nameStore'],

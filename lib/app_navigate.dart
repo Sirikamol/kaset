@@ -41,23 +41,24 @@ navigateToFoodSearch(BuildContext context) {
     return FoodSearch();
   }));
 }
+
 navigateToAnimalSearch(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return AnimalSearch();
   }));
 }
+
 navigateToAgricultureSearch(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return AgricultureSearch();
   }));
 }
+
 navigateToGeneralSearch(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return GeneralSearch();
   }));
 }
-
-
 
 navigateToMapPage(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -166,7 +167,3 @@ navigateToInsertGeneralsPage(BuildContext context) {
     return InsertGeneralsPage();
   }));
 }
-
-
-
-

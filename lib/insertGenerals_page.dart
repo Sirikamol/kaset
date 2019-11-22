@@ -4,9 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:kasetsart/app_navigate.dart';
-import 'package:kasetsart/image_service.dart';
-
+import 'app_navigate.dart';
+import 'image_service.dart';
 import 'general.dart';
 
 class InsertGeneralsPage extends StatefulWidget {
