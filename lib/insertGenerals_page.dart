@@ -99,12 +99,13 @@ class _InsertGeneralsPageState extends State<InsertGeneralsPage> {
       'image': [imgUrl],
       'idStore': newGenerals.idStore,
     };
-
+    var objectId = await algoliaService.performAddGeneralsObject(addData);
+    addData.addAll({'objectID': objectId});
     Firestore.instance
     .collection('generals')
     .document(widget.docID)
     .setData(addData);
-    await algoliaService.performAddGeneralsObject(addData);
+    
     _alertinput();
   }
 
@@ -134,7 +135,7 @@ class _InsertGeneralsPageState extends State<InsertGeneralsPage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightGreen,
-          title: Text("เพิ่มข้อมูล"),
+          title: Text("Insert generals"),
         ),
         body: Card(
         color: Colors.lightGreen[200],

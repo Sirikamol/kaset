@@ -1,8 +1,10 @@
+import 'package:algolia/algolia.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:flutter/painting.dart';
 import 'package:kasetsart/app_navigate.dart';
+import 'algolia_service.dart';
 
 class FoodEdit extends StatefulWidget {
   FoodEdit({
@@ -11,11 +13,30 @@ class FoodEdit extends StatefulWidget {
 
   _FoodEditState createState() => _FoodEditState();
 }
+  final algoliaService = AlgoliaService.instance;
+ 
 
 class _FoodEditState extends State<FoodEdit> {
+  // var objectID = Algolia;
+
+  
+
+  // static final algoliaService = AlgoliaService.instance();
+ 
   Future _onDelete(String docID) async {
+    
+    
+  //  await algoliaService.performDeleteFoodObject(objectID);
+  //     addedObject.index('food') 
+  //     .object(objectID)
+  //     .deleteObject();
+    // await algoliaService.performUpdateFoodObject(oD);
+    
     Firestore.instance.collection('food').document(docID).delete();
-    return null;
+    
+    
+    
+  
     
   }
 

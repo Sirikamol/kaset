@@ -208,10 +208,6 @@ class _HomeState extends State<Home> {
       ],
           ),),
 
-
-
-
-
           ],
         ),
         
@@ -294,18 +290,18 @@ class _HomeState extends State<Home> {
                         label: Text("Work Table",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16))),),
-                    Align(
-                    alignment: Alignment.topLeft,
-                    child: FlatButton.icon(
-                        onPressed: () => navigateToInsertPage(context),
-                        icon: Icon(
-                          Icons.verified_user,
-                          color: Colors.blue,
-                          size: 35,
-                        ),
-                        label: Text("Help",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16))),),
+                    // Align(
+                    // alignment: Alignment.topLeft,
+                    // child: FlatButton.icon(
+                    //     onPressed: () => navigateToInsertPage(context),
+                    //     icon: Icon(
+                    //       Icons.verified_user,
+                    //       color: Colors.blue,
+                    //       size: 35,
+                    //     ),
+                    //     label: Text("Help",
+                    //         style: TextStyle(
+                    //             fontWeight: FontWeight.bold, fontSize: 16))),),
                   ],
                 ),
                 //Container(margin: EdgeInsets.only(left: 0)),

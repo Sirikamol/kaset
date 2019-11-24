@@ -35,8 +35,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
+      body: ListView(
+        // fit: StackFit.expand,
         children: <Widget>[
           Container(
             color: Colors.lightGreen[200],
@@ -47,14 +47,28 @@ class _LoginPageState extends State<LoginPage> {
             child: Form(
               key: _formKey,
               
-              child: Column(
               
+              child: Column(
+                
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Container(
+                      width: 150,
+                      height: 250,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.network("https://www.kasetkaoklai.com/home/wp-content/uploads/2019/01/49896409_10157007662962451_2359220712444526592_n-1.jpg")
+                        ],
+                      ),
+                    ),
+                  ),
                   Text(
-                    'MY LOGIN APP',
+                    'ADMIN LOGIN',
                     style: TextStyle(
-                        fontSize: 40.0,
+                        fontSize: 36.0,
                         // fontWeight: FontWeight.bold,
                         color: Colors.grey[700],),
                   ),
@@ -69,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                         labelStyle:
                             TextStyle(color: Colors.grey[500], fontSize: 20.0),
                         filled: true,
-                        fillColor: Colors.white70,
+                        fillColor: Colors.yellow[100],
                         
                         border: InputBorder.none
                         ),
@@ -89,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                         labelStyle:
                             TextStyle(color: Colors.grey[500], fontSize: 20.0),
                         filled: true,
-                        fillColor: Colors.white70,
+                        fillColor: Colors.yellow[100],
                         border: InputBorder.none),
                   ),
                   SizedBox(

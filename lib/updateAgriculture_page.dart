@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:kasetsart/image_service.dart';
 import 'agriculture.dart';
 import 'app_navigate.dart';
+import 'algolia_service.dart';
 
 class UpdateAgriculturePage extends StatefulWidget {
   UpdateAgriculturePage({Key key, this.docID}) : super(key: key);
@@ -24,6 +25,7 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
   var label1;
   File _image;
   int productCount;
+  final algoliaService = AlgoliaService.instance;
 
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -86,33 +88,41 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
     print('ID: ${newAgriculture.idStore}'); //*
     print('Category: ${newAgriculture.category}');
     print('Zone: ${newAgriculture.zone}');
+    print('ObjectID: ${newAgriculture.objectID}');
     print(_updateProducts);
     print(_image);
     if (_image != null) {
-      String imgUrl = await onImageUploading(_image);
+       String imgUrl = await onImageUploading(_image);
       print(imgUrl);
-      Firestore.instance
-          .collection('agriculture')
-          .document(widget.docID)
-          .updateData({
+      Map<String, dynamic> updateData = {
         'nameStore': newAgriculture.nameStore,
         'category': newAgriculture.category,
         'products': _updateProducts,
         'zone': newAgriculture.zone,
         'image': [imgUrl],
         'idStore': newAgriculture.idStore,
-      });
-    } else {
+        'objectID' :newAgriculture.objectID
+        
+    };
       Firestore.instance
           .collection('agriculture')
           .document(widget.docID)
-          .updateData({
+          .updateData(updateData);
+          await algoliaService.performUpdateAgricultureObject(updateData);
+    } else {
+      Map<String, dynamic> updateData = {
         'nameStore': newAgriculture.nameStore,
         'category': newAgriculture.category,
         'products': _updateProducts,
         'zone': newAgriculture.zone,
         'idStore': newAgriculture.idStore,
-      });
+        'objectID' :newAgriculture.objectID,
+      };
+      Firestore.instance
+          .collection('agriculture')
+          .document(widget.docID)
+          .updateData(updateData);
+           await algoliaService.performUpdateAgricultureObject(updateData);
     }
     _alertupdate() ;
     return null;
@@ -216,6 +226,16 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
                                   labelText: 'กรอกเลขที่ร้าน'),
                               style: TextStyle(fontSize: 18, color: Colors.black),
                               onSaved: (val) => newAgriculture.idStore = val,
+                            ),
+                            TextFormField(
+                              initialValue: document['objectID'],
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  icon: Icon(Icons.account_circle),
+                                  hintText: 'objectID',
+                                  labelText: 'objectID'),
+                              style: TextStyle(fontSize: 18, color: Colors.black),
+                              onSaved: (val) => newAgriculture.objectID = val,
                             ),
                             Center(
                               child: _image == null

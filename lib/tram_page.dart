@@ -14,13 +14,16 @@ class _TramPageState extends State<TramPage> {
     child: Column(
       children: <Widget>[
         Container(
-          height: 260,
-          width: 260,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          height: 300,
+          width: 300,
+          child: ListView(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            scrollDirection: Axis.horizontal,
             children: <Widget>[
-              Image.network("http://www.glurr.com/images/topic/0625953001434374767.png")
+              Image.network("http://www.glurr.com/images/topic/0625953001434374767.png"),
+              Image.network("http://kps.ku.ac.th/v8/images/bg/kps-bus-routes.jpg")
             ],
+            
           ),
 
         ),

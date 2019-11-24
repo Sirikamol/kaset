@@ -99,12 +99,18 @@ class _InsertFoodPageState extends State<InsertPage> {
       'image': [imgUrl],
       'idStore': newFood.idStore,
     };
-
-    Firestore.instance
+      var objectId = await algoliaService.performAddFoodObject(addData);
+    addData.addAll({'objectID': objectId});
+    await Firestore.instance
         .collection('food')
         .document(widget.docID)
         .setData(addData);
-    await algoliaService.performAddFoodObject(addData);
+    // Firestore.instance
+    //     .collection('food')
+    //     .document(widget.docID)
+    //     .setData(addData);
+    // await algoliaService.performAddFoodObject(addData);
+    
     _alertinput();
   }
 
@@ -134,7 +140,7 @@ class _InsertFoodPageState extends State<InsertPage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightGreen,
-          title: Text("เพิ่มข้อมูล"),
+          title: Text("Insert food"),
         ),
         body: Card(
           color: Colors.lightGreen[200],
@@ -287,7 +293,7 @@ class _InsertFoodPageState extends State<InsertPage> {
           label: Text("เพิ่มสินค้า"),
           backgroundColor: Colors.yellow[200],
           foregroundColor: Colors.black,
-          onPressed: () {
+          onPressed: () { 
             addList();
           },
         ));

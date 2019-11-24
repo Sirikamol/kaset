@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'agriculture.dart';
-
 import 'package:kasetsart/app_navigate.dart';
 import 'package:kasetsart/image_service.dart';
 import 'algolia_service.dart';
@@ -86,6 +85,7 @@ class _InsertAgriculturePageState extends State<InsertAgriculturePage> {
     print('Name: ${newAgriculture.nameStore}');
     print('Category: ${newAgriculture.category}');
     print('Zone: ${newAgriculture.zone}');
+    // print('ObjectID: ${newAgriculture.objectID}');
     print(_insertProducts);
     print(_image);
     String imgUrl = await onImageUploading(_image);
@@ -99,13 +99,16 @@ class _InsertAgriculturePageState extends State<InsertAgriculturePage> {
       'zone': newAgriculture.zone,
       'image': [imgUrl],
       'idStore': newAgriculture.idStore,
+      // 'objectID' :newAgriculture.objectID
     };
 
-    Firestore.instance
+    var objectId = await algoliaService.performAddAgricultureObject(addData);
+    addData.addAll({'objectID': objectId});
+    await Firestore.instance
         .collection('agriculture')
         .document(widget.docID)
         .setData(addData);
-    await algoliaService.performAddAgricultureObject(addData);
+    
     _alertinput();
   }
 
@@ -135,7 +138,7 @@ class _InsertAgriculturePageState extends State<InsertAgriculturePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightGreen,
-          title: Text("เพิ่มข้อมูล"),
+          title: Text("Insert agriculture"),
         ),
         body: Card(
         color: Colors.lightGreen[200],

@@ -100,12 +100,13 @@ class _InsertAnimalsPageState extends State<InsertAnimalsPage> {
       'image': [imgUrl],
       'idStore': newAnimals.idStore,
     };
-
+    var objectId = await algoliaService.performAddAnimalObject(addData);
+    addData.addAll({'objectID': objectId});
     Firestore.instance
     .collection('animal')
     .document(widget.docID)
     .setData(addData);
-    await algoliaService.performAddAnimalObject(addData);
+    
     _alertinput();
   }
 
@@ -135,7 +136,7 @@ class _InsertAnimalsPageState extends State<InsertAnimalsPage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightGreen,
-          title: Text("เพิ่มข้อมูล"),
+          title: Text("Insert animals"),
         ),
         body: Card(
         color: Colors.lightGreen[200],

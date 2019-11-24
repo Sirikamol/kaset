@@ -14,7 +14,9 @@ class FoodSearchState extends State<FoodSearch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
+        backgroundColor: Colors.lightGreen,
         title: Text('ค้นหา'),
         actions: <Widget>[
           IconButton(
@@ -41,6 +43,7 @@ class FoodSearchState extends State<FoodSearch> {
               //     navigateToImageFood(context);
               //   },
             child: Card(
+              
               child: Image.network(
                   "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),
             ),),
@@ -140,7 +143,9 @@ class DataSearch extends SearchDelegate<String> {
   List<Widget> buildActions(BuildContext context) {
     // Actions for app bar
     return [
+      
       IconButton(
+        
           icon: Icon(Icons.clear),
           onPressed: () {
             query = "";
@@ -175,12 +180,12 @@ class DataSearch extends SearchDelegate<String> {
             return Container(
               child: Center(
                   child: Card(
-                color: Colors.yellow[100],
+                color:  Colors.lightGreen[200],
                 child: Column(
                   children: <Widget>[
                     Row(children: <Widget>[
                       Text(
-                        "ชื่อร้าน : ",
+                        "   ชื่อร้าน : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
@@ -192,17 +197,19 @@ class DataSearch extends SearchDelegate<String> {
                           )),
                     ]),
                     Row(
-                      children: <Widget>[
-                        Image.network(
-                          food.image[0],
-                          width: 200,
-                          height: 200,
-                        ),
-                      ],
-                    ),
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.network(
+                            food.image[0],
+                            width: 200,
+                            height: 200,
+                          ),
+                        ],
+                      ),
+                    
                     Row(children: <Widget>[
                       Text(
-                        "ID : ",
+                        "   เลขที่ร้าน : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
@@ -215,7 +222,7 @@ class DataSearch extends SearchDelegate<String> {
                     ]),
                     Row(children: <Widget>[
                       Text(
-                        "zone : ",
+                        "   โซน : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
@@ -228,7 +235,7 @@ class DataSearch extends SearchDelegate<String> {
                     ]),
                     Row(children: <Widget>[
                       Text(
-                        "สินค้า : ",
+                        "   สินค้า : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
@@ -241,7 +248,7 @@ class DataSearch extends SearchDelegate<String> {
                     ]),
                     Row(children: <Widget>[
                       Text(
-                        "ประเภท : ",
+                        "   ประเภท : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),

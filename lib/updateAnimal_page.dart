@@ -4,10 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kasetsart/animals.dart';
-// import 'package:kasetsart/food.dart';
 import 'package:kasetsart/image_service.dart';
-
 import 'app_navigate.dart';
+import 'algolia_service.dart';
 
 class UpdateAnimalsPage extends StatefulWidget {
   UpdateAnimalsPage({Key key, this.docID}) : super(key: key);
@@ -26,6 +25,7 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
   var label1;
   File _image;
   int productCount;
+  final algoliaService = AlgoliaService.instance;
 
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -88,33 +88,41 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
     print('ID: ${newAnimals.idStore}'); //*
     print('Category: ${newAnimals.category}');
     print('Zone: ${newAnimals.zone}');
+    print('ObjectID: ${newAnimals.objectID}');
     print(_updateProducts);
     print(_image);
+    
     if (_image != null) {
       String imgUrl = await onImageUploading(_image);
       print(imgUrl);
-      Firestore.instance
-          .collection('animal')
-          .document(widget.docID)
-          .updateData({
+      Map<String, dynamic> updateData = {
         'nameStore': newAnimals.nameStore,
         'category': newAnimals.category,
         'products': _updateProducts,
         'zone': newAnimals.zone,
         'image': [imgUrl],
         'idStore': newAnimals.idStore,
-      });
-    } else {
+        'objectID' :newAnimals.objectID
+      };
       Firestore.instance
           .collection('animal')
           .document(widget.docID)
-          .updateData({
+          .updateData(updateData);
+          await algoliaService.performUpdateAnimalObject(updateData);
+    } else {
+      Map<String, dynamic> updateData = {
         'nameStore': newAnimals.nameStore,
         'category': newAnimals.category,
         'products': _updateProducts,
         'zone': newAnimals.zone,
         'idStore': newAnimals.idStore,
-      });
+        'objectID' :newAnimals.objectID
+      };
+      Firestore.instance
+          .collection('animal')
+          .document(widget.docID)
+          .updateData(updateData);
+          await algoliaService.performUpdateAnimalObject(updateData);
     }
    
    _alertupdate() ;
@@ -217,6 +225,16 @@ class _UpdateAnimalsPageState extends State<UpdateAnimalsPage> {
                                   labelText: 'กรอกเลขที่ร้าน'),
                               style: TextStyle(fontSize: 18, color: Colors.black),
                               onSaved: (val) => newAnimals.idStore = val,
+                            ),
+                            TextFormField(
+                              initialValue: document['objectID'],
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  icon: Icon(Icons.account_circle),
+                                  hintText: 'objectID',
+                                  labelText: 'objectID'),
+                              style: TextStyle(fontSize: 18, color: Colors.black),
+                              onSaved: (val) => newAnimals.objectID = val,
                             ),
                             Center(
                               child: _image == null

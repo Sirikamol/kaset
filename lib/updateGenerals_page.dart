@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'app_navigate.dart';
 import 'general.dart';
-// import 'package:kasetsart/food.dart';
 import 'package:kasetsart/image_service.dart';
+import 'algolia_service.dart';
 
 class UpdateGeneralsPage extends StatefulWidget {
   UpdateGeneralsPage({Key key, this.docID}) : super(key: key);
@@ -25,6 +25,7 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
   var label1;
   File _image;
   int productCount;
+  final algoliaService = AlgoliaService.instance;
 
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -87,33 +88,40 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
     print('ID: ${newGenerals.idStore}'); //*
     print('Category: ${newGenerals.category}');
     print('Zone: ${newGenerals.zone}');
+    print('ObjectID: ${newGenerals.objectID}');
     print(_updateProducts);
     print(_image);
     if (_image != null) {
       String imgUrl = await onImageUploading(_image);
       print(imgUrl);
+      Map<String, dynamic> updateData = {
+      'nameStore': newGenerals.nameStore,
+      'category': newGenerals.category,
+      'products': _updateProducts,
+      'zone': newGenerals.zone,
+      'image': [imgUrl],
+      'idStore': newGenerals.idStore,
+      'objectID' :newGenerals.objectID
+    };
       Firestore.instance
           .collection('generals')
           .document(widget.docID)
-          .updateData({
-        'nameStore': newGenerals.nameStore,
-        'category': newGenerals.category,
-        'products': _updateProducts,
-        'zone': newGenerals.zone,
-        'image': [imgUrl],
-        'idStore': newGenerals.idStore,
-      });
+          .updateData(updateData);
+          await algoliaService.performAddGeneralsObject(updateData);
     } else {
+      Map<String, dynamic> updateData = {
+      'nameStore': newGenerals.nameStore,
+      'category': newGenerals.category,
+      'products': _updateProducts,
+      'zone': newGenerals.zone,
+      'idStore': newGenerals.idStore,
+      'objectID' :newGenerals.objectID
+    };
       Firestore.instance
           .collection('generals')
           .document(widget.docID)
-          .updateData({
-        'nameStore': newGenerals.nameStore,
-        'category': newGenerals.category,
-        'products': _updateProducts,
-        'zone': newGenerals.zone,
-        'idStore': newGenerals.idStore,
-      });
+          .updateData(updateData);
+          await algoliaService.performAddGeneralsObject(updateData);
     }
     _alertupdate() ;
     return null;
@@ -211,6 +219,16 @@ class _UpdateGeneralsPageState extends State<UpdateGeneralsPage> {
                                   labelText: 'กรอกเลขที่ร้าน'),
                               style: TextStyle(fontSize: 18, color: Colors.black),
                               onSaved: (val) => newGenerals.idStore = val,
+                            ),
+                            TextFormField(
+                              initialValue: document['objectID'],
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  icon: Icon(Icons.account_circle),
+                                  hintText: 'objectID',
+                                  labelText: 'objectID'),
+                              style: TextStyle(fontSize: 18, color: Colors.black),
+                              onSaved: (val) => newGenerals.objectID = val,
                             ),
                             Center(
                               child: _image == null

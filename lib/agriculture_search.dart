@@ -15,6 +15,7 @@ class AgricultureSearchState extends State<AgricultureSearch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text('ค้นหา'),
         actions: <Widget>[
@@ -170,12 +171,12 @@ class DataSearch extends SearchDelegate<String> {
             return Container(
               child: Center(
                   child: Card(
-                color: Colors.yellow[100],
+                color: Colors.lightGreen[200],
                 child: Column(
                   children: <Widget>[
                     Row(children: <Widget>[
                       Text(
-                        "ชื่อร้าน : ",
+                        "   ชื่อร้าน : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
@@ -186,18 +187,20 @@ class DataSearch extends SearchDelegate<String> {
                             style: TextStyle(fontSize: 18.0),
                           )),
                     ]),
-                    Row(
-                      children: <Widget>[
-                        Image.network(
-                          agriculture.image[0],
-                          width: 200,
-                          height: 200,
-                        ),
-                      ],
-                    ),
+                     Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.network(
+                            agriculture.image[0],
+                            width: 200,
+                            height: 200,
+                          ),
+                        ],
+                      ),
+                    
                     Row(children: <Widget>[
                       Text(
-                        "ID : ",
+                        "   เลขที่ร้าน : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
@@ -210,7 +213,7 @@ class DataSearch extends SearchDelegate<String> {
                     ]),
                     Row(children: <Widget>[
                       Text(
-                        "zone : ",
+                        "   โซน : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
@@ -223,7 +226,7 @@ class DataSearch extends SearchDelegate<String> {
                     ]),
                     Row(children: <Widget>[
                       Text(
-                        "สินค้า : ",
+                        "   สินค้า : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
@@ -236,7 +239,7 @@ class DataSearch extends SearchDelegate<String> {
                     ]),
                     Row(children: <Widget>[
                       Text(
-                        "ประเภท : ",
+                        "   ประเภท : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),

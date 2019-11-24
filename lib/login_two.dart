@@ -131,8 +131,24 @@ class _LoginTwoState extends State<LoginTwo> {
                   Container(margin: EdgeInsets.only(left: 0))
                 ],
               ),
+              Padding(
+                padding: const EdgeInsets.all(80.0),
+                child: Container(
+                  width: 200,
+                  height: 300,
+                  child: Column(
+                    
+                    children: <Widget>[
+                      Image.network("https://www.kasetkaoklai.com/home/wp-content/uploads/2019/01/49896409_10157007662962451_2359220712444526592_n-1.jpg"),
+                      
+                    ],
+                  ),
+                ),
+              )
             ],
+            
           ),
+          
         )
 
         // body: Padding(

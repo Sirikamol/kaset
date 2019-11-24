@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kasetsart/food.dart';
 import 'package:kasetsart/image_service.dart';
-
 import 'app_navigate.dart';
 import 'algolia_service.dart';
 
@@ -27,6 +26,8 @@ class _UpdatePageState extends State<UpdatePage> {
   File _image;
   int productCount;
   final algoliaService = AlgoliaService.instance;
+
+
 
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -89,11 +90,11 @@ class _UpdatePageState extends State<UpdatePage> {
     print('ID: ${newFood.idStore}'); //*
     print('Category: ${newFood.category}');
     print('Zone: ${newFood.zone}');
+    print('ObjectID: ${newFood.objectID}');
     print(_updateProducts);
     print(_image);
-
-  
-
+    // String imgUrl = await onImageUploading(_image);
+    //   print(imgUrl);
 
     if (_image != null) {
       String imgUrl = await onImageUploading(_image);
@@ -105,26 +106,31 @@ class _UpdatePageState extends State<UpdatePage> {
       'zone': newFood.zone,
       'image': [imgUrl],
       'idStore':newFood.idStore,
+      'objectID' :newFood.objectID
     };
       Firestore.instance
       .collection('food')
       .document(widget.docID)
-      .updateData(updateData
-      );
+      .updateData(updateData);
       await algoliaService.performUpdateFoodObject(updateData);
     } else {
       Map<String, dynamic> updateData = {
         'nameStore': newFood.nameStore,
-        'category': newFood.category,
+        'category': newFood.category,  
         'products': _updateProducts,
         'zone': newFood.zone,
-        'idStore': newFood.idStore //*
+        'idStore': newFood.idStore ,
+        'objectID' :newFood.objectID,
       };
-      Firestore.instance.collection('food').document(widget.docID).updateData(updateData);
+      Firestore.instance
+      .collection('food')
+      .document(widget.docID)
+      .updateData(updateData);
       await algoliaService.performUpdateFoodObject(updateData);
+      
     }
-    
-
+    _alertinput();
+    return null;
   }
 
   Future<void> _alertinput() async {
@@ -183,7 +189,8 @@ class _UpdatePageState extends State<UpdatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.lightGreen
+          backgroundColor: Colors.lightGreen,
+          title: Text('Update Food'),
         ),
         body: SafeArea(
             top: false,
@@ -225,6 +232,16 @@ class _UpdatePageState extends State<UpdatePage> {
                                   labelText: 'กรอกเลขที่ร้าน'),
                               style: TextStyle(fontSize: 18, color: Colors.black),
                               onSaved: (val) => newFood.idStore = val,
+                            ),
+                            TextFormField(
+                              initialValue: document['objectID'],
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  icon: Icon(Icons.account_circle),
+                                  hintText: 'objectID',
+                                  labelText: 'objectID'),
+                              style: TextStyle(fontSize: 18, color: Colors.black),
+                              onSaved: (val) => newFood.objectID = val,
                             ),
                             Center(
                               child: _image == null
