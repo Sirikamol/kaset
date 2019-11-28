@@ -1,26 +1,45 @@
 import 'package:flutter/material.dart';
+import 'image_animals_1.dart';
+import 'image_animals_2.dart';
+import 'image_animals_3.dart';
+import 'image_animals_4.dart';
+import 'image_food_1.dart';
+import 'image_food_2.dart';
+import 'image_food_3.dart';
+import 'image_food_4.dart';
+import 'image_food_5.dart';
+import 'image_generals_1.dart';
+import 'image_generals_2.dart';
+import 'image_generals_3.dart';
+import 'image_generals_4.dart';
+import 'tidings_two.dart';
 import 'agriculture_search.dart';
 import 'animal_search.dart';
 import 'food_search.dart';
 import 'agriculture_edit.dart';
 import 'general_edit.dart';
 import 'general_search.dart';
-import 'insertAgriculture_page.dart';
-import 'insertAnimals_page.dart';
-import 'insertGenerals_page.dart';
+import 'image_agriculture_1.dart';
+import 'image_agriculture_2.dart';
+import 'image_agriculture_3.dart';
+import 'image_agriculture_4.dart';
+import 'insert_agriculture_page.dart';
+import 'insert_animals_page.dart';
+import 'insert_generals_page.dart';
 import 'parking_place.dart';
 import 'history_page.dart';
-import 'insertFood_page.dart';
+import 'insert_food_page.dart';
 import 'login_page.dart';
 import 'second_page.dart';
 import 'map_page.dart';
+import 'tidings_one.dart';
 import 'tram_page.dart';
-import 'updateAgriculture_page.dart';
-import 'updateAnimal_page.dart';
-import 'updateGenerals_page.dart';
+import 'update_agriculture_page.dart';
+import 'update_animal_page.dart';
+import 'update_generals_page.dart';
 import 'work_table.dart';
 import 'input_page.dart';
-import 'updateFood_page.dart';
+import 'update_food_page.dart';
 import 'food_edit.dart';
 import 'animals_edit.dart';
 
@@ -165,5 +184,119 @@ navigateToUpdateGeneralsPage(BuildContext context, String docID) {
 navigateToInsertGeneralsPage(BuildContext context) {
   Navigator.push(context, MaterialPageRoute(builder: (context) {
     return InsertGeneralsPage();
+  }));
+}
+
+navigateToImageFoodA(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageFoodA();
+  }));
+}
+
+navigateToImageFoodB(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageFoodB();
+  }));
+}
+
+navigateToImageFoodC(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageFoodC();
+  }));
+}
+
+navigateToImageFoodD(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageFoodD();
+  }));
+}
+
+navigateToImageFoodE(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageFoodE();
+  }));
+}
+
+navigateToImageAgricultureA(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAgricultureA();
+  }));
+}
+
+navigateToImageAgricultureB(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAgricultureB();
+  }));
+}
+
+navigateToImageAgricultureC(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAgricultureC();
+  }));
+}
+
+navigateToImageAgricultureD(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAgricultureD();
+  }));
+}
+
+navigateToImageAnimalsA(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAnimalsA();
+  }));
+}
+
+navigateToImageAnimalsB(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAnimalsB();
+  }));
+}
+
+navigateToImageAnimalsC(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAnimalsC();
+  }));
+}
+
+navigateToImageAnimalsD(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageAnimalsD();
+  }));
+}
+
+navigateToImageGeneralsA(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageGeneralsA();
+  }));
+}
+
+navigateToImageGeneralsB(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageGeneralsB();
+  }));
+}
+
+navigateToImageGeneralsC(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageGeneralsC();
+  }));
+}
+
+navigateToImageGeneralsD(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return ImageGeneralsD();
+  }));
+}
+
+navigateToTidingsOne(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return TidingsOne();
+  }));
+}
+
+navigateToTidingsTwo(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return TidingsTwo();
   }));
 }

@@ -11,7 +11,7 @@ class _LoginTwoState extends State<LoginTwo> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Welcome to my app'),
+          title: Text('Menu  '),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -26,7 +26,6 @@ class _LoginTwoState extends State<LoginTwo> {
                           navigateToFoodEdit(context);
                         },
                         child: Card(
-                          
                           color: Colors.pink[100],
                           child: Column(
                             children: <Widget>[

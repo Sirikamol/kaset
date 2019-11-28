@@ -8,35 +8,203 @@ class TramPage extends StatefulWidget {
 }
 
 class _TramPageState extends State<TramPage> {
-  Widget _oneSec() {
-    return Column(
-      children: <Widget>[
-        Container(
-          height: 250,
-          width: 1500,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              buildCardListView(
-                  "https://dok7xy59qfw9h.cloudfront.net/649/297/682/1940003015-1rgp2ke-65mglf4oebr8545/original/_a16.jpg"),
-            ],
+  Widget _pageSec() {
+    return Card(
+      color: Colors.lightGreen[300],
+      child: Column(
+        children: <Widget>[
+          Container(
+            height: 260,
+            width: 260,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Image.network(
+                    "http://www.glurr.com/images/topic/0625953001434374767.png")
+              ],
+            ),
           ),
-        )
+        ],
+      ),
+    );
+  }
+
+  Widget _aaSec() {
+    return Card(
+      child: Row(
+        children: <Widget>[
+          Text("      รอบ                              ",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
+          Text(
+            "เวลา",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _oneSec() {
+    return Card(
+        child: Row(
+      children: <Widget>[
+        Text("    รอบที่ 1    ",
+            style: TextStyle(color: Colors.black, fontSize: 20)),
+        Text(
+          "                07:15  -  07:42  น.",
+          style: TextStyle(color: Colors.grey, fontSize: 20),
+        ),
+      ],
+    ));
+  }
+
+  Widget _twoSec() {
+    return Card(
+        child: Row(
+      children: <Widget>[
+        Text("    รอบที่ 2    ",
+            style: TextStyle(color: Colors.black, fontSize: 20)),
+        Text(
+          "                08:05  -  08:32  น.",
+          style: TextStyle(color: Colors.grey, fontSize: 20),
+        ),
+      ],
+    ));
+  }
+
+  Widget _threeSec() {
+    return Card(
+        child: Row(
+      children: <Widget>[
+        Text("    รอบที่ 3    ",
+            style: TextStyle(color: Colors.black, fontSize: 20)),
+        Text(
+          "                08:55  -  09:22  น.",
+          style: TextStyle(color: Colors.grey, fontSize: 20),
+        ),
+      ],
+    ));
+  }
+
+  Widget _fourSec() {
+    return Card(
+        child: Row(
+      children: <Widget>[
+        Text("    รอบที่ 4    ",
+            style: TextStyle(color: Colors.black, fontSize: 20)),
+        Text(
+          "                09:45  -  10:12  น.",
+          style: TextStyle(color: Colors.grey, fontSize: 20),
+        ),
+      ],
+    ));
+  }
+
+  Widget _fiveSec() {
+    return Card(
+        child: Row(
+      children: <Widget>[
+        Text("    รอบที่ 5    ",
+            style: TextStyle(color: Colors.black, fontSize: 20)),
+        Text(
+          "                10:35  -  11:02  น.",
+          style: TextStyle(color: Colors.grey, fontSize: 20),
+        ),
+      ],
+    ));
+  }
+
+  Widget _sixSec() {
+    return Card(
+        child: Row(
+      children: <Widget>[
+        Text("    รอบที่ 6    ",
+            style: TextStyle(color: Colors.black, fontSize: 20)),
+        Text(
+          "                11:25  -  11:52  น.",
+          style: TextStyle(color: Colors.grey, fontSize: 20),
+        ),
+      ],
+    ));
+  }
+
+  Widget _sevenSec() {
+    return Card(
+        child: Row(
+      children: <Widget>[
+        Text("    รอบที่ 7    ",
+            style: TextStyle(color: Colors.black, fontSize: 20)),
+        Text(
+          "                11:55  -  12:22  น.",
+          style: TextStyle(color: Colors.grey, fontSize: 20),
+        ),
+      ],
+    ));
+  }
+
+  Widget _eightSec() {
+    return Card(
+        child: Row(
+      children: <Widget>[
+        Text("    รอบที่ 8    ",
+            style: TextStyle(color: Colors.black, fontSize: 20)),
+        Text(
+          "                12:25  -  12:52  น.",
+          style: TextStyle(color: Colors.grey, fontSize: 20),
+        ),
+      ],
+    ));
+  }
+
+  Widget _bbSec() {
+    return Row(
+      children: <Widget>[
+        Text("                           พัก                   ",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
       ],
     );
   }
 
-  Widget _twoSec() {
-    return Column(
+  Widget _nineSec() {
+    return Card(
+        child: Row(
       children: <Widget>[
-        Text("ประวัติมหาวิทยาลัยเกษตรศาสตร์",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
+        Text("    รอบที่ 9    ",
+            style: TextStyle(color: Colors.black, fontSize: 20)),
         Text(
-          "มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตกำแพงแสน จัดตั้งเป็นวิทยาเขตลำดับที่ 2 ของมหาวิทยาลัยเกษตรศาสตร์ โดยการดำริของ หม่อมหลวงชูชาติ กำภู อธิการบดีในขณะนั้นได้พิจารณาเห็นว่าพื้นที่ของมหาวิทยาลัยเกษตรศาสตร์ที่บางเขนคับแคบ ไม่สามารถจะขยายงานด้านการศึกษาทางเกษตรให้กว้างขวางเพื่อรับกับภาวะการขยายตัวทางเศรษฐกิจและสังคมของชาติในอนาคตได้[2] มหาวิทยาลัยจึงจัดทำแผนและโครงการขยายกิจการต่าง ๆ ในด้านสาขาวิชา เกษตรศาสตร์ ไปดำเนินการ ณ สถานที่ที่เหมาะสมแห่งใหม่ ในท้องที่อำเภอกำแพงแสน จังหวัดนครปฐม เมื่อ พ.ศ. 2510 และรัฐบาลเห็นชอบในหลักการโครงการพัฒนามหาวิทยาลัย โดยใช้เงินกู้ธนาคารโลกส่วนหนึ่งและเงินงบประมาณของรัฐบาลสมทบอีกส่วนหนึ่ง โดยธนาคารโลกอนุมัติให้รัฐบาลกู้เงินจำนวน 320.3 ล้านบาท สมทบกับเงินงบประมาณจำนวน 269 ล้านบาท ดำเนินโครงการพัฒนามหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตกำแพงแสน ตั้งแต่วันที่ 22 สิงหาคม 2515 ถึงวันที่ 30 มิถุนายน 2521 และมหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตกำแพงแสนเริ่มจัดการเรียนการสอนครั้งแรก เมื่อวันที่ 12 พฤศจิกายน 2522",
-          style: TextStyle(color: Colors.grey[500], fontSize: 20),
+          "                14:15  -  14:42  น.",
+          style: TextStyle(color: Colors.grey, fontSize: 20),
         ),
       ],
-    );
+    ));
+  }
+
+  Widget _tenSec() {
+    return Card(
+        child: Row(
+      children: <Widget>[
+        Text("    รอบที่ 10    ",
+            style: TextStyle(color: Colors.black, fontSize: 20)),
+        Text(
+          "              15:05  -  15:32  น.",
+          style: TextStyle(color: Colors.grey, fontSize: 20),
+        ),
+      ],
+    ));
+  }
+
+  Widget _elevenSec() {
+    return Card(
+        child: Row(
+      children: <Widget>[
+        Text("    รอบที่ 11    ",
+            style: TextStyle(color: Colors.black, fontSize: 20)),
+        Text(
+          "              15:55  -  16:22  น.",
+          style: TextStyle(color: Colors.grey, fontSize: 20),
+        ),
+      ],
+    ));
   }
 
   @override
@@ -48,8 +216,20 @@ class _TramPageState extends State<TramPage> {
         ),
         body: ListView(
           children: <Widget>[
+            _pageSec(),
+            _aaSec(),
             _oneSec(),
             _twoSec(),
+            _threeSec(),
+            _fourSec(),
+            _fiveSec(),
+            _sixSec(),
+            _sevenSec(),
+            _eightSec(),
+            _bbSec(),
+            _nineSec(),
+            _tenSec(),
+            _elevenSec(),
           ],
         ));
   }

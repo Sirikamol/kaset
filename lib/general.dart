@@ -2,11 +2,17 @@ class Generals {
   String nameStore;
   String zone;
   String category;
-  List<String> products;
-  String image;
+  List<dynamic> products;
+  List<dynamic> image;
+  String idStore;
 
   Generals(
-      {this.nameStore, this.zone, this.category, this.products, this.image});
+      {this.nameStore,
+      this.zone,
+      this.category,
+      this.products,
+      this.image,
+      this.idStore});
 
   factory Generals.fromJSON(Map<String, dynamic> json) {
     return Generals(
@@ -15,6 +21,7 @@ class Generals {
       category: json['category'],
       products: json['products'],
       image: json['image'],
+      idStore: json['idStore'],
     );
   }
 }

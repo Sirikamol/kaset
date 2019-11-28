@@ -23,99 +23,107 @@ class GeneralSearchState extends State<GeneralSearch> {
             )
           ],
         ),
-        body: ListView(
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Container(
-                  height: 210,
-                  width: 1500,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "https://s359.kapook.com/pagebuilder/65f2fcb3-a1b6-4cd4-a53a-a03d97250f51.jpg"),
-                        ),
+        body: ListView(children: <Widget>[
+          Column(
+            children: <Widget>[
+              Container(
+                height: 210,
+                width: 1500,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    GestureDetector(
+                      child: Card(
+                        child: Image.network(
+                            "https://s359.kapook.com/pagebuilder/65f2fcb3-a1b6-4cd4-a53a-a03d97250f51.jpg"),
                       ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Column(
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        navigateToImageGeneralsA(context);
+                      },
+                      child: Card(
+                        child: Image.network(
+                            "https://miro.medium.com/max/4000/1*-0GnyjiGWUG1PhQiR7_kIg.jpeg"),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        navigateToImageGeneralsB(context);
+                      },
+                      child: Card(
+                        child: Image.network(
+                            "https://pbs.twimg.com/media/Db8v_l-UQAALADn.jpg"),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+          Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
-                  height: 170,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "https://miro.medium.com/max/4000/1*-0GnyjiGWUG1PhQiR7_kIg.jpeg"),
+                    height: 170,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () {
+                            navigateToImageGeneralsC(context);
+                          },
+                          child: Card(
+                            child: Image.network(
+                                "https://arch.punpromotion.com/wp-content/uploads/2018/03/29542170_1706983906004622_2199627233934483432_n.jpg"),
+                          ),
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "https://pbs.twimg.com/media/Db8v_l-UQAALADn.jpg"),
+                        GestureDetector(
+                          onTap: () {
+                            navigateToImageGeneralsD(context);
+                          },
+                          child: Card(
+                            child: Image.network(
+                                "https://aboutmom.co/wp-content/uploads/2019/04/nanmeebooks_9-500x500.jpg"),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  height: 170,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "https://arch.punpromotion.com/wp-content/uploads/2018/03/29542170_1706983906004622_2199627233934483432_n.jpg"),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              height: 170,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: <Widget>[
+                                  GestureDetector(
+                                    onTap: () {
+                                      // print('hello1');
+                                      navigateToFoodEdit(context);
+                                    },
+                                    child: Card(
+                                      child: Image.network(
+                                          "https://arch.punpromotion.com/wp-content/uploads/2018/03/29542170_1706983906004622_2199627233934483432_n.jpg"),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      // print('hello1');
+                                      navigateToFoodEdit(context);
+                                    },
+                                    child: Card(
+                                      child: Image.network(
+                                          "https://aboutmom.co/wp-content/uploads/2019/04/nanmeebooks_9-500x500.jpg"),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "https://aboutmom.co/wp-content/uploads/2019/04/nanmeebooks_9-500x500.jpg"),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ],
-        ));
+                      ],
+                    ))
+              ])
+        ]));
   }
 }
 
@@ -179,12 +187,25 @@ class DataSearch extends SearchDelegate<String> {
                     Row(
                       children: <Widget>[
                         Image.network(
-                          generals.image,
+                          generals.image[0],
                           width: 200,
                           height: 200,
                         ),
                       ],
                     ),
+                    Row(children: <Widget>[
+                      Text(
+                        "ID : ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Padding(
+                          padding: EdgeInsets.all(7.0),
+                          child: Text(
+                            generals.idStore,
+                            style: TextStyle(fontSize: 18.0),
+                          )),
+                    ]),
                     Row(children: <Widget>[
                       Text(
                         "zone : ",

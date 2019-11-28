@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:flutter/painting.dart';
 import 'app_navigate.dart';
 
 class AgricultureEdit extends StatefulWidget {
@@ -23,6 +22,7 @@ class _AgricultureEditState extends State<AgricultureEdit> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightGreen,
+          title: Text('Agriculture'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => navigateToInsertAgriculturePage(context),
@@ -42,7 +42,7 @@ class _AgricultureEditState extends State<AgricultureEdit> {
                   children:
                       snapshot.data.documents.map((DocumentSnapshot document) {
                     var card = new Card(
-                      color: Colors.yellow[100],
+                      color: Colors.lightGreen[200],
                       child: Column(
                         children: <Widget>[
                           Row(children: <Widget>[
@@ -52,13 +52,14 @@ class _AgricultureEditState extends State<AgricultureEdit> {
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
                             Padding(
-                                padding: EdgeInsets.all(7.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Text(
                                   document['nameStore'].toString(),
                                   style: TextStyle(fontSize: 18.0),
                                 )),
                           ]),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Image.network(
                                 document['image'][0],
@@ -71,13 +72,17 @@ class _AgricultureEditState extends State<AgricultureEdit> {
                             child: ButtonBar(
                               children: <Widget>[
                                 FlatButton(
-                                    child: const Text("Update"),
+                                    child: const Text("Update",
+                                        style: TextStyle(fontSize: 15)),
+                                    textColor: Colors.lightGreen,
                                     onPressed: () {
                                       navigateToUpdateAgriculturePage(
                                           context, document.documentID);
                                     }),
                                 FlatButton(
-                                    child: const Text("Delete"),
+                                    child: const Text("Delete",
+                                        style: TextStyle(fontSize: 15)),
+                                    textColor: Colors.lightGreen,
                                     onPressed: () {
                                       _onDelete(document.documentID);
                                     }),

@@ -23,99 +23,69 @@ class AnimalSearchState extends State<AnimalSearch> {
             )
           ],
         ),
-        body: ListView(
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Container(
-                  height: 210,
-                  width: 1500,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "https://i.ytimg.com/vi/iwvHrupRk6I/maxresdefault.jpg"),
-                        ),
+        body: ListView(children: <Widget>[
+          Column(
+            children: <Widget>[
+              Container(
+                height: 210,
+                width: 1500,
+                child: ListView(
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {
+                        // print('hello1');
+                        navigateToImageAnimalsA(context);
+                      },
+                      child: Card(
+                        child: Image.network(
+                            "https://f.ptcdn.info/020/013/000/1386375631-DSC0056JPG-o.jpg"),
                       ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  height: 170,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "https://f.ptcdn.info/020/013/000/1386375631-DSC0056JPG-o.jpg"),
-                        ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        // print('hello1');
+                        navigateToImageAnimalsB(context);
+                      },
+                      child: Card(
+                        child: Image.network(
+                            "http://chailaibackpacker.com/wp-content/uploads/2017/01/Page1.jpg"),
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "http://chailaibackpacker.com/wp-content/uploads/2017/01/Page1.jpg"),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  height: 170,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "http://images.voicetv.co.th/media/640/0/storage0/1020294.jpg"),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "http://jjpetonline.com/picture/shop373/shop_373_6020_1.jpg"),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ],
-        ));
+                    ),
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                              height: 170,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: <Widget>[
+                                  GestureDetector(
+                                    onTap: () {
+                                      navigateToImageAnimalsC(context);
+                                    },
+                                    child: Card(
+                                      child: Image.network(
+                                          "http://images.voicetv.co.th/media/640/0/storage0/1020294.jpg"),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      navigateToImageAnimalsD(context);
+                                    },
+                                    child: Card(
+                                      child: Image.network(
+                                          "http://jjpetonline.com/picture/shop373/shop_373_6020_1.jpg"),
+                                    ),
+                                  )
+                                ],
+                              ))
+                        ])
+                  ],
+                ),
+              )
+            ],
+          )
+        ]));
   }
 }
 
@@ -179,12 +149,25 @@ class DataSearch extends SearchDelegate<String> {
                     Row(
                       children: <Widget>[
                         Image.network(
-                          animals.image,
+                          animals.image[0],
                           width: 200,
                           height: 200,
                         ),
                       ],
                     ),
+                    Row(children: <Widget>[
+                      Text(
+                        "ID : ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Padding(
+                          padding: EdgeInsets.all(7.0),
+                          child: Text(
+                            animals.idStore,
+                            style: TextStyle(fontSize: 18.0),
+                          )),
+                    ]),
                     Row(children: <Widget>[
                       Text(
                         "zone : ",

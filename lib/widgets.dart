@@ -10,13 +10,9 @@ Widget headerSection() {
           scrollDirection: Axis.horizontal,
           children: <Widget>[
             buildCardListView(
-                "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),
+                "https://scontent.fbkk5-8.fna.fbcdn.net/v/t1.0-0/p640x640/74271532_3180907388618548_2552361427490832384_o.jpg?_nc_cat=106&_nc_oc=AQkH6ljGCEu8cCK8TnU2Sl9_ucasmfKu4XAgf9Pju8rAk7AQPxhy8fZ0zK0wiBmIX5I&_nc_ht=scontent.fbkk5-8.fna&oh=dcf0bd058c4d1d0f5ff316fddc8eaddc&oe=5E4528CC"),
             buildCardListView(
-                "https://kps.ku.ac.th/kasetfair/images/home_slide/BN-500x333.jpg"),
-            buildCardListView(
-                "https://f.ptcdn.info/252/061/000/pj9cj9fnl3S4dxTFtrU-o.jpg"),
-            buildCardListView(
-                "https://www.nanagarden.com/picture/Forum/For9059_1.jpg"),
+                "http://pasusart.com/wp-content/uploads/2019/10/C3CF0358-F6E1-4CD2-ABBF-FEB0BAA51552.jpeg"),
           ],
         ),
       )
@@ -74,6 +70,7 @@ Widget button2Section() {
 
 Widget finalHeadSection() {
   return Container(
+    alignment: Alignment.topLeft,
     child: Text(
       'ข่าวสาร ',
       style: TextStyle(fontSize: 20, color: Colors.white),

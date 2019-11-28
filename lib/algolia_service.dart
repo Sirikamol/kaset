@@ -1,13 +1,19 @@
 import 'package:algolia/algolia.dart';
-import 'package:kasetsart/agriculture.dart';
-import 'package:kasetsart/animals.dart';
-import 'package:kasetsart/food.dart';
-import 'package:kasetsart/general.dart';
+import 'agriculture.dart';
+import 'animals.dart';
+import 'food.dart';
+import 'general.dart';
 
 class AlgoliaService {
   AlgoliaService._privateConstructor();
 
   static final AlgoliaService instance = AlgoliaService._privateConstructor();
+  AlgoliaTask taskAdded,
+      taskUpdated,
+      taskDeleted,
+      taskBatch,
+      taskClearIndex,
+      taskDeleteIndex;
 
   final Algolia _algolia = Algolia.init(
     applicationId: 'T374A0CYK0',
@@ -20,6 +26,28 @@ class AlgoliaService {
       _algolia.instance.index('agriculture');
   AlgoliaIndexReference get _generalsIndex =>
       _algolia.instance.index('generals');
+
+  Future<String> performAddFoodObject(addData) async {
+    taskAdded = await _foodIndex.addObject(addData);
+    // print(taskAdded.data);
+    return taskAdded.data['objectID'].toString();
+  }
+
+  void performAddAgricultureObject(addData) async {
+    _agricultureIndex.addObject(addData);
+  }
+
+  void performAddAnimalObject(addData) async {
+    _animalIndex.addObject(addData);
+  }
+
+  void performAddGeneralsObject(addData) async {
+    _generalsIndex.addObject(addData);
+  }
+
+  void performUpdateFoodObject(objectId, updateData) async {
+    _foodIndex.object(objectId).updateData(updateData);
+  }
 
   Future<List<Food>> performSearchQuery({text: String}) async {
     final query = _foodIndex.search(text);

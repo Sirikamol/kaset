@@ -22,6 +22,7 @@ class _FoodEditState extends State<FoodEdit> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightGreen,
+          title: Text('Food'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => navigateToInsertPage(context),
@@ -43,7 +44,7 @@ class _FoodEditState extends State<FoodEdit> {
                     return Container(
                       child: Center(
                           child: Card(
-                        color: Colors.yellow[100],
+                        color: Colors.lightGreen[200],
                         child: Column(
                           children: <Widget>[
                             Row(children: <Widget>[
@@ -53,13 +54,14 @@ class _FoodEditState extends State<FoodEdit> {
                                     fontWeight: FontWeight.bold, fontSize: 16),
                               ),
                               Padding(
-                                  padding: EdgeInsets.all(7.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Text(
                                     document['nameStore'].toString(),
                                     style: TextStyle(fontSize: 18.0),
                                   )),
                             ]),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Image.network(
                                   document['image'][0],
@@ -72,13 +74,17 @@ class _FoodEditState extends State<FoodEdit> {
                               child: ButtonBar(
                                 children: <Widget>[
                                   FlatButton(
-                                      child: const Text("Update"),
+                                      child: const Text("Update",
+                                          style: TextStyle(fontSize: 15)),
+                                      textColor: Colors.lightGreen,
                                       onPressed: () {
                                         navigateToUpdatePage(
                                             context, document.documentID);
                                       }),
                                   FlatButton(
-                                      child: const Text("Delete"),
+                                      child: const Text("Delete",
+                                          style: TextStyle(fontSize: 15)),
+                                      textColor: Colors.lightGreen,
                                       onPressed: () {
                                         _onDelete(document.documentID);
                                       }),

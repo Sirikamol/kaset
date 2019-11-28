@@ -53,7 +53,7 @@ class _MapPageState extends State<MapPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightGreen,
-        title: Text("Hello"),
+        title: Text("map"),
       ),
       body: ListView(
         children: <Widget>[

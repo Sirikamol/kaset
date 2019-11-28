@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
         fit: StackFit.expand,
         children: <Widget>[
           Container(
-            color: Colors.green[200],
+            color: Colors.lightGreen[200],
           ),
           Padding(
             padding: const EdgeInsets.all(20.0),
@@ -94,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () => doLogin(),
                     color: Colors.green[100],
                     child: Text(
-                      'Login to app',
+                      'Login ',
                       style: TextStyle(
                           color: Colors.grey[700],
                           fontSize: 20.0,

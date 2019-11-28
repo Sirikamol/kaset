@@ -12,42 +12,91 @@ class FoodSearchState extends State<FoodSearch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('ค้นหา'),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
-                showSearch(context: context, delegate: DataSearch());
-              },
-            )
+      appBar: AppBar(
+        title: Text('ค้นหา'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              showSearch(context: context, delegate: DataSearch());
+            },
+          )
+        ],
+      ),
+      body:ListView(
+        children: <Widget>[
+          Column(
+    children: <Widget>[
+      Container(
+        height: 210,
+        width: 1500,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            GestureDetector(
+            child: Card(
+              child: Image.network(
+                  "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),
+            ),),
           ],
         ),
         body: ListView(
           children: <Widget>[
-            Column(
-              children: <Widget>[
-                Container(
-                  height: 210,
-                  width: 1500,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "https://s.isanook.com/tr/0/ud/280/1402313/1.jpg"),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+            GestureDetector(
+              onTap: () {
+                  navigateToImageFoodA(context);
+                },
+            child:Card(
+              child: Image.network(
+                  "https://pbs.twimg.com/media/C3QbEqbVMAA0l2I.jpg"),
+            ),),
+            GestureDetector(
+              onTap: () {
+                  navigateToImageFoodB(context);
+                },
+            child:Card(
+              child: Image.network(
+                  "https://pbs.twimg.com/media/CmBxHzDWgAAvuGo.jpg"),
             ),
+            ),
+            GestureDetector(
+              onTap: () {
+                  navigateToImageFoodC(context);
+                },
+            child:Card(
+              child: Image.network(
+                  "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
+            ),),
+          ],
+        ),
+      )
+    ],
+    ),
+
+    Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+      Container(
+        height: 170,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            GestureDetector(
+              onTap: () {
+                  navigateToImageFoodD(context);
+                },
+            child:Card(
+              child: Image.network(
+                  "https://www.chillpainai.com/src/wewakeup/scoop/img_scoop/scoop/kang/fabuary2017/kasetfair/IMG_2468.jpg"),
+            ),),
+            GestureDetector(
+              onTap: () {
+                  navigateToImageFoodE(context);
+                },
+              child:Card(
+                child: Image.network(
+                    "https://arch.punpromotion.com/wp-content/uploads/2017/06/S__2523145-1.jpg"),
+              ),),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -58,50 +107,6 @@ class FoodSearchState extends State<FoodSearch> {
                     children: <Widget>[
                       GestureDetector(
                         onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "https://pbs.twimg.com/media/C3QbEqbVMAA0l2I.jpg"),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "https://pbs.twimg.com/media/CmBxHzDWgAAvuGo.jpg"),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  height: 170,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
                           navigateToFoodEdit(context);
                         },
                         child: Card(
@@ -111,7 +116,6 @@ class FoodSearchState extends State<FoodSearch> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          // print('hello1');
                           navigateToFoodEdit(context);
                         },
                         child: Card(
@@ -124,6 +128,7 @@ class FoodSearchState extends State<FoodSearch> {
                 )
               ],
             ),
+            )
           ],
         ));
   }
@@ -164,6 +169,7 @@ class DataSearch extends SearchDelegate<String> {
   Widget buildSuggestions(BuildContext context) {
     return FutureBuilder<List<Food>>(
       future: algoliaService.performSearchQuery(text: query),
+
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           final foods = snapshot.data.map((food) {
@@ -189,12 +195,25 @@ class DataSearch extends SearchDelegate<String> {
                     Row(
                       children: <Widget>[
                         Image.network(
-                          food.image,
+                          food.image[0],
                           width: 200,
                           height: 200,
                         ),
                       ],
                     ),
+                    Row(children: <Widget>[
+                      Text(
+                        "ID : ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Padding(
+                          padding: EdgeInsets.all(7.0),
+                          child: Text(
+                            food.idStore,
+                            style: TextStyle(fontSize: 18.0),
+                          )),
+                    ]),
                     Row(children: <Widget>[
                       Text(
                         "zone : ",

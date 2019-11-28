@@ -22,6 +22,7 @@ class _GeneralEditState extends State<GeneralEdit> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightGreen,
+          title: Text('Generals'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => navigateToInsertGeneralsPage(context),
@@ -41,7 +42,7 @@ class _GeneralEditState extends State<GeneralEdit> {
                   children:
                       snapshot.data.documents.map((DocumentSnapshot document) {
                     var card = new Card(
-                      color: Colors.yellow[100],
+                      color: Colors.lightGreen[200],
                       child: Column(
                         children: <Widget>[
                           Row(children: <Widget>[
@@ -51,13 +52,14 @@ class _GeneralEditState extends State<GeneralEdit> {
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
                             Padding(
-                                padding: EdgeInsets.all(7.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Text(
                                   document['nameStore'].toString(),
                                   style: TextStyle(fontSize: 18.0),
                                 )),
                           ]),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Image.network(
                                 document['image'][0],
@@ -70,13 +72,17 @@ class _GeneralEditState extends State<GeneralEdit> {
                             child: ButtonBar(
                               children: <Widget>[
                                 FlatButton(
-                                    child: const Text("Update"),
+                                    child: const Text("Update",
+                                        style: TextStyle(fontSize: 15)),
+                                    textColor: Colors.lightGreen,
                                     onPressed: () {
                                       navigateToUpdateGeneralsPage(
                                           context, document.documentID);
                                     }),
                                 FlatButton(
-                                    child: const Text("Delete"),
+                                    child: const Text("Delete",
+                                        style: TextStyle(fontSize: 15)),
+                                    textColor: Colors.lightGreen,
                                     onPressed: () {
                                       _onDelete(document.documentID);
                                     }),

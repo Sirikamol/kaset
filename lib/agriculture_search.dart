@@ -24,108 +24,88 @@ class AgricultureSearchState extends State<AgricultureSearch> {
             )
           ],
         ),
-        body: ListView(
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Container(
-                  height: 210,
-                  width: 1500,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "https://my.kapook.com/imagescontent/fb_img/530/s_203918_9482.jpg"),
-                        ),
+        body: ListView(children: <Widget>[
+          Column(
+            children: <Widget>[
+              Container(
+                height: 210,
+                width: 1500,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    GestureDetector(
+                      child: Card(
+                        child: Image.network(
+                            "https://my.kapook.com/imagescontent/fb_img/530/s_203918_9482.jpg"),
                       ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  height: 170,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "http://www.clicksii.com/photostock/wp-content/uploads/2018/06/cactus-4-560x420.jpg"),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "https://i.ytimg.com/vi/uq5T6u_Towg/maxresdefault.jpg"),
-                        ),
-                      ),
-                      // GestureDetector(
-                      //   onTap: () {
-                      //       // print('hello1');
-                      //       navigateToFoodEdit(context);
-                      //     },
-                      // child:Card(
-                      //   child: Image.network(
-                      //       "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
-                      // ),),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  height: 170,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "https://travel.mthai.com/app/uploads/2018/11/sunflower-9.jpg"),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // print('hello1');
-                          navigateToFoodEdit(context);
-                        },
-                        child: Card(
-                          child: Image.network(
-                              "https://www.organicfarmthailand.com/wp-content/uploads/2016/01/WP_20160130_067.jpg"),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ],
-        ));
+                    ),
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            height: 170,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: <Widget>[
+                                GestureDetector(
+                                  onTap: () {
+                                    navigateToImageAgricultureC(context);
+                                  },
+                                  child: Card(
+                                    child: Image.network(
+                                        "https://travel.mthai.com/app/uploads/2018/11/sunflower-9.jpg"),
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    navigateToImageAgricultureD(context);
+                                  },
+                                  child: Card(
+                                    child: Image.network(
+                                        "https://www.organicfarmthailand.com/wp-content/uploads/2016/01/WP_20160130_067.jpg"),
+                                  ),
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      height: 170,
+                                      child: ListView(
+                                        scrollDirection: Axis.horizontal,
+                                        children: <Widget>[
+                                          GestureDetector(
+                                            onTap: () {
+                                              navigateToFoodEdit(context);
+                                            },
+                                            child: Card(
+                                              child: Image.network(
+                                                  "https://travel.mthai.com/app/uploads/2018/11/sunflower-9.jpg"),
+                                            ),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              navigateToFoodEdit(context);
+                                            },
+                                            child: Card(
+                                              child: Image.network(
+                                                  "https://www.organicfarmthailand.com/wp-content/uploads/2016/01/WP_20160130_067.jpg"),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ])
+                  ],
+                ),
+              )
+            ],
+          )
+        ]));
   }
 }
 
@@ -146,7 +126,6 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildLeading(BuildContext context) {
-    // Leading icon on the left of the app bar
     return IconButton(
         icon: AnimatedIcon(
             icon: AnimatedIcons.menu_arrow, progress: transitionAnimation),
@@ -189,12 +168,25 @@ class DataSearch extends SearchDelegate<String> {
                     Row(
                       children: <Widget>[
                         Image.network(
-                          agriculture.image,
+                          agriculture.image[0],
                           width: 200,
                           height: 200,
                         ),
                       ],
                     ),
+                    Row(children: <Widget>[
+                      Text(
+                        "ID : ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Padding(
+                          padding: EdgeInsets.all(7.0),
+                          child: Text(
+                            agriculture.idStore,
+                            style: TextStyle(fontSize: 18.0),
+                          )),
+                    ]),
                     Row(children: <Widget>[
                       Text(
                         "zone : ",
