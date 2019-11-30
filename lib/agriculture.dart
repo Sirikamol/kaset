@@ -5,6 +5,7 @@ class Agriculture {
   List<dynamic> products;
   List<dynamic> image;
   String idStore;
+  String objectID;
 
   Agriculture(
       {this.nameStore,
@@ -12,16 +13,16 @@ class Agriculture {
       this.category,
       this.products,
       this.image,
-      this.idStore});
-
+      this.idStore,
+      this.objectID});
   factory Agriculture.fromJSON(Map<String, dynamic> json) {
     return Agriculture(
-      nameStore: json['nameStore'],
-      zone: json['zone'],
-      category: json['category'],
-      products: json['products'],
-      image: json['image'],
-      idStore: json['idStore'],
-    );
+        nameStore: json['nameStore'],
+        zone: json['zone'],
+        category: json['category'],
+        products: json['products'],
+        image: json['image'],
+        idStore: json['idStore'],
+        objectID: json['objectID']);
   }
 }

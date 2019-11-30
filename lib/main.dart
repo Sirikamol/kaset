@@ -326,7 +326,130 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-          ]))
-        ])));
+          ],
+        )),
+      ],
+          ),),
+
+          ],
+        ),
+        
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            Icon(Icons.spa, color: Colors.black, size: 35),
+            DrawerHeader(
+                child: Text('KASETSART',
+                    style: TextStyle(fontSize: 22, color: Colors.black))),
+            Icon(
+              Icons.arrow_drop_down_circle,
+              color: Colors.black,
+              size: 30,
+            ),
+            Card(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    Align(
+                    alignment: Alignment.topLeft,
+                    child: FlatButton.icon(
+                        onPressed: () => navigateToMapPage(context),
+                        icon: Icon(
+                          Icons.location_on,
+                          color: Colors.blue,
+                          size: 35,
+                        ),
+                        label: Text("Map",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16))),),
+                    Align(
+                    alignment: Alignment.topLeft,
+                    child: FlatButton.icon(
+                        onPressed: () => navigateToArkingPlace(context),
+                        icon: Icon(
+                          Icons.drive_eta,
+                          color: Colors.blue,
+                          size: 35,
+                        ),
+                        label: Text("Parking place",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16))),),
+                    Align(
+                    alignment: Alignment.topLeft,
+                    child: FlatButton.icon(
+                        onPressed: () => navigateToHistoryPage(context),
+                        icon: Icon(
+                          Icons.change_history,
+                          color: Colors.blue,
+                          size: 35,
+                        ),
+                        label: Text("History",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16))),),
+                    Align(
+                    alignment: Alignment.topLeft,
+                    child: FlatButton.icon(
+                        onPressed: () => navigateToTramPage(context),
+                        icon: Icon(
+                          Icons.departure_board,
+                          color: Colors.blue,
+                          size: 35,
+                        ),
+                        label: Text("Tram",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16))),),
+                    Align(
+                    alignment: Alignment.topLeft,
+                    child: FlatButton.icon(
+                        onPressed: () => navigateToWorkTable(context),
+                        icon: Icon(
+                          Icons.grid_on,
+                          color: Colors.blue,
+                          size: 35,
+                        ),
+                        label: Text("Work Table",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16))),),
+                    // Align(
+                    // alignment: Alignment.topLeft,
+                    // child: FlatButton.icon(
+                    //     onPressed: () => navigateToInsertPage(context),
+                    //     icon: Icon(
+                    //       Icons.verified_user,
+                    //       color: Colors.blue,
+                    //       size: 35,
+                    //     ),
+                    //     label: Text("Help",
+                    //         style: TextStyle(
+                    //             fontWeight: FontWeight.bold, fontSize: 16))),),
+                  ],
+                ),
+                //Container(margin: EdgeInsets.only(left: 0)),
+              ],
+            ),
+            ),
+            Column(
+              children: <Widget>[
+                Align(
+                alignment: Alignment.topLeft,
+                child: FlatButton.icon(
+                    onPressed: () => navigateToLoginPage(context),
+                    icon: Icon(
+                      Icons.supervisor_account,
+                      color: Colors.blue,
+                      size: 35,
+                    ),
+                    label: Text("Login",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16))),),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

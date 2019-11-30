@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kasetsart/app_navigate.dart';
 import 'widgets.dart';
 
 class MapPage extends StatefulWidget {
@@ -13,8 +14,8 @@ class _MapPageState extends State<MapPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-          height: 350,
-          width: 1500,
+          height: 400,
+          width: 1700,
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: <Widget>[
@@ -28,23 +29,52 @@ class _MapPageState extends State<MapPage> {
   }
 
   Widget _twoSec() {
-    return Column(
-      children: <Widget>[
-        Text(">> Zone A = ของกิน + ของใช้ทั่วไป",
-            style: TextStyle(color: Colors.black, fontSize: 18)),
-        Text(
-          ">> Zone B = สัตว์ + ของใช้ทั่วไป",
-          style: TextStyle(color: Colors.black, fontSize: 18),
-        ),
-        Text(
-          ">> Zone C = เกษตร + ของใช้ทั่วไป",
-          style: TextStyle(color: Colors.black, fontSize: 18),
-        ),
-        Text(
-          ">> Zone D = ของกิน + ของใช้ทั่วไป",
-          style: TextStyle(color: Colors.black, fontSize: 18),
-        ),
-      ],
+    return Card(
+      color: Colors.yellow[100],
+      child: Column(
+        children: <Widget>[
+          Row(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("                Zone A        ",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+              Text("=       ของกิน",
+                  style: TextStyle(color: Colors.black, fontSize: 18)),
+            ],
+          ),
+          Text("  ", style: TextStyle(color: Colors.black, fontSize: 18)),
+          Row(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("                Zone B        ",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+              Text("=       สัตว์",
+                  style: TextStyle(color: Colors.black, fontSize: 18)),
+            ],
+          ),
+          Text("  ", style: TextStyle(color: Colors.black, fontSize: 18)),
+          Row(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("                Zone C        ",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+              Text("=       เกษตร",
+                  style: TextStyle(color: Colors.black, fontSize: 18)),
+            ],
+          ),
+          Text("  ", style: TextStyle(color: Colors.black, fontSize: 18)),
+          Row(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("                Zone D        ",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+              Text("=       ของใช้ทั่วไป",
+                  style: TextStyle(color: Colors.black, fontSize: 18)),
+            ],
+          ),
+          Text("  ", style: TextStyle(color: Colors.black, fontSize: 18)),
+        ],
+      ),
     );
   }
 
@@ -61,6 +91,11 @@ class _MapPageState extends State<MapPage> {
           _twoSec(),
         ],
       ),
+      // floatingActionButton: FloatingActionButton(
+      //     onPressed: () => navigateToFoodSearch(context),
+      //     child: Icon(Icons.add),
+      //     backgroundColor: Colors.lightGreen,
+      //   )
     );
   }
 }

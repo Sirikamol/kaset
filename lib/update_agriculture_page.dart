@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'image_service.dart';
 import 'agriculture.dart';
 import 'app_navigate.dart';
+import 'algolia_service.dart';
 
 class UpdateAgriculturePage extends StatefulWidget {
   UpdateAgriculturePage({Key key, this.docID}) : super(key: key);
@@ -24,6 +25,7 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
   var label1;
   File _image;
   int productCount;
+  final algoliaService = AlgoliaService.instance;
 
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -86,33 +88,41 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
     print('ID: ${newAgriculture.idStore}'); //*
     print('Category: ${newAgriculture.category}');
     print('Zone: ${newAgriculture.zone}');
+    print('ObjectID: ${newAgriculture.objectID}');
     print(_updateProducts);
     print(_image);
     if (_image != null) {
-      String imgUrl = await onImageUploading(_image);
+       String imgUrl = await onImageUploading(_image);
       print(imgUrl);
-      Firestore.instance
-          .collection('agriculture')
-          .document(widget.docID)
-          .updateData({
+      Map<String, dynamic> updateData = {
         'nameStore': newAgriculture.nameStore,
         'category': newAgriculture.category,
         'products': _updateProducts,
         'zone': newAgriculture.zone,
         'image': [imgUrl],
         'idStore': newAgriculture.idStore,
-      });
-    } else {
+        'objectID' :newAgriculture.objectID
+        
+    };
       Firestore.instance
           .collection('agriculture')
           .document(widget.docID)
-          .updateData({
+          .updateData(updateData);
+          await algoliaService.performUpdateAgricultureObject(updateData);
+    } else {
+      Map<String, dynamic> updateData = {
         'nameStore': newAgriculture.nameStore,
         'category': newAgriculture.category,
         'products': _updateProducts,
         'zone': newAgriculture.zone,
         'idStore': newAgriculture.idStore,
-      });
+        'objectID' :newAgriculture.objectID,
+      };
+      Firestore.instance
+          .collection('agriculture')
+          .document(widget.docID)
+          .updateData(updateData);
+           await algoliaService.performUpdateAgricultureObject(updateData);
     }
     _alertupdate();
     return null;
@@ -186,52 +196,67 @@ class _UpdateAgriculturePageState extends State<UpdateAgriculturePage> {
                   var document = snapshot.data;
                   return Card(
                     color: Colors.lightGreen[200],
-                    child: ListView(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            children: <Widget>[
-                              TextFormField(
-                                initialValue: document['nameStore'],
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    icon: Icon(Icons.account_balance),
-                                    hintText: 'ชื่อร้าน',
-                                    labelText: 'กรอกชื่อร้าน'),
-                                style: TextStyle(
-                                    fontSize: 18, color: Colors.black),
-                                onSaved: (val) =>
-                                    newAgriculture.nameStore = val,
-                              ),
-                              TextFormField(
-                                initialValue: document['idStore'],
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    icon: Icon(Icons.recent_actors),
-                                    hintText: 'เลขที่ร้าน',
-                                    labelText: 'กรอกเลขที่ร้าน'),
-                                style: TextStyle(
-                                    fontSize: 18, color: Colors.black),
-                                onSaved: (val) => newAgriculture.idStore = val,
-                              ),
-                              Center(
-                                child: _image == null
-                                    ? Image.network(
-                                        document["image"][0],
-                                        width: 250,
-                                        height: 150,
-                                      )
-                                    : Image.file(
-                                        _image,
-                                        width: 250,
-                                        height: 150,
-                                      ),
-                              ),
-                              RaisedButton(
-                                color: Colors.lightGreen[100],
-                                onPressed: getImage,
-                                child: Icon(Icons.add_a_photo),
+                  child: ListView(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          children: <Widget>[
+                            TextFormField(
+                              initialValue: document['nameStore'],
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+
+                                  icon: Icon(Icons.account_balance),
+                                  hintText: 'ชื่อร้าน',
+                                  labelText: 'กรอกชื่อร้าน'),
+                              style: TextStyle(fontSize: 18, color: Colors.black),
+                              onSaved: (val) => newAgriculture.nameStore = val,
+                            ),
+                            TextFormField(
+                              initialValue: document['idStore'],
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  icon: Icon(Icons.recent_actors),
+                                  hintText: 'เลขที่ร้าน',
+                                  labelText: 'กรอกเลขที่ร้าน'),
+                              style: TextStyle(fontSize: 18, color: Colors.black),
+                              onSaved: (val) => newAgriculture.idStore = val,
+                            ),
+                            TextFormField(
+                              initialValue: document['objectID'],
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  icon: Icon(Icons.account_circle),
+                                  hintText: 'objectID',
+                                  labelText: 'objectID'),
+                              style: TextStyle(fontSize: 18, color: Colors.black),
+                              onSaved: (val) => newAgriculture.objectID = val,
+                            ),
+                            Center(
+                              child: _image == null
+                                  ? Image.network(
+                                      document["image"][0],
+                                      width: 250,
+                                      height: 150,
+                                    )
+                                  : Image.file(
+                                      _image,
+                                      width: 250,
+                                      height: 150,
+                                    ),
+                            ),
+                            RaisedButton(
+                              color: Colors.lightGreen[100],
+                              onPressed: getImage,
+                              child: Icon(Icons.add_a_photo),
+                            ),
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                " +  รายการสินค้า",
+                                style:
+                                    TextStyle(fontSize: 20, color: Colors.black),
                               ),
                               Align(
                                 alignment: Alignment.topLeft,

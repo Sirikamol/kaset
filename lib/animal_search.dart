@@ -12,15 +12,78 @@ class AnimalSearchState extends State<AnimalSearch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('ค้นหา'),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
-                showSearch(context: context, delegate: DataSearch());
-              },
-            )
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: Text('ค้นหา'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              showSearch(context: context, delegate: DataSearch());
+            },
+          )
+        ],
+      ),
+      body:ListView(
+        children: <Widget>[
+          Column(
+    children: <Widget>[
+      Container(
+        height: 210,
+        width: 1500,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            GestureDetector(
+              // onTap: () {
+              //     // print('hello1');
+              //     navigateToFoodEdit(context);
+              //   },
+            child: Card(
+              child: Image.network(
+                  "https://i.ytimg.com/vi/iwvHrupRk6I/maxresdefault.jpg"),
+            ),),
+          ],
+        ),
+      )
+    ],
+  ),
+  Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+      Container(
+        height: 170,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            GestureDetector(
+              onTap: () {
+                  // print('hello1');
+                  navigateToImageAnimalsA(context);
+                },
+            child:Card(
+              child: Image.network(
+                  "https://f.ptcdn.info/020/013/000/1386375631-DSC0056JPG-o.jpg"),
+            ),),
+            GestureDetector(
+              onTap: () {
+                  // print('hello1');
+                  navigateToImageAnimalsB(context);
+                },
+            child:Card(
+              child: Image.network(
+                  "http://chailaibackpacker.com/wp-content/uploads/2017/01/Page1.jpg"),
+            ),
+            ),
+            // GestureDetector(
+            //   onTap: () {
+            //       // print('hello1');
+            //       navigateToFoodEdit(context);
+            //     },
+            // child:Card(
+            //   child: Image.network(
+            //       "https://pbs.twimg.com/media/C3QbEqdUEAAgSfl.jpg"),
+            // ),),
           ],
         ),
         body: ListView(children: <Widget>[
@@ -130,12 +193,12 @@ class DataSearch extends SearchDelegate<String> {
             return Container(
               child: Center(
                   child: Card(
-                color: Colors.yellow[100],
+                color: Colors.lightGreen[200],
                 child: Column(
                   children: <Widget>[
                     Row(children: <Widget>[
                       Text(
-                        "ชื่อร้าน : ",
+                        "   ชื่อร้าน : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
@@ -146,18 +209,23 @@ class DataSearch extends SearchDelegate<String> {
                             style: TextStyle(fontSize: 18.0),
                           )),
                     ]),
-                    Row(
-                      children: <Widget>[
-                        Image.network(
-                          animals.image[0],
-                          width: 200,
-                          height: 200,
-                        ),
-                      ],
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.all(2.0),
+                      // child: 
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.network(
+                            animals.image[0],
+                            width: 200,
+                            height: 200,
+                          ),
+                        ],
+                      ),
+                    // ),
                     Row(children: <Widget>[
                       Text(
-                        "ID : ",
+                        "   เลขที่ร้าน : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
@@ -170,7 +238,7 @@ class DataSearch extends SearchDelegate<String> {
                     ]),
                     Row(children: <Widget>[
                       Text(
-                        "zone : ",
+                        "   โซน : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
@@ -183,7 +251,7 @@ class DataSearch extends SearchDelegate<String> {
                     ]),
                     Row(children: <Widget>[
                       Text(
-                        "สินค้า : ",
+                        "   สินค้า : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
@@ -196,7 +264,7 @@ class DataSearch extends SearchDelegate<String> {
                     ]),
                     Row(children: <Widget>[
                       Text(
-                        "ประเภท : ",
+                        "   ประเภท : ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),

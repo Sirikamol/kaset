@@ -14,6 +14,10 @@ class AlgoliaService {
       taskBatch,
       taskClearIndex,
       taskDeleteIndex;
+  AlgoliaObjectSnapshot addedObject;
+  static final algoliaService = AlgoliaService.instance;
+
+  // AlgoliaTask taskdelete;
 
   final Algolia _algolia = Algolia.init(
     applicationId: 'T374A0CYK0',
@@ -27,26 +31,53 @@ class AlgoliaService {
   AlgoliaIndexReference get _generalsIndex =>
       _algolia.instance.index('generals');
 
+  Future<Null> performUpdateFoodObject(updateData) {
+    _foodIndex.addObject(updateData);
+  }
+
+  Future<Null> performUpdateAgricultureObject(updateData) {
+    _agricultureIndex.addObject(updateData);
+  }
+
+  Future<Null> performUpdateAnimalObject(updateData) {
+    _animalIndex.addObject(updateData);
+  }
+
+  Future<Null> performUpdateGeneralsObject(updateData) {
+    _generalsIndex.addObject(updateData);
+  }
+
+  // Future<Null> performDeleteGeneralsObject(deleteObject){
+  //   _generalsIndex.deleteIndex(deleteObject);
+  // }
+  Future<String> performDeleteFoodObject(deleteData) async {
+    taskAdded = await _foodIndex.deleteIndex();
+    // print(taskAdded.data);
+    return taskAdded.data['objectID'].toString();
+  }
+
   Future<String> performAddFoodObject(addData) async {
     taskAdded = await _foodIndex.addObject(addData);
     // print(taskAdded.data);
     return taskAdded.data['objectID'].toString();
   }
 
-  void performAddAgricultureObject(addData) async {
-    _agricultureIndex.addObject(addData);
+  Future<String> performAddAgricultureObject(addData) async {
+    taskAdded = await _agricultureIndex.addObject(addData);
+    // print(taskAdded.data);
+    return taskAdded.data['objectID'].toString();
   }
 
-  void performAddAnimalObject(addData) async {
-    _animalIndex.addObject(addData);
+  Future<String> performAddAnimalObject(addData) async {
+    taskAdded = await _animalIndex.addObject(addData);
+    // print(taskAdded.data);
+    return taskAdded.data['objectID'].toString();
   }
 
-  void performAddGeneralsObject(addData) async {
-    _generalsIndex.addObject(addData);
-  }
-
-  void performUpdateFoodObject(objectId, updateData) async {
-    _foodIndex.object(objectId).updateData(updateData);
+  Future<String> performAddGeneralsObject(addData) async {
+    taskAdded = await _generalsIndex.addObject(addData);
+    // print(taskAdded.data);
+    return taskAdded.data['objectID'].toString();
   }
 
   Future<List<Food>> performSearchQuery({text: String}) async {
@@ -81,3 +112,14 @@ class AlgoliaService {
     return generals;
   }
 }
+
+// Future<Null> performAddFoodObject(addData){
+//   _foodIndex.addObject(addData);
+// }
+// void performAddAgricultureObject(objectId, updateData){
+//   _agricultureIndex.object(objectId).updateData(updateData);
+// }
+// Future<Null> performDeleteFoodObject(objectID){
+//   _foodIndex.object(objectID).deleteObject();
+//   // _foodIndex.object(objectId).deleteData(daleteData);
+// }
